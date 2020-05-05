@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--关联数据库-->
+    <context:property-placeholder location="classpath:db.properties"/>
+    <!--连接池 c3p0链接-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--使用配置文件无法连接，奇怪。。。-->
+        <!--        <property name="driverClass" value="${driver}"/>-->
+        <!--        <property name="jdbcUrl" value="${url}"/>-->
+        <!--        <property name="user" value="${username}"/>-->
+        <!--        <property name="password" value="${password}"/>-->
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://cdb-2tt4kxl0.bj.tencentcdb.com:10151/epsDB?useSSL=true&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="user" value="admin"/>
+        <property name="password" value="epsmysqladmin"/>
+        <!--池中最大最小连接数量-->
+        <property name="maxPoolSize" value="25"/>
+        <property name="minPoolSize" value="5"/>
+        <!--关闭连接后不自动提交-->
+        <property name="autoCommitOnClose" value="false"/>
+        <!--连接超时时间阀-->
+        <property name="checkoutTimeout" value="10000"/>
+        <!--重试次数-->
+        <property name="acquireRetryAttempts" value="3"/>
+    </bean>
+
+    <!--sqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--绑定数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--绑定MyBatis配置文件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+    </bean>
+    <!--配置接口自动扫描-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入sqlSessionFactory-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!--扫描dao包-->
+        <property name="basePackage" value="cn.jsnu.css.dao"/>
+
+    </bean>
+</beans>

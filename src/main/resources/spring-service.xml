@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--扫描service下的包-->
+    <context:component-scan base-package="cn.jsnu.css.service"/>
+    <!--Users-->
+    <bean id="UserServiceImpl" class="cn.jsnu.css.service.Impl.UserServiceImpl">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+    <!--Goods-->
+    <bean id="GoodServiceImpl" class="cn.jsnu.css.service.Impl.GoodServiceImpl">
+        <property name="goodMapper" ref="goodMapper"/>
+    </bean>
+    <!--Order-->
+    <bean id="OrderServiceImpl" class="cn.jsnu.css.service.Impl.OrderServiceImpl">
+        <property name="orderMapper" ref="orderMapper"/>
+    </bean>
+    <!--Category-->
+    <bean id="CategoryServiceImpl" class="cn.jsnu.css.service.Impl.CategoryServiceImpl">
+        <property name="categoryMapper" ref="categoryMapper"/>
+    </bean>
+</beans>
