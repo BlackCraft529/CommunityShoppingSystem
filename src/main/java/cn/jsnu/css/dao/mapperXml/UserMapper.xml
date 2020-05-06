@@ -3,5 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/schema/mybatis-3-mapper.dtd">
 <mapper namespace="cn.jsnu.css.dao.UserMapper">
-
+    <!--新增用户-->
+    <insert id="addUser" parameterType="cn.jsnu.css.pojo.User">
+        insert into eps_users (id,nickname,phoneNum,password,create_time)
+        values (#{id},#{nickname},#{phoneNum},#{password},#{createTime});
+    </insert>
+    <!--查询用户-->
+    <select id="findUserById" parameterType="string">
+        select * from eps_users where id=#{id};
+    </select>
+    <!--删除用户-->
+    <delete id="deleteUserById" parameterType="string">
+        delete * from eps_users where id=#{id};
+    </delete>
+    <!--更新用户数据-->
+    <update id="updateUser" parameterType="cn.jsnu.css.pojo.User">
+        update eps_users set nickname=#{nickname},password=#{password},phoneNum=#{phoneNum},email=#{email},avatar=#{avatar} where id=#{id};
+    </update>
+    <!--更新用户昵称-->
+    <update id="updateUserNickname" parameterType="cn.jsnu.css.pojo.User">
+        update eps_users set nickname=#{nickname} where id=#{id};
+    </update>
 </mapper>

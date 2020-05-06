@@ -14,8 +14,11 @@ public class GoodController {
     @Autowired
     @Qualifier("GoodServiceImpl")
     private GoodService goodService;
-
-
+    /**
+     * 跳转至商品详情页
+     * @param id 商品ID
+     * @return 商品详情页名
+     */
     @RequestMapping("/goodsDetail")
     public String goodsDetail(String id) {
         return "goodsInfo";

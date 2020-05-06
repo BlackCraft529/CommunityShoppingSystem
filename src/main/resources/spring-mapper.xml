@@ -2,10 +2,16 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        https://www.springframework.org/schema/context/spring-context.xsd">
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!--关联数据库-->
     <context:property-placeholder location="classpath:db.properties"/>
     <!--连接池 c3p0链接-->
@@ -43,6 +49,21 @@
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
         <!--扫描dao包-->
         <property name="basePackage" value="cn.jsnu.css.dao"/>
-
     </bean>
+    <!--配置声明式事务-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--AOP事务植入-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <!--添加事务的方法-->
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--配置事务切入-->
+    <aop:config>
+        <aop:pointcut id="txPointCut" expression="execution(* cn.jsnu.css.dao.*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
+    </aop:config>
 </beans>

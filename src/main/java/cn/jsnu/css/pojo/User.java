@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class User {
     private String userId;
-    private String nickName;
+    private String nickname;
     private String password;
     private String phoneNum;
     private String email;
@@ -16,12 +16,13 @@ public class User {
     private Date createTime;
 
     public User(){};
-    public User(String userId, String nickName, String password, String phoneNum, String email){
+
+    public User(String phoneNum,String password,String nickname,String userId,Date createTime){
         this.userId = userId;
-        this.nickName = nickName;
+        this.nickname = nickname;
         this.password = password;
         this.phoneNum=phoneNum;
-        this.email=email;
+        this.createTime=createTime;
     }
 
     public String getUserId() {
@@ -32,12 +33,12 @@ public class User {
         this.userId = userId;
     }
 
-    public String getNickName() {
-        return nickName;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getPassword() {
@@ -84,7 +85,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id='" + userId + '\'' +
-                ", userName='" + nickName + '\'' +
+                ", userName='" + nickname + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", email='" + email + '\'' +

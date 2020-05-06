@@ -22,7 +22,7 @@
     <div class="w">
         <div class="header_top clearfix">
             <h1 class="logo">
-                <a href="/">应急采购系统</a>
+                <a href="/index">应急采购系统</a>
             </h1>
             <div class="top_right">
                 <ul class="system_link clearfix">

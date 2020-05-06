@@ -19,18 +19,18 @@ import java.util.List;
 public class IndexController {
 
     @Autowired
-    @Qualifier("CategoryService")
-    private CategoryService categoryService = null;
+    @Qualifier("CategoryServiceImpl")
+    private CategoryService categoryService;
+
 
     @Autowired
-    @Qualifier("GoodsService")
-    private GoodService goodService = null;
-
+    @Qualifier("GoodServiceImpl")
+    private GoodService goodService;
 
     @RequestMapping("/index")
     public String index(HttpSession session) {
-
-
         return "index";
     }
+
+
 }

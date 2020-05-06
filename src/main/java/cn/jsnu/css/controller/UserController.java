@@ -46,11 +46,6 @@ public class UserController {
         return "";
     }
 
-
-
-
-
-
     /**
      * 跳转至登录页面
      * @return 登录页面名
@@ -68,7 +63,5 @@ public class UserController {
     public String toRegister() {
         return "register";
     }
-
-
 
 }

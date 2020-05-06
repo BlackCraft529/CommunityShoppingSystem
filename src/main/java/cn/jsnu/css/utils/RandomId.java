@@ -1,6 +1,7 @@
 package cn.jsnu.css.utils;
 
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * @author wrx-18090248
@@ -36,4 +37,20 @@ public class RandomId {
         return sb.toString();
     }
 
+    /**
+     * 获取随机UUID
+     * @return 转换为String返回
+     */
+    public static String getUUID(){
+        return UUID.randomUUID().toString();
+    }
+
+    /**
+     * 获取一个随机昵称
+     * @param phoneNum 用户ID
+     * @return 随机ID：手机号-随机字符5个
+     */
+    public static String getFirstNickName(String phoneNum){
+        return phoneNum+"-"+getRandomString(5);
+    }
 }
