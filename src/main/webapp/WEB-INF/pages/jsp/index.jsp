@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<%
+    String path = request.getContextPath();
+%>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +25,7 @@
     <div class="w">
         <div class="header_top clearfix">
             <h1 class="logo">
-                <a href="/index">应急采购系统</a>
+                <a href="<%=path%>/index">应急采购系统</a>
             </h1>
             <div class="top_right">
                 <ul class="system_link clearfix">
