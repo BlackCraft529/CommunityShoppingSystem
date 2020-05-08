@@ -1,0 +1,56 @@
+.info,
+.login_form {
+    display: block;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.info {
+    margin: 20px auto;
+    padding-left: 65px;
+}
+
+.info h3 {
+    font-size: 20px;
+}
+
+.form_group {
+    position: relative;
+    margin: 30px 0;
+}
+
+.form_group label {
+    display: inline-block;
+    width: 80px;
+    height: 40px;
+    text-align: right;
+}
+
+.form_group input {
+    width: 300px;
+    height: 35px;
+    padding: 6px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form_group button {
+    display: inline-block;
+    margin: 0 68px;
+    width: 80px;
+    height: 40px;
+    color: #fff;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    border: none;
+    border-radius: 6px;
+}
+
+.tips {
+    display: none;
+    position: absolute;
+    left: 180px;
+    bottom: -15px;
+    color: #e74c3c;
+}
+

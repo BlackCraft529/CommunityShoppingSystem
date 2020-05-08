@@ -1,0 +1,55 @@
+
+
+/* CSS初始化 */
+
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dt,dd,li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 14px;
+    font-family: 宋体;
+    color: #000;
+}
+
+i {
+    font-style: normal;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+input,image {
+    vertical-align: middle;
+    border: 0 none;
+    outline-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 清除浮动 */
+.clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+/* 兼容IE浏览器 */
+.clearfix {
+    zoom: 1;
+}
+
+/* 版心 */
+.w {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+
+
+

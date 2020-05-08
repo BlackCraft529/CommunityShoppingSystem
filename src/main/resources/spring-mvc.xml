@@ -15,6 +15,16 @@
     <mvc:default-servlet-handler/>
     <!--支持mvc注解驱动-->
     <mvc:annotation-driven/>
+
+<!--    &lt;!&ndash; 允许css目录下所有文件可见 &ndash;&gt;-->
+<!--    <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>-->
+<!--    &lt;!&ndash;允许images目录下所有文件可见 &ndash;&gt;-->
+<!--    <mvc:resources location="/img/" mapping="/img/**"></mvc:resources>-->
+<!--    &lt;!&ndash;允许upload目录下所有文件可见 &ndash;&gt;-->
+<!--    <mvc:resources location="/upload/" mapping="/upload/**"></mvc:resources>-->
+<!--    &lt;!&ndash;允许js目录下所有文件可见 &ndash;&gt;-->
+<!--    <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>-->
+
     <!--视图解析器-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
         <!--前缀-->

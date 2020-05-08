@@ -28,6 +28,7 @@ public class UserController {
      * @param session session对象
      * @return 跳转界面
      */
+    @RequestMapping("/login")
     public String login(String phoneNum, String password, HttpSession session) {
 
         return "";
@@ -41,9 +42,10 @@ public class UserController {
      * @param session session对象
      * @return 跳转界面
      */
+    @RequestMapping("/register")
     public String register(String phoneNum, String password, HttpSession session) {
-
-        return "";
+        userService.addUser(phoneNum, password);
+        return "login";
     }
 
     /**

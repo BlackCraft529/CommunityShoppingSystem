@@ -1,0 +1,137 @@
+
+.preview-wrap {
+    float: left;
+    width: 400px;
+}
+
+.preview-wrap img {
+    width: 400px;
+}
+
+.item-info {
+    float: right;
+    width: 720px;
+    color: #333;
+    font-size: 16px;
+}
+
+.goods-title {
+    margin-bottom: 16px;
+}
+
+.news {
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #e12228;
+}
+
+.summary dl {
+    clear: both;
+    overflow: hidden;
+}
+
+
+.summary dt,
+.summary dd {
+    float: left;
+}
+
+.summary dt {
+    width: 60px;
+    padding-left: 10px;
+}
+
+
+.price,
+.promotion,
+.support,
+.remain {
+    padding: 10px 10px;
+    line-height: 30px;
+    background-color: #fee9eb;
+}
+
+.price i {
+    font-size: 24px;
+    color: #e12228;
+}
+
+.price del {
+    font-size: 14px;
+    color: #c81623;
+}
+
+.promotion {
+
+}
+
+.support {
+    background-color: transparent;
+}
+
+.remain {
+    background-color: transparent;
+}
+
+.chose-btn {
+    height: 46px;
+}
+
+.chose-amount {
+    position: relative;
+    float: left;
+    width: 50px;
+    height: 44px;
+    border: 1px solid #ccc;
+}
+
+.chose-amount input {
+    display: block;
+    width: 33px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+
+.chose-amount a {
+    display: inline-block;
+}
+
+.add,
+.reduce {
+    position: absolute;
+    right: 0;
+    width: 15px;
+    height: 22px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border-left: 1px solid #ccc;
+}
+
+.add {
+    top: 0;
+}
+
+.reduce {
+    bottom: 0;
+    border-top: 1px solid #ccc;
+}
+
+.not-reduce {
+    cursor: not-allowed;
+}
+
+.addcar {
+    display: block;
+    float: left;
+    margin-left: 10px;
+    width: 142px;
+    height: 46px;
+
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    line-height: 46px;
+    background-color: #3498db;
+}

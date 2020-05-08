@@ -1,0 +1,26 @@
+.info {
+    margin-left: 36px;
+}
+
+.register_form {
+    margin: 0 auto;
+    width: 1000px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.user_info {
+    width: 50%;
+    float: left;
+}
+
+.agreement {
+    width: 50%;
+    float: right;
+}
+
+.form_group textarea {
+    width: 90%;
+    height: 280px;
+    resize: none;
+}
