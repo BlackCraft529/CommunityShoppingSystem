@@ -1,8 +1,8 @@
 package cn.jsnu.css.dao;
 
 import cn.jsnu.css.pojo.User;
-
-import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author wrx-18090248
@@ -39,9 +39,64 @@ public interface UserMapper {
 
     /**
      * 修改用户昵称
-     * @param id 用户UUID
-     * @param nickname
-     * @return
+     * @param user 修改用户
+     * @return 影响条数
      */
-    int updateUserNickname(String id,String nickname);
+    int updateUserNickname(User user);
+
+    /**
+     * 更新用户密码
+     * @param user 修改用户
+     * @return 影响条数
+     */
+    int updateUserPassword(User user);
+
+    /**
+     * 更新用户邮箱
+     * @param user 用户
+     * @return 影响条数
+     */
+    int updateUserEmail(User user);
+
+    /**
+     * 更新用户电话号
+     * @param user 用户
+     * @return 影响条数
+     */
+    int updateUserPhoneNum(User user);
+
+    /**
+     * 更新用户头像连接
+     * @param user 用户
+     * @return 影响条数
+     */
+    int updateUserAvatar(User user);
+
+    /**
+     * 根据手机号检查用户是否存在
+     * @param phoneNum 手机号
+     * @return 用户
+     */
+    User checkPhoneNumExist(String phoneNum);
+
+    /**
+     * 根据邮箱检查用户是否存在
+     * @param email 邮箱
+     * @return 用户
+     */
+    User checkEmailExist(String email);
+
+    /**
+     * 根据手机号和密码获取用户
+     * @param userData 用户手机号和密码信息
+     * @return 用户
+     */
+    User findUserByPhoneNumAndPassword(Map<String,String> userData);
+
+    /**
+     * 获取所有用户
+     * @return 用户集合
+     */
+    List<User> findAllUsers();
+
 }

@@ -53,4 +53,12 @@ public class RandomId {
     public static String getFirstNickName(String phoneNum){
         return phoneNum+"-"+getRandomString(5);
     }
+
+    /**
+     * 获取一个随机的商品ID
+     * @return 随机商品ID
+     */
+    public static String getRandomGoodId(){
+        return getRandomString(15);
+    }
 }

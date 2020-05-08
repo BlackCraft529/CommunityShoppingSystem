@@ -12,6 +12,7 @@ public class User {
     private String password;
     private String phoneNum;
     private String email;
+    private String avatar;
     private Date lastLoginTime;
     private Date createTime;
 
@@ -23,6 +24,14 @@ public class User {
         this.password = password;
         this.phoneNum=phoneNum;
         this.createTime=createTime;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getUserId() {

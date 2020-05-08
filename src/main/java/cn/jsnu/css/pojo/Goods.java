@@ -4,17 +4,18 @@ package cn.jsnu.css.pojo;
  * @author wrx-18090248
  * @date 2020/5/5 20:15
  */
-public class Good {
+public class Goods {
     private String goodId;
     private String goodName;
     private String goodSummary;
     private double goodPrice;
     private double goodSalesPrice;
+    private int goodsCate;
     private int goodRemain;
     private String goodImage;
 
-    public Good(){}
-    public Good(String goodId,String goodName,String goodSummary,double goodPrice,double goodSalesPrice,int goodRemain,String goodImage){
+    public Goods(){}
+    public Goods(String goodId, String goodName, String goodSummary, int goodsCate, double goodPrice, double goodSalesPrice, int goodRemain, String goodImage){
         this.goodId = goodId;
         this.goodName = goodName;
         this.goodSummary = goodSummary;
@@ -22,6 +23,7 @@ public class Good {
         this.goodSalesPrice = goodSalesPrice;
         this.goodRemain = goodRemain;
         this.goodImage = goodImage;
+        this.goodsCate=goodsCate;
     }
     @Override
     public String toString() {
@@ -34,6 +36,14 @@ public class Good {
                 ", goodRemain=" + goodRemain +
                 ", goodImage='" + goodImage + '\'' +
                 '}';
+    }
+
+    public int getGoodsCate() {
+        return goodsCate;
+    }
+
+    public void setGoodsCate(int goodsCate) {
+        this.goodsCate = goodsCate;
     }
 
     public String getGoodId() {

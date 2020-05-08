@@ -9,7 +9,7 @@
         values (#{id},#{nickname},#{phoneNum},#{password},#{createTime});
     </insert>
     <!--查询用户-->
-    <select id="findUserById" parameterType="string">
+    <select id="findUserById" parameterType="string" resultType="cn.jsnu.css.pojo.User">
         select * from eps_users where id=#{id};
     </select>
     <!--删除用户-->
@@ -24,4 +24,36 @@
     <update id="updateUserNickname" parameterType="cn.jsnu.css.pojo.User">
         update eps_users set nickname=#{nickname} where id=#{id};
     </update>
+    <!--更新用户密码-->
+    <update id="updateUserPassword" parameterType="cn.jsnu.css.pojo.User">
+        update eps_users set password=#{password} where id=#{id};
+    </update>
+    <!--更新用户邮箱-->
+    <update id="updateUserEmail" parameterType="cn.jsnu.css.pojo.User">
+        update eps_users set email=#{email} where id=#{id};
+    </update>
+    <!--更新用户手机号-->
+    <update id="updateUserPhoneNum" parameterType="cn.jsnu.css.pojo.User">
+        update eps_users set phoneNum=#{phoneNum} where id=#{id};
+    </update>
+    <!--更新用户头像连接-->
+    <update id="updateUserAvatar" parameterType="cn.jsnu.css.pojo.User">
+        update eps_users set avatar=#{avatar} where id=#{id};
+    </update>
+    <!--根据手机号检查用户是否存在-->
+    <select id="checkPhoneNumExist" parameterType="string" resultType="cn.jsnu.css.pojo.User">
+        select * from eps_users where phoneNum=#{phoneNum};
+    </select>
+    <!--根据邮箱检查用户是否存在-->
+    <select id="checkEmailExist" parameterType="string" resultType="cn.jsnu.css.pojo.User">
+        select * from eps_users where email=#{email};
+    </select>
+    <!--根据手机号和密码获取用户-->
+    <select id="findUserByPhoneNumAndPassword" parameterType="map" resultType="cn.jsnu.css.pojo.User">
+        select * from eps_users where phoneNum=#{phoneNum} and password=#{password};
+    </select>
+    <!--返回所有用户信息-->
+    <select id="findAllUsers" resultType="cn.jsnu.css.pojo.User">
+        select * from eps_users;
+    </select>
 </mapper>

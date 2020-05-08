@@ -1,6 +1,7 @@
 package cn.jsnu.css.service;
 
 import cn.jsnu.css.pojo.User;
+import java.util.List;
 
 /**
  * @author wrx-18090248
@@ -39,8 +40,67 @@ public interface UserService {
     /**
      * 修改用户昵称
      * @param id 用户UUID
-     * @param nickname
-     * @return
+     * @param nickname 用户昵称
+     * @return 影响条数
      */
     int updateUserNickname(String id,String nickname);
+    /**
+     * 更新用户密码
+     * @param id 用户id
+     * @param  password 密码
+     * @return 影响条数
+     */
+    int updateUserPassword(String id,String password);
+
+    /**
+     * 更新用户邮箱
+     * @param id 用户ID
+     * @param email 邮箱
+     * @return 影响条数
+     */
+    int updateUserEmail(String id,String email);
+
+    /**
+     * 更新用户电话号
+     * @param id 用户ID
+     * @param phoneNum 电话
+     * @return 影响条数
+     */
+    int updateUserPhoneNum(String id,String phoneNum);
+
+    /**
+     * 更新用户头像连接
+     * @param id 用户ID
+     * @param avatar 用户头像连接
+     * @return 影响条数
+     */
+    int updateUserAvatar(String id,String avatar);
+
+    /**
+     * 根据手机号检查用户是否存在
+     * @param phoneNum 手机号
+     * @return 是否存在用户
+     */
+    Boolean checkPhoneNumExist(String phoneNum);
+
+    /**
+     * 根据邮箱检查用户是否存在
+     * @param email 邮箱
+     * @return 用户
+     */
+    Boolean checkEmailExist(String email);
+
+    /**
+     * 根据手机号和密码获取用户
+     * @param phoneNum 用户手机号
+     * @param password 用户密码
+     * @return 用户
+     */
+    User findUserByPhoneNumAndPassword(String phoneNum,String password);
+
+    /**
+     * 获取所有用户
+     * @return 用户集合
+     */
+    List<User> findAllUsers();
 }

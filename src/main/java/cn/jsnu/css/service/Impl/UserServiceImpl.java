@@ -6,9 +6,10 @@ import cn.jsnu.css.service.UserService;
 import cn.jsnu.css.utils.MD5Util;
 import cn.jsnu.css.utils.RandomId;
 import org.springframework.beans.factory.annotation.Autowired;
-import sun.security.krb5.internal.PAData;
-
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author wrx-18090248
@@ -52,7 +53,7 @@ public class UserServiceImpl implements UserService {
     /**
      * 删除一个用户
      * @param id 用户ID
-     * @return
+     * @return 影响条数
      */
     @Override
     public int deleteUserById(String id) {
@@ -81,6 +82,101 @@ public class UserServiceImpl implements UserService {
         user.setUserId(id);
         user.setNickname(nickname);
         return userMapper.updateUser(user);
+    }
+
+    /**
+     * 更新用户密码
+     * @param id 用户ID
+     * @param password 密码
+     * @return 影响条数
+     */
+    @Override
+    public int updateUserPassword(String id , String password) {
+        User user=findUserById(id);
+        user.setPassword(MD5Util.getSaltMD5(password));
+        return userMapper.updateUserPassword(user);
+    }
+
+    /**
+     * 更新用户邮箱
+     * @param id 用户ID
+     * @param email 邮箱
+     * @return 影响条数
+     */
+    @Override
+    public int updateUserEmail(String id , String email) {
+        User user=findUserById(id);
+        user.setEmail(email);
+        return userMapper.updateUserEmail(user);
+    }
+
+    /**
+     * 更新用户电话号
+     * @param id 用户ID
+     * @param phoneNum 电话
+     * @return 影响条数
+     */
+    @Override
+    public int updateUserPhoneNum(String id,String phoneNum) {
+        User user=findUserById(id);
+        user.setPhoneNum(phoneNum);
+        return userMapper.updateUserPhoneNum(user);
+    }
+
+    /**
+     * 更新用户头像连接
+     * @param id 用户ID
+     * @param avatar 用户头像连接
+     * @return 影响条数
+     */
+    @Override
+    public int updateUserAvatar(String id , String avatar) {
+        User user=findUserById(id);
+        user.setAvatar(avatar);
+        return userMapper.updateUserAvatar(user);
+    }
+
+    /**
+     * 查找用户是否存在
+     * @param phoneNum 手机号
+     * @return 是否存在
+     */
+    @Override
+    public Boolean checkPhoneNumExist(String phoneNum) {
+        return userMapper.checkPhoneNumExist(phoneNum)==null?false:true;
+    }
+
+    /**
+     * 查找用户邮箱是否存在
+     * @param email 邮箱
+     * @return 是否存在
+     */
+    @Override
+    public Boolean checkEmailExist(String email) {
+        return userMapper.checkEmailExist(email)==null?false:true;
+    }
+
+    /**
+     * 根据手机号和密码获取用户
+     * @param phoneNum 用户手机号
+     * @param password 用户密码
+     * @return 用户
+     */
+    @Override
+    public User findUserByPhoneNumAndPassword(String phoneNum, String password) {
+        Map<String,String> userData=new HashMap<>();
+        userData.put("phoneNum",phoneNum);
+        userData.put("password",MD5Util.getSaltMD5(password));
+        return userMapper.findUserByPhoneNumAndPassword(userData);
+    }
+
+    /**
+     * 返回所有用户合集
+     * @return 所有用户
+     */
+    @Override
+    public List<User> findAllUsers() {
+        return userMapper.findAllUsers();
     }
 
 

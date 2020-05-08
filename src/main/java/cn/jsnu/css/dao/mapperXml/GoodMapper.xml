@@ -3,5 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/schema/mybatis-3-mapper.dtd">
 <mapper namespace="cn.jsnu.css.dao.GoodMapper">
-
+    <!--新增商品-->
+    <insert id="addUser" parameterType="cn.jsnu.css.pojo.Goods">
+        insert into eps_goods (goods_id,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image)
+        values (#{goods_id},#{goods_name},#{goods_summary},#{goods_cate},#{goods_price},#{goods_sales_price},#{goods_remain},#{goods_image});
+    </insert>
+    <!--通过商品ID获取商品-->
+    <select id="findGoodsById" parameterType="string" resultType="cn.jsnu.css.pojo.Goods">
+        select * from eps_goods where goods_id=#{goodsId};
+    </select>
 </mapper>
