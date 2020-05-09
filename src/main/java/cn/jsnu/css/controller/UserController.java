@@ -2,6 +2,7 @@ package cn.jsnu.css.controller;
 
 import cn.jsnu.css.pojo.User;
 import cn.jsnu.css.service.UserService;
+import cn.jsnu.css.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -30,13 +31,19 @@ public class UserController {
      */
     @RequestMapping("/login")
     public String login(String phoneNum, String password, HttpSession session) {
-
-        return "";
+        String md5Password = MD5Util.getSaltMD5(password);
+        User user = userService.findUserByPhoneNumAndPassword(phoneNum, md5Password);
+        if (user != null) {
+            session.setAttribute("user", user);
+            return "index";
+        } else {
+            return "login";
+        }
     }
 
 
     /**
-     * 用户登录
+     * 用户注册
      * @param phoneNum 手机号
      * @param password 密码
      * @param session session对象
@@ -44,7 +51,8 @@ public class UserController {
      */
     @RequestMapping("/register")
     public String register(String phoneNum, String password, HttpSession session) {
-        userService.addUser(phoneNum, password);
+        String md5Password = MD5Util.getSaltMD5(password);
+        userService.addUser(phoneNum, md5Password);
         return "login";
     }
 
