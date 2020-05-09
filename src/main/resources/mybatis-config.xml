@@ -7,7 +7,6 @@
     <typeAliases>
         <package name="cn.jsnu.css.pojo"/>
     </typeAliases>
-
     <mappers>
         <mapper resource="cn/jsnu/css/dao/mapperXml/UserMapper.xml"/>
     </mappers>

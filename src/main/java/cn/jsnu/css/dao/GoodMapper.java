@@ -20,4 +20,23 @@ public interface GoodMapper {
      * @return 商品
      */
     Goods findGoodsById(String goodsId);
+
+    /**
+     * 删除商品信息
+     * @param goodsId 商品ID
+     */
+    void deleteGoodsById(String goodsId);
+
+    /**
+     * 更新商品信息
+     * @param goods 商品
+     */
+    void updateGoods(Goods goods);
+
+    /**
+     * 更新商品价格
+     * @param goods 商品
+     */
+    void updateGoodsPrice(Goods goods);
+
 }

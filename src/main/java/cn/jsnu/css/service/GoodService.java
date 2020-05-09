@@ -16,7 +16,7 @@ public interface GoodService {
      * @param goodsSalesPrice 商品销售价
      * @param goodsRemain 商品库存
      * @param goodsImage 商品图片链接
-     * @return
+     * @return 影响条数
      */
     int addGoods(String goodsName, String goodsSummary, int goodsCate,
                  Double goodsPrice, Double goodsSalesPrice, Integer goodsRemain, String goodsImage);
@@ -27,4 +27,30 @@ public interface GoodService {
      * @return 商品
      */
     Goods findGoodsById(String goodsId);
+
+    /**
+     * 根据商品ID删除商品
+     * @param goodsId 商品ID
+     */
+    void deleteGoodsById(String goodsId);
+
+    /**
+     * 更新商品信息
+     * @param goodsId 商品ID
+     * @param goodsName 商品名称
+     * @param goodsSummary 商品概述
+     * @param goodsCate 商品分类号
+     * @param goodsPrice 商品定价
+     * @param goodsSalesPrice 商品销售价
+     * @param goodsRemain 商品库存
+     * @param goodsImage 商品图片链接
+     */
+    void updateGoods(String goodsId,String goodsName,String goodsSummary,int goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage);
+
+    /**
+     * 更新商品价格
+     * @param goodsId 商品ID
+     * @param goodsPrice 商品价格
+     */
+    void updateGoodsPrice(String goodsId,double goodsPrice);
 }

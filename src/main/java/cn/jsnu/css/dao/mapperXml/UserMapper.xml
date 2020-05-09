@@ -3,13 +3,35 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/schema/mybatis-3-mapper.dtd">
 <mapper namespace="cn.jsnu.css.dao.UserMapper">
+    <!--参数集映射-->
+    <parameterMap id="UserParameterMap" type="cn.jsnu.css.pojo.User">
+        <parameter property="userId" resultMap="UserResultMap"/>
+        <parameter property="nickname" resultMap="UserResultMap"/>
+        <parameter property="phoneNum" resultMap="UserResultMap"/>
+        <parameter property="email" resultMap="UserResultMap"/>
+        <parameter property="avatar" resultMap="UserResultMap"/>
+        <parameter property="lastLoginTime" resultMap="UserResultMap"/>
+        <parameter property="createTime" resultMap="UserResultMap"/>
+    </parameterMap>
+    <!--结果集映射-->
+    <resultMap id="UserResultMap" type="cn.jsnu.css.pojo.User">
+        <!--column数据库字段 property实体类字段-->
+        <result column="id" property="userId"/>
+        <result column="nickname" property="nickname"/>
+        <result column="phoneNum" property="password"/>
+        <result column="password" property="phoneNum"/>
+        <result column="email" property="email"/>
+        <result column="avatar" property="avatar"/>
+        <result column="last_login_time" property="lastLoginTime"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
     <!--新增用户-->
-    <insert id="addUser" parameterType="cn.jsnu.css.pojo.User">
+    <insert id="addUser" parameterMap="UserParameterMap">
         insert into eps_users (id,nickname,phoneNum,password,create_time)
         values (#{id},#{nickname},#{phoneNum},#{password},#{createTime});
     </insert>
     <!--查询用户-->
-    <select id="findUserById" parameterType="string" resultType="cn.jsnu.css.pojo.User">
+    <select id="findUserById" parameterType="string" resultMap="UserResultMap">
         select * from eps_users where id=#{id};
     </select>
     <!--删除用户-->
@@ -17,43 +39,43 @@
         delete * from eps_users where id=#{id};
     </delete>
     <!--更新用户数据-->
-    <update id="updateUser" parameterType="cn.jsnu.css.pojo.User">
+    <update id="updateUser" parameterMap="UserParameterMap">
         update eps_users set nickname=#{nickname},password=#{password},phoneNum=#{phoneNum},email=#{email},avatar=#{avatar} where id=#{id};
     </update>
     <!--更新用户昵称-->
-    <update id="updateUserNickname" parameterType="cn.jsnu.css.pojo.User">
+    <update id="updateUserNickname" parameterMap="UserParameterMap">
         update eps_users set nickname=#{nickname} where id=#{id};
     </update>
     <!--更新用户密码-->
-    <update id="updateUserPassword" parameterType="cn.jsnu.css.pojo.User">
+    <update id="updateUserPassword" parameterMap="UserParameterMap">
         update eps_users set password=#{password} where id=#{id};
     </update>
     <!--更新用户邮箱-->
-    <update id="updateUserEmail" parameterType="cn.jsnu.css.pojo.User">
+    <update id="updateUserEmail" parameterMap="UserParameterMap">
         update eps_users set email=#{email} where id=#{id};
     </update>
     <!--更新用户手机号-->
-    <update id="updateUserPhoneNum" parameterType="cn.jsnu.css.pojo.User">
+    <update id="updateUserPhoneNum" parameterMap="UserParameterMap">
         update eps_users set phoneNum=#{phoneNum} where id=#{id};
     </update>
     <!--更新用户头像连接-->
-    <update id="updateUserAvatar" parameterType="cn.jsnu.css.pojo.User">
+    <update id="updateUserAvatar" parameterMap="UserParameterMap">
         update eps_users set avatar=#{avatar} where id=#{id};
     </update>
     <!--根据手机号检查用户是否存在-->
-    <select id="checkPhoneNumExist" parameterType="string" resultType="cn.jsnu.css.pojo.User">
+    <select id="checkPhoneNumExist" parameterType="string" resultMap="UserResultMap">
         select * from eps_users where phoneNum=#{phoneNum};
     </select>
     <!--根据邮箱检查用户是否存在-->
-    <select id="checkEmailExist" parameterType="string" resultType="cn.jsnu.css.pojo.User">
+    <select id="checkEmailExist" parameterType="string" resultMap="UserResultMap">
         select * from eps_users where email=#{email};
     </select>
     <!--根据手机号和密码获取用户-->
-    <select id="findUserByPhoneNumAndPassword" parameterType="map" resultType="cn.jsnu.css.pojo.User">
+    <select id="findUserByPhoneNumAndPassword" parameterType="map" resultMap="UserResultMap">
         select * from eps_users where phoneNum=#{phoneNum} and password=#{password};
     </select>
     <!--返回所有用户信息-->
-    <select id="findAllUsers" resultType="cn.jsnu.css.pojo.User">
+    <select id="findAllUsers" resultMap="UserResultMap">
         select * from eps_users;
     </select>
 </mapper>

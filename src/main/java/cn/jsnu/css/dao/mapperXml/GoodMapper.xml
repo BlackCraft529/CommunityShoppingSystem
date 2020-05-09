@@ -3,13 +3,48 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/schema/mybatis-3-mapper.dtd">
 <mapper namespace="cn.jsnu.css.dao.GoodMapper">
+    <!--参数集映射-->
+    <parameterMap id="GoodsParameterMap" type="cn.jsnu.css.pojo.Goods">
+        <parameter property="goodId" resultMap="GoodsResultMap"/>
+        <parameter property="goodName" resultMap="GoodsResultMap"/>
+        <parameter property="goodSummary" resultMap="GoodsResultMap"/>
+        <parameter property="goodPrice" resultMap="GoodsResultMap"/>
+        <parameter property="goodSalesPrice" resultMap="GoodsResultMap"/>
+        <parameter property="goodsCate" resultMap="GoodsResultMap"/>
+        <parameter property="goodRemain" resultMap="GoodsResultMap"/>
+        <parameter property="goodImage" resultMap="GoodsResultMap"/>
+    </parameterMap>
+    <!--结果集映射-->
+    <resultMap id="GoodsResultMap" type="cn.jsnu.css.pojo.Goods">
+        <id column="goods_id" property="goodId"/>
+        <id column="goods_name" property="goodName"/>
+        <id column="goods_summary" property="goodSummary"/>
+        <id column="goods_price" property="goodPrice"/>
+        <id column="goods_sales_price" property="goodSalesPrice"/>
+        <id column="goods_cate" property="goodsCate"/>
+        <id column="goods_remain" property="goodRemain"/>
+        <id column="goods_image" property="goodImage"/>
+    </resultMap>
     <!--新增商品-->
-    <insert id="addUser" parameterType="cn.jsnu.css.pojo.Goods">
+    <insert id="addUser" parameterMap="GoodsParameterMap">
         insert into eps_goods (goods_id,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image)
         values (#{goods_id},#{goods_name},#{goods_summary},#{goods_cate},#{goods_price},#{goods_sales_price},#{goods_remain},#{goods_image});
     </insert>
     <!--通过商品ID获取商品-->
-    <select id="findGoodsById" parameterType="string" resultType="cn.jsnu.css.pojo.Goods">
+    <select id="findGoodsById" parameterType="string" resultMap="GoodsResultMap">
         select * from eps_goods where goods_id=#{goodsId};
     </select>
+    <!--根据商品ID删除商品-->
+    <delete id="deleteGoodsById" parameterType="string">
+        delete * from eps_goods where goods_id=#{goodsId};
+    </delete>
+    <!--更新商品信息-->
+    <update id="updateGoods" parameterMap="GoodsParameterMap">
+        update eps_goods set goods_name=#{goodName},goods_summary=#{goodSummary},goods_cate=#{goodsCate},
+                    goods_price=#{goodPrice},goods_sales_price=#{goodSalesPrice},goods_remain=#{goodRemain},goods_image=#{goodImage} where goods_id=#{goodsId};
+    </update>
+    <!--更新商品定价-->
+    <update id="updateGoodsPrice" parameterMap="GoodsParameterMap">
+        update eps_goods set goods_price=#{goodPrice} where goods_id=#{goodsId};
+    </update>
 </mapper>

@@ -26,51 +26,44 @@ public interface UserMapper {
     /**
      * 删除用户
      * @param id 用户ID
-     * @return 影响条数
      */
-    int deleteUserById(String id);
+    void deleteUserById(String id);
 
     /**
      * 更新用户数据
      * @param user 用户类
-     * @return 受影响条数
      */
-    int updateUser(User user);
+    void updateUser(User user);
 
     /**
      * 修改用户昵称
      * @param user 修改用户
-     * @return 影响条数
      */
-    int updateUserNickname(User user);
+    void updateUserNickname(User user);
 
     /**
      * 更新用户密码
      * @param user 修改用户
-     * @return 影响条数
      */
-    int updateUserPassword(User user);
+    void updateUserPassword(User user);
 
     /**
      * 更新用户邮箱
      * @param user 用户
-     * @return 影响条数
      */
-    int updateUserEmail(User user);
+    void updateUserEmail(User user);
 
     /**
      * 更新用户电话号
      * @param user 用户
-     * @return 影响条数
      */
-    int updateUserPhoneNum(User user);
+    void updateUserPhoneNum(User user);
 
     /**
      * 更新用户头像连接
      * @param user 用户
-     * @return 影响条数
      */
-    int updateUserAvatar(User user);
+    void updateUserAvatar(User user);
 
     /**
      * 根据手机号检查用户是否存在

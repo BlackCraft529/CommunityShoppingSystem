@@ -26,55 +26,49 @@ public interface UserService {
     /**
      * 删除用户
      * @param id 用户ID
-     * @return 影响条数
      */
-    int deleteUserById(String id);
+    void deleteUserById(String id);
 
     /**
      * 更新用户数据
      * @param user 用户类
-     * @return 受影响条数
      */
-    int updateUser(User user);
+    void updateUser(User user);
 
     /**
      * 修改用户昵称
      * @param id 用户UUID
      * @param nickname 用户昵称
-     * @return 影响条数
      */
-    int updateUserNickname(String id,String nickname);
+    void updateUserNickname(String id,String nickname);
+
     /**
      * 更新用户密码
      * @param id 用户id
      * @param  password 密码
-     * @return 影响条数
      */
-    int updateUserPassword(String id,String password);
+    void updateUserPassword(String id,String password);
 
     /**
      * 更新用户邮箱
      * @param id 用户ID
      * @param email 邮箱
-     * @return 影响条数
      */
-    int updateUserEmail(String id,String email);
+    void updateUserEmail(String id,String email);
 
     /**
      * 更新用户电话号
      * @param id 用户ID
      * @param phoneNum 电话
-     * @return 影响条数
      */
-    int updateUserPhoneNum(String id,String phoneNum);
+    void updateUserPhoneNum(String id,String phoneNum);
 
     /**
      * 更新用户头像连接
      * @param id 用户ID
      * @param avatar 用户头像连接
-     * @return 影响条数
      */
-    int updateUserAvatar(String id,String avatar);
+    void updateUserAvatar(String id,String avatar);
 
     /**
      * 根据手机号检查用户是否存在

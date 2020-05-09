@@ -53,87 +53,80 @@ public class UserServiceImpl implements UserService {
     /**
      * 删除一个用户
      * @param id 用户ID
-     * @return 影响条数
      */
     @Override
-    public int deleteUserById(String id) {
-        return userMapper.deleteUserById(id);
+    public void deleteUserById(String id) {
+        userMapper.deleteUserById(id);
     }
 
     /**
      * 更新用户数据
      * @param user 用户类
-     * @return 影响条数
      */
     @Override
-    public int updateUser(User user) {
-        return userMapper.updateUser(user);
+    public void updateUser(User user) {
+        userMapper.updateUser(user);
     }
 
     /**
      * 修改用户昵称
      * @param id 用户UUID
      * @param nickname 用户昵称
-     * @return 影响条数
      */
     @Override
-    public int updateUserNickname(String id, String nickname) {
+    public void updateUserNickname(String id, String nickname) {
         User user=new User();
         user.setUserId(id);
         user.setNickname(nickname);
-        return userMapper.updateUser(user);
+        userMapper.updateUser(user);
     }
 
     /**
      * 更新用户密码
      * @param id 用户ID
      * @param password 密码
-     * @return 影响条数
      */
     @Override
-    public int updateUserPassword(String id , String password) {
+    public void updateUserPassword(String id , String password) {
         User user=findUserById(id);
         user.setPassword(MD5Util.getSaltMD5(password));
-        return userMapper.updateUserPassword(user);
+        userMapper.updateUserPassword(user);
     }
 
     /**
      * 更新用户邮箱
      * @param id 用户ID
      * @param email 邮箱
-     * @return 影响条数
      */
     @Override
-    public int updateUserEmail(String id , String email) {
+    public void updateUserEmail(String id , String email) {
         User user=findUserById(id);
         user.setEmail(email);
-        return userMapper.updateUserEmail(user);
+        userMapper.updateUserEmail(user);
     }
 
     /**
      * 更新用户电话号
      * @param id 用户ID
      * @param phoneNum 电话
-     * @return 影响条数
      */
     @Override
-    public int updateUserPhoneNum(String id,String phoneNum) {
+    public void updateUserPhoneNum(String id,String phoneNum) {
         User user=findUserById(id);
         user.setPhoneNum(phoneNum);
-        return userMapper.updateUserPhoneNum(user);
+        userMapper.updateUserPhoneNum(user);
     }
 
     /**
      * 更新用户头像连接
      * @param id 用户ID
      * @param avatar 用户头像连接
-     * @return 影响条数
      */
     @Override
-    public int updateUserAvatar(String id , String avatar) {
+    public void updateUserAvatar(String id , String avatar) {
         User user=findUserById(id);
         user.setAvatar(avatar);
-        return userMapper.updateUserAvatar(user);
+        userMapper.updateUserAvatar(user);
     }
 
     /**
