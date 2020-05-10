@@ -5,36 +5,36 @@ package cn.jsnu.css.pojo;
  * @date 2020/5/5 20:15
  */
 public class Goods {
-    private String goodId;
-    private String goodName;
-    private String goodSummary;
-    private double goodPrice;
-    private double goodSalesPrice;
+    private String goodsId;
+    private String goodsName;
+    private String goodsSummary;
+    private double goodsPrice;
+    private double goodsSalesPrice;
     private int goodsCate;
-    private int goodRemain;
-    private String goodImage;
+    private int goodsRemain;
+    private String goodsImage;
 
     public Goods(){}
-    public Goods(String goodId, String goodName, String goodSummary, int goodsCate, double goodPrice, double goodSalesPrice, int goodRemain, String goodImage){
-        this.goodId = goodId;
-        this.goodName = goodName;
-        this.goodSummary = goodSummary;
-        this.goodPrice = goodPrice;
-        this.goodSalesPrice = goodSalesPrice;
-        this.goodRemain = goodRemain;
-        this.goodImage = goodImage;
+    public Goods(String goodsId, String goodsName, String goodsSummary, int goodsCate, double goodsPrice, double goodsSalesPrice, int goodsRemain, String goodsImage){
+        this.goodsId = goodsId;
+        this.goodsName = goodsName;
+        this.goodsSummary = goodsSummary;
+        this.goodsPrice = goodsPrice;
+        this.goodsSalesPrice = goodsSalesPrice;
+        this.goodsRemain = goodsRemain;
+        this.goodsImage = goodsImage;
         this.goodsCate=goodsCate;
     }
     @Override
     public String toString() {
         return "Good{" +
-                "goodid='" + goodId + '\'' +
-                ", goodName='" + goodName + '\'' +
-                ", goodSummary='" + goodSummary + '\'' +
-                ", goodPrice=" + goodPrice +
-                ", goodSalesPrice=" + goodSalesPrice +
-                ", goodRemain=" + goodRemain +
-                ", goodImage='" + goodImage + '\'' +
+                "goodid='" + goodsId + '\'' +
+                ", goodName='" + goodsName + '\'' +
+                ", goodSummary='" + goodsSummary + '\'' +
+                ", goodPrice=" + goodsPrice +
+                ", goodSalesPrice=" + goodsSalesPrice +
+                ", goodRemain=" + goodsRemain +
+                ", goodImage='" + goodsImage + '\'' +
                 '}';
     }
 
@@ -46,59 +46,59 @@ public class Goods {
         this.goodsCate = goodsCate;
     }
 
-    public String getGoodId() {
-        return goodId;
+    public String getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoodId(String goodId) {
-        this.goodId = goodId;
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
     }
 
-    public String getGoodName() {
-        return goodName;
+    public String getGoodsName() {
+        return goodsName;
     }
 
-    public void setGoodName(String goodName) {
-        this.goodName = goodName;
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
     }
 
-    public String getGoodSummary() {
-        return goodSummary;
+    public String getGoodsSummary() {
+        return goodsSummary;
     }
 
-    public void setGoodSummary(String goodSummary) {
-        this.goodSummary = goodSummary;
+    public void setGoodsSummary(String goodsSummary) {
+        this.goodsSummary = goodsSummary;
     }
 
-    public double getGoodPrice() {
-        return goodPrice;
+    public double getGoodsPrice() {
+        return goodsPrice;
     }
 
-    public void setGoodPrice(double goodPrice) {
-        this.goodPrice = goodPrice;
+    public void setGoodsPrice(double goodsPrice) {
+        this.goodsPrice = goodsPrice;
     }
 
-    public double getGoodSalesPrice() {
-        return goodSalesPrice;
+    public double getGoodsSalesPrice() {
+        return goodsSalesPrice;
     }
 
-    public void setGoodSalesPrice(double goodSalesPrice) {
-        this.goodSalesPrice = goodSalesPrice;
+    public void setGoodsSalesPrice(double goodsSalesPrice) {
+        this.goodsSalesPrice = goodsSalesPrice;
     }
 
-    public int getGoodRemain() {
-        return goodRemain;
+    public int getGoodsRemain() {
+        return goodsRemain;
     }
 
-    public void setGoodRemain(int goodRemain) {
-        this.goodRemain = goodRemain;
+    public void setGoodsRemain(int goodsRemain) {
+        this.goodsRemain = goodsRemain;
     }
 
-    public String getGoodImage() {
-        return goodImage;
+    public String getGoodsImage() {
+        return goodsImage;
     }
 
-    public void setGoodImage(String goodImage) {
-        this.goodImage = goodImage;
+    public void setGoodsImage(String goodsImage) {
+        this.goodsImage = goodsImage;
     }
 }

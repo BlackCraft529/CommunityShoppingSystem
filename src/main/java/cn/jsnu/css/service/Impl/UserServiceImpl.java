@@ -29,15 +29,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public int addUser(String phoneNum, String password) {
         //确定UUID
-        String UUID= RandomId.getUUID();
+        String UUID= RandomId.getUUID().replaceAll("-","");
         while(userMapper.findUserById(UUID)!=null){
-            UUID=RandomId.getUUID();
+            UUID=RandomId.getUUID().replaceAll("-","");
         }
         //密码加盐密
-        password= MD5Util.getSaltMD5(password);
+        String MD5password= MD5Util.getSaltMD5(password);
         //生成昵称
         String nickname=RandomId.getFirstNickName(phoneNum);
-        return userMapper.addUser(new User(phoneNum,password,nickname,UUID,new Date()));
+        return userMapper.addUser(new User(phoneNum,MD5password,nickname,UUID,new Date()));
     }
 
     /**
@@ -158,9 +158,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByPhoneNumAndPassword(String phoneNum, String password) {
         Map<String,String> userData=new HashMap<>();
-        userData.put("phoneNum",phoneNum);
-        userData.put("password",MD5Util.getSaltMD5(password));
-        return userMapper.findUserByPhoneNumAndPassword(userData);
+        String sqlPassword= findPasswordByPhoneNum(phoneNum);
+        if(MD5Util.getSaltverifyMD5(password,sqlPassword)) {
+            userData.put("phoneNum",phoneNum);
+            userData.put("password",sqlPassword);
+            return userMapper.findUserByPhoneNumAndPassword(userData);
+        }
+        return null;
     }
 
     /**
@@ -170,6 +174,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAllUsers() {
         return userMapper.findAllUsers();
+    }
+
+    /**
+     * 根据用户手机号获取密码
+     * @param phoneNum 用户手机号
+     * @return 密码
+     */
+    @Override
+    public String findPasswordByPhoneNum(String phoneNum) {
+        return userMapper.findPasswordByPhoneNum(phoneNum);
     }
 
 

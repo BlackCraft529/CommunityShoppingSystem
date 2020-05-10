@@ -31,8 +31,8 @@ public class UserController {
      */
     @RequestMapping("/login")
     public String login(String phoneNum, String password, HttpSession session) {
-        String md5Password = MD5Util.getSaltMD5(password);
-        User user = userService.findUserByPhoneNumAndPassword(phoneNum, md5Password);
+        //String md5Password = MD5Util.getSaltMD5(password);
+        User user = userService.findUserByPhoneNumAndPassword(phoneNum, password);
         if (user != null) {
             session.setAttribute("user", user);
             return "index";
@@ -51,8 +51,8 @@ public class UserController {
      */
     @RequestMapping("/register")
     public String register(String phoneNum, String password, HttpSession session) {
-        String md5Password = MD5Util.getSaltMD5(password);
-        userService.addUser(phoneNum, md5Password);
+        //String md5Password = MD5Util.getSaltMD5(password);
+        userService.addUser(phoneNum, password);
         return "login";
     }
 

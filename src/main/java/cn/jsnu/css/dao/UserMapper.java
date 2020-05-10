@@ -92,4 +92,11 @@ public interface UserMapper {
      */
     List<User> findAllUsers();
 
+    /**
+     * 根据手机号获取用密码
+     * @param phoneNum 用户手机号
+     * @return 用户密码
+     */
+    String findPasswordByPhoneNum(String phoneNum);
+
 }

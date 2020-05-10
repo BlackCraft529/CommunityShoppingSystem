@@ -28,7 +28,7 @@
     <!--新增用户-->
     <insert id="addUser" parameterMap="UserParameterMap">
         insert into eps_users (id,nickname,phoneNum,password,create_time)
-        values (#{id},#{nickname},#{phoneNum},#{password},#{createTime});
+        values (#{userId},#{nickname},#{phoneNum},#{password},#{createTime});
     </insert>
     <!--查询用户-->
     <select id="findUserById" parameterType="string" resultMap="UserResultMap">
@@ -40,27 +40,27 @@
     </delete>
     <!--更新用户数据-->
     <update id="updateUser" parameterMap="UserParameterMap">
-        update eps_users set nickname=#{nickname},password=#{password},phoneNum=#{phoneNum},email=#{email},avatar=#{avatar} where id=#{id};
+        update eps_users set nickname=#{nickname},password=#{password},phoneNum=#{phoneNum},email=#{email},avatar=#{avatar} where id=#{userId};
     </update>
     <!--更新用户昵称-->
     <update id="updateUserNickname" parameterMap="UserParameterMap">
-        update eps_users set nickname=#{nickname} where id=#{id};
+        update eps_users set nickname=#{nickname} where id=#{userId};
     </update>
     <!--更新用户密码-->
     <update id="updateUserPassword" parameterMap="UserParameterMap">
-        update eps_users set password=#{password} where id=#{id};
+        update eps_users set password=#{password} where id=#{userId};
     </update>
     <!--更新用户邮箱-->
     <update id="updateUserEmail" parameterMap="UserParameterMap">
-        update eps_users set email=#{email} where id=#{id};
+        update eps_users set email=#{email} where id=#{userId};
     </update>
     <!--更新用户手机号-->
     <update id="updateUserPhoneNum" parameterMap="UserParameterMap">
-        update eps_users set phoneNum=#{phoneNum} where id=#{id};
+        update eps_users set phoneNum=#{phoneNum} where id=#{userId};
     </update>
     <!--更新用户头像连接-->
     <update id="updateUserAvatar" parameterMap="UserParameterMap">
-        update eps_users set avatar=#{avatar} where id=#{id};
+        update eps_users set avatar=#{avatar} where id=#{userId};
     </update>
     <!--根据手机号检查用户是否存在-->
     <select id="checkPhoneNumExist" parameterType="string" resultMap="UserResultMap">
@@ -77,5 +77,9 @@
     <!--返回所有用户信息-->
     <select id="findAllUsers" resultMap="UserResultMap">
         select * from eps_users;
+    </select>
+    <!--根据手机号获取密码-->
+    <select id="findPasswordByPhoneNum" parameterType="string" resultType="string">
+        select password from eps_users where phoneNum=#{phoneNum};
     </select>
 </mapper>
