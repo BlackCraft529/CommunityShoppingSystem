@@ -50,7 +50,7 @@
                 </div>
                 <div class="form_group">
                     <label for="password">确认密码:</label>
-                    <input class="text" id="againPwd" name="password" placeholder="请确认密码..." type="password">
+                    <input class="text" id="againPwd" placeholder="请确认密码..." type="password">
                     <p class="tips" id="againPwdTips">请输入密码!</p>
                 </div>
 

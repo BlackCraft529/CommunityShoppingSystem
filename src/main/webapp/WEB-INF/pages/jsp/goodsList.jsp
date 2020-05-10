@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: liguangshuai
@@ -6,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,126 +82,18 @@
 <!--Main Start-->
 <div class="main">
     <div class="w clearfix">
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
-        <div class="goods-item">
-            <a href="#">
-                <img src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg" alt="">
-                <h5>Apple苹果iPhone 6s Plus（A1699）32G 金色 移动联通电信4G手机</h5>
-                <p class="price"><i class="new-price">¥6088</i>&nbsp;<del>￥6988</del></p>
-                <div class="buy-btn">
-                    查看详情
-                </div>
-            </a>
-        </div>
+        <c:forEach items="goods" var="item" step="1">
+            <div class="goods-item">
+                <a href="<%=path%>/goods/goodsDetail?goodsId=${item.goodsId}">
+                    <img src="${item.goodsImage}" alt="">
+                    <h5>${item.goodsName}</h5>
+                    <p class="price"><i class="new-price">¥${goodsSalesPrice}</i>&nbsp;<del>￥${goodsPrice}</del></p>
+                    <div class="buy-btn">
+                        查看详情
+                    </div>
+                </a>
+            </div>
+        </c:forEach>
     </div>
 </div>
 <!--Main End-->

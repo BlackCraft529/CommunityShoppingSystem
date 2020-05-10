@@ -44,7 +44,7 @@
                 <li><a class="nav_item" href="">洗化用品</a></li>
                 <li><a class="nav_item" href="">调味料</a></li>
                 <li><a class="nav_item" href="">图书</a></li>
-                <li><a class="nav_item" href="">小型家电</a></li>
+                <li><a class="nav_item" href="<%=path%>/goods/goodsListCate?cateId=4aa9838573f44772849f888b7b994095">小型家电</a></li>
             </ul>
         </nav>
         <div class="header_bottom clearfix">
@@ -63,8 +63,8 @@
                 </div>
             </div>
             <div class="search">
-                <form action="" class="search_form">
-                    <input placeholder="请输入关键字..." type="text">
+                <form action="<%=path%>/goods/goodsListName" class="search_form">
+                    <input placeholder="请输入关键字..." name="goodsName" type="text">
                     <button type="submit">搜索</button>
                 </form>
             </div>
