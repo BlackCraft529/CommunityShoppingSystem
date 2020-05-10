@@ -20,7 +20,7 @@ public interface GoodService {
      * @param goodsImage 商品图片链接
      * @return 影响条数
      */
-    int addGoods(String goodsName, String goodsSummary, int goodsCate,
+    int addGoods(String goodsName, String goodsSummary, String goodsCate,
                  Double goodsPrice, Double goodsSalesPrice, Integer goodsRemain, String goodsImage);
 
     /**
@@ -47,7 +47,7 @@ public interface GoodService {
      * @param goodsRemain 商品库存
      * @param goodsImage 商品图片链接
      */
-    void updateGoods(String goodsId,String goodsName,String goodsSummary,int goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage);
+    void updateGoods(String goodsId,String goodsName,String goodsSummary,String goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage);
 
     /**
      * 更新商品价格

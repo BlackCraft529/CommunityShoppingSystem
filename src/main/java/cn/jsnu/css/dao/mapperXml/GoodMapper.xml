@@ -5,14 +5,14 @@
 <mapper namespace="cn.jsnu.css.dao.GoodMapper">
     <!--参数集映射-->
     <parameterMap id="GoodsParameterMap" type="cn.jsnu.css.pojo.Goods">
-        <parameter property="goodId" resultMap="GoodsResultMap"/>
-        <parameter property="goodName" resultMap="GoodsResultMap"/>
-        <parameter property="goodSummary" resultMap="GoodsResultMap"/>
-        <parameter property="goodPrice" resultMap="GoodsResultMap"/>
-        <parameter property="goodSalesPrice" resultMap="GoodsResultMap"/>
+        <parameter property="goodsId" resultMap="GoodsResultMap"/>
+        <parameter property="goodsName" resultMap="GoodsResultMap"/>
+        <parameter property="goodsSummary" resultMap="GoodsResultMap"/>
+        <parameter property="goodsPrice" resultMap="GoodsResultMap"/>
+        <parameter property="goodsSalesPrice" resultMap="GoodsResultMap"/>
         <parameter property="goodsCate" resultMap="GoodsResultMap"/>
-        <parameter property="goodRemain" resultMap="GoodsResultMap"/>
-        <parameter property="goodImage" resultMap="GoodsResultMap"/>
+        <parameter property="goodsRemain" resultMap="GoodsResultMap"/>
+        <parameter property="goodsImage" resultMap="GoodsResultMap"/>
     </parameterMap>
     <!--结果集映射-->
     <resultMap id="GoodsResultMap" type="cn.jsnu.css.pojo.Goods">
@@ -64,11 +64,11 @@
         select * from eps_goods;
     </select>
     <!--根据商品分类查找商品-->
-    <select id="findGoodsByCategory" parameterType="string">
+    <select id="findGoodsByCategory" parameterType="string" resultMap="GoodsResultMap">
         select * from eps_goods where goods_cate=#{goodsCate};
     </select>
     <!--根据商品名查找商品-->
-    <select id="findGoodsByName" parameterType="string">
+    <select id="findGoodsByName" parameterType="string" resultMap="GoodsResultMap">
         select * from eps_goods where goods_name='%#{goodsName}%';
     </select>
 </mapper>

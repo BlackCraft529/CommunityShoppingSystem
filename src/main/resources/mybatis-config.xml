@@ -9,6 +9,7 @@
     </typeAliases>
     <mappers>
         <mapper resource="cn/jsnu/css/dao/mapperXml/UserMapper.xml"/>
+        <mapper resource="cn/jsnu/css/dao/mapperXml/GoodMapper.xml"/>
     </mappers>
 
 </configuration>

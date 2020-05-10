@@ -29,7 +29,7 @@ public class GoodServiceImpl implements GoodService {
      * @return 新增条数
      */
     @Override
-    public int addGoods(String goodsName, String goodsSummary, int goodsCate, Double goodsPrice, Double goodsSalesPrice, Integer goodsRemain, String goodsImage) {
+    public int addGoods(String goodsName, String goodsSummary, String goodsCate, Double goodsPrice, Double goodsSalesPrice, Integer goodsRemain, String goodsImage) {
         String goodsId=RandomId.getRandomGoodId();
         while(findGoodsById(goodsId)!=null){
             goodsId=RandomId.getRandomGoodId();
@@ -68,7 +68,7 @@ public class GoodServiceImpl implements GoodService {
      * @param goodsImage 商品图片链接
      */
     @Override
-    public void updateGoods(String goodsId,String goodsName,String goodsSummary,int goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage) {
+    public void updateGoods(String goodsId,String goodsName,String goodsSummary,String goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage) {
         goodMapper.updateGoods(new Goods(goodsId,goodsName,goodsSummary,goodsCate,goodsPrice,goodsSalesPrice,goodsRemain,goodsImage));
     }
 

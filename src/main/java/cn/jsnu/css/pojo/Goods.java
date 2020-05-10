@@ -10,12 +10,12 @@ public class Goods {
     private String goodsSummary;
     private double goodsPrice;
     private double goodsSalesPrice;
-    private int goodsCate;
+    private String goodsCate;
     private int goodsRemain;
     private String goodsImage;
 
     public Goods(){}
-    public Goods(String goodsId, String goodsName, String goodsSummary, int goodsCate, double goodsPrice, double goodsSalesPrice, int goodsRemain, String goodsImage){
+    public Goods(String goodsId, String goodsName, String goodsSummary, String goodsCate, double goodsPrice, double goodsSalesPrice, int goodsRemain, String goodsImage){
         this.goodsId = goodsId;
         this.goodsName = goodsName;
         this.goodsSummary = goodsSummary;
@@ -25,24 +25,26 @@ public class Goods {
         this.goodsImage = goodsImage;
         this.goodsCate=goodsCate;
     }
+
     @Override
     public String toString() {
-        return "Good{" +
-                "goodid='" + goodsId + '\'' +
-                ", goodName='" + goodsName + '\'' +
-                ", goodSummary='" + goodsSummary + '\'' +
-                ", goodPrice=" + goodsPrice +
-                ", goodSalesPrice=" + goodsSalesPrice +
-                ", goodRemain=" + goodsRemain +
-                ", goodImage='" + goodsImage + '\'' +
+        return "Goods{" +
+                "goodsId='" + goodsId + '\'' +
+                ", goodsName='" + goodsName + '\'' +
+                ", goodsSummary='" + goodsSummary + '\'' +
+                ", goodsPrice=" + goodsPrice +
+                ", goodsSalesPrice=" + goodsSalesPrice +
+                ", goodsCate='" + goodsCate + '\'' +
+                ", goodsRemain=" + goodsRemain +
+                ", goodsImage='" + goodsImage + '\'' +
                 '}';
     }
 
-    public int getGoodsCate() {
+    public String getGoodsCate() {
         return goodsCate;
     }
 
-    public void setGoodsCate(int goodsCate) {
+    public void setGoodsCate(String goodsCate) {
         this.goodsCate = goodsCate;
     }
 
