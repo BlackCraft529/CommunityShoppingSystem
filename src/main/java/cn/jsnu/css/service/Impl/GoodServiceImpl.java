@@ -149,7 +149,7 @@ public class GoodServiceImpl implements GoodService {
      */
     @Override
     public List<Goods> findGoodsByName(String goodsName) {
-        return goodMapper.findGoodsByName(goodsName);
+        return goodMapper.findGoodsByName("%"+goodsName+"%");
     }
 
 
