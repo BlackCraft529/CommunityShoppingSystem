@@ -22,13 +22,13 @@ public class GoodController {
     private GoodService goodService;
     /**
      * 跳转至商品详情页
-     * @param cateId 商品ID
+     * @param goodsId 商品ID
      * @param model 数据
      * @return 商品详情页名
      */
     @RequestMapping("/goodsDetail")
-    public String goodsDetail(String cateId, Model model) {
-        Goods goods = goodService.findGoodsById(cateId);
+    public String goodsDetail(String goodsId, Model model) {
+        Goods goods = goodService.findGoodsById(goodsId);
         model.addAttribute("goods", goods);
         return "goodsInfo";
     }

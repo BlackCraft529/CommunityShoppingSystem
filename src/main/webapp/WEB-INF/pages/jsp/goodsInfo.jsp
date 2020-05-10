@@ -6,88 +6,36 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String path = request.getContextPath();
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>商品详情</title>
-    <link href="css/base.css" rel="stylesheet">
-    <link href="css/common.css" rel="stylesheet">
-    <link href="css/goodsInfo.css" rel="stylesheet">
+    <link href="<%=path%>/css/base.css" rel="stylesheet">
+    <link href="<%=path%>/css/common.css" rel="stylesheet">
+    <link href="<%=path%>/css/goodsInfo.css" rel="stylesheet">
 </head>
 <body>
-<header class="header">
-    <div class="w">
-        <div class="header_top clearfix">
-            <h1 class="logo">
-                <a href="/">应急采购系统</a>
-            </h1>
-            <div class="top_right">
-                <ul class="system_link clearfix">
-                    <li><a href="#">会员中心</a></li>
-                    <li><a href="#">我的订单</a></li>
-                    <li><a href="#">后台管理</a></li>
-                    <li><a href="#">使用帮助</a></li>
-                </ul>
-                <p class="user_info">
-                    <!--<span class="user_name">Double</span>您好！欢迎登录应急采购系统！[<a href="">安全退出</a>]-->
-                    [<a href="#">登录</a>｜<a href="#" style="color: #3498db;">注册</a>]
-                </p>
-            </div>
-        </div>
-        <nav class="nav clearfix">
-            <ul>
-                <li><a class="nav_item" href="">首页</a></li>
-                <li><a class="nav_item" href="">蔬菜</a></li>
-                <li><a class="nav_item" href="">家禽</a></li>
-                <li><a class="nav_item" href="">蛋类</a></li>
-                <li><a class="nav_item" href="">水果</a></li>
-                <li><a class="nav_item" href="">洗化用品</a></li>
-                <li><a class="nav_item" href="">调味料</a></li>
-                <li><a class="nav_item" href="">图书</a></li>
-                <li><a class="nav_item" href="">小型家电</a></li>
-            </ul>
-        </nav>
-        <div class="header_bottom clearfix">
-            <div class="category">
-                <h3 class="cate_title" id="cate_title">全部商品分类</h3>
-                <div class="dropdown">
-                    <li><a class="cate_item" href="">首页</a></li>
-                    <li><a class="cate_item" href="">蔬菜</a></li>
-                    <li><a class="cate_item" href="">家禽</a></li>
-                    <li><a class="cate_item" href="">蛋类</a></li>
-                    <li><a class="cate_item" href="">水果</a></li>
-                    <li><a class="cate_item" href="">洗化用品</a></li>
-                    <li><a class="cate_item" href="">调味料</a></li>
-                    <li><a class="cate_item" href="">图书</a></li>
-                    <li><a class="cate_item" href="">小型家电</a></li>
-                </div>
-            </div>
-            <div class="search">
-                <form action="" class="search_form">
-                    <input placeholder="请输入关键字..." type="text">
-                    <button type="submit">搜索</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</header>
+<jsp:include page="header.jsp"/>
 
 <div class="w">
     <div class="main">
         <div class="product-intro clearfix">
             <div class="preview-wrap">
-                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
+                <img alt="" src="${goods.goodsImage}">
             </div>
             <div class="item-info">
                 <div class="goods-title">
-                    佳能（Canon） PowerShot SX700 HS 数码相机 红色（1610万像素 30倍光变 3英寸高清屏 25mm广角 WiFi/NFC）
+                    ${goods.goodsName}
                 </div>
                 <div class="news">推荐选择下方[移动优惠购],手机套餐齐搞定,不用换号,每月还有花费返</div>
                 <div class="summary">
                     <dl class="price">
                         <dt>价格</dt>
-                        <dd><i>￥1299.0</i>&nbsp;&nbsp;<del>￥1500.0</del>
+                        <dd><i>￥${goods.goodsSalesPrice}</i>&nbsp;&nbsp;<del>￥${goods.goodsPrice}</del>
                         </dd>
                     </dl>
                     <dl class="promotion">
@@ -105,7 +53,7 @@
                     <dl class="remain">
                         <dt>库存</dt>
                         <dd>
-                            1999+
+                            ${goods.goodsRemain}
                         </dd>
                     </dl>
                     <div class="chose-btn">
@@ -194,7 +142,7 @@
     </div>
 </footer>
 
-<script src="js/jquery-3.5.0.min.js"></script>
-<script src="js/common.js"></script>
+<script src="<%=path%>/js/jquery-3.5.0.min.js"></script>
+<script src="<%=path%>/js/common.js"></script>
 </body>
 </html>

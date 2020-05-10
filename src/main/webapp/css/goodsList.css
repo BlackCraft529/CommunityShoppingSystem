@@ -24,6 +24,10 @@
     color: #666;
 }
 
+.goods-item h5 {
+    height: 60px;
+}
+
 .goods-item .price {
     padding: 10px;
     font-size: 22px;
