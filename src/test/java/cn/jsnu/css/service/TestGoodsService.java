@@ -61,6 +61,8 @@ public class TestGoodsService {
 
     void findGoodsByCategory(String goodsCate) {}
 
-
-    void findGoodsByName(String goodsName) {}
+    @Test
+    public void findGoodsByName() {
+        List<Goods> goodsList = goodService.findGoodsByName("三星");
+    }
 }
