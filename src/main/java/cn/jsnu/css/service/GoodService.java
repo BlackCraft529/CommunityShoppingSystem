@@ -1,7 +1,7 @@
 package cn.jsnu.css.service;
 
 import cn.jsnu.css.pojo.Goods;
-
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,10 +18,12 @@ public interface GoodService {
      * @param goodsSalesPrice 商品销售价
      * @param goodsRemain 商品库存
      * @param goodsImage 商品图片链接
+     * @param goodsSales 商品销量
+     * @param goodsCreateTime 创建时间
      * @return 影响条数
      */
     int addGoods(String goodsName, String goodsSummary, String goodsCate,
-                 Double goodsPrice, Double goodsSalesPrice, Integer goodsRemain, String goodsImage);
+                 Double goodsPrice, Double goodsSalesPrice, Integer goodsRemain, String goodsImage, int goodsSales, Date goodsCreateTime);
 
     /**
      * 通过商品ID获取商品
@@ -46,8 +48,11 @@ public interface GoodService {
      * @param goodsSalesPrice 商品销售价
      * @param goodsRemain 商品库存
      * @param goodsImage 商品图片链接
+     * @param goodsSales 商品销量
+     * @param goodsCreateTime 商品创建时间
      */
-    void updateGoods(String goodsId,String goodsName,String goodsSummary,String goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage);
+    void updateGoods(String goodsId,String goodsName,String goodsSummary,
+                     String goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage,int goodsSales,Date goodsCreateTime);
 
     /**
      * 更新商品价格

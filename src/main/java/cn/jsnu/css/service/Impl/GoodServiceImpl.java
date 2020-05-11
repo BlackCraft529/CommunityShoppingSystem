@@ -6,6 +6,7 @@ import cn.jsnu.css.service.GoodService;
 import cn.jsnu.css.utils.RandomId;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,15 +27,18 @@ public class GoodServiceImpl implements GoodService {
      * @param goodsSalesPrice 商品销售价
      * @param goodsRemain 商品库存
      * @param goodsImage 商品图片链接
-     * @return 新增条数
+     * @param goodsSales 商品销量
+     * @param goodsCreateTime 创建时间
+     * @return 影响条数
      */
     @Override
-    public int addGoods(String goodsName, String goodsSummary, String goodsCate, Double goodsPrice, Double goodsSalesPrice, Integer goodsRemain, String goodsImage) {
+    public int addGoods(String goodsName, String goodsSummary, String goodsCate,
+                        Double goodsPrice, Double goodsSalesPrice, Integer goodsRemain, String goodsImage, int goodsSales, Date goodsCreateTime) {
         String goodsId=RandomId.getRandomGoodId();
         while(findGoodsById(goodsId)!=null){
             goodsId=RandomId.getRandomGoodId();
         }
-        return goodMapper.addGoods(new Goods(goodsId,goodsName,goodsSummary,goodsCate,goodsPrice,goodsSalesPrice,goodsRemain,goodsImage));
+        return goodMapper.addGoods(new Goods(goodsId,goodsName,goodsSummary,goodsCate,goodsPrice,goodsSalesPrice,goodsRemain,goodsImage,goodsSales,goodsCreateTime));
     }
 
     /**
@@ -66,10 +70,13 @@ public class GoodServiceImpl implements GoodService {
      * @param goodsSalesPrice 商品销售价
      * @param goodsRemain 商品库存
      * @param goodsImage 商品图片链接
+     * @param goodsSales 商品销量
+     * @param goodsCreateTime 商品创建时间
      */
     @Override
-    public void updateGoods(String goodsId,String goodsName,String goodsSummary,String goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage) {
-        goodMapper.updateGoods(new Goods(goodsId,goodsName,goodsSummary,goodsCate,goodsPrice,goodsSalesPrice,goodsRemain,goodsImage));
+    public void updateGoods(String goodsId,String goodsName,String goodsSummary,
+                            String goodsCate,double goodsPrice,double goodsSalesPrice,int goodsRemain,String goodsImage,int goodsSales,Date goodsCreateTime) {
+        goodMapper.updateGoods(new Goods(goodsId,goodsName,goodsSummary,goodsCate,goodsPrice,goodsSalesPrice,goodsRemain,goodsImage,goodsSales,goodsCreateTime));
     }
 
     /**

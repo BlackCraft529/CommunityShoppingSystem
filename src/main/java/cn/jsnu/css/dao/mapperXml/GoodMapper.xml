@@ -13,6 +13,8 @@
         <parameter property="goodsCate" resultMap="GoodsResultMap"/>
         <parameter property="goodsRemain" resultMap="GoodsResultMap"/>
         <parameter property="goodsImage" resultMap="GoodsResultMap"/>
+        <parameter property="goodsSales" resultMap="GoodsResultMap"/>
+        <parameter property="goodsCreateTime" resultMap="GoodsResultMap"/>
     </parameterMap>
     <!--结果集映射-->
     <resultMap id="GoodsResultMap" type="cn.jsnu.css.pojo.Goods">
@@ -24,11 +26,13 @@
         <id column="goods_cate" property="goodsCate"/>
         <id column="goods_remain" property="goodsRemain"/>
         <id column="goods_image" property="goodsImage"/>
+        <id column="goods_sales" property="goodsSales"/>
+        <id column="goods_create_time" property="goodsCreateTime"/>
     </resultMap>
     <!--新增商品-->
     <insert id="addUser" parameterMap="GoodsParameterMap">
-        insert into eps_goods (goods_id,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image)
-        values (#{goodsId},#{goodsName},#{goodsSummary},#{goodsCate},#{goodsPrice},#{goodsSalesPrice},#{goodsRemain},#{goodsImage});
+        insert into eps_goods (goods_id,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image,goods_sales,goods_create_time)
+        values (#{goodsId},#{goodsName},#{goodsSummary},#{goodsCate},#{goodsPrice},#{goodsSalesPrice},#{goodsRemain},#{goodsImage},#{goodsSales},#{goodsCreateTime});
     </insert>
     <!--通过商品ID获取商品-->
     <select id="findGoodsById" parameterType="string" resultMap="GoodsResultMap">
@@ -41,7 +45,8 @@
     <!--更新商品信息-->
     <update id="updateGoods" parameterMap="GoodsParameterMap">
         update eps_goods set goods_name=#{goodsName},goods_summary=#{goodsSummary},goods_cate=#{goodsCate},
-                    goods_price=#{goodsPrice},goods_sales_price=#{goodsSalesPrice},goods_remain=#{goodsRemain},goods_image=#{goodsImage} where goods_id=#{goodsId};
+                    goods_price=#{goodsPrice},goods_sales_price=#{goodsSalesPrice},goods_remain=#{goodsRemain},
+                    goods_image=#{goodsImage},goods_sales=#{goodsSales},goods_create_time=#{goodsCreateTime} where goods_id=#{goodsId};
     </update>
     <!--更新商品定价-->
     <update id="updateGoodsPrice" parameterMap="GoodsParameterMap">

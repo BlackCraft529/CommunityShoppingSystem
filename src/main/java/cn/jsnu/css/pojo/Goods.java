@@ -1,5 +1,7 @@
 package cn.jsnu.css.pojo;
 
+import java.util.Date;
+
 /**
  * @author wrx-18090248
  * @date 2020/5/5 20:15
@@ -11,11 +13,13 @@ public class Goods {
     private double goodsPrice;
     private double goodsSalesPrice;
     private String goodsCate;
+    private int goodsSales;
+    private Date goodsCreateTime;
     private int goodsRemain;
     private String goodsImage;
 
     public Goods(){}
-    public Goods(String goodsId, String goodsName, String goodsSummary, String goodsCate, double goodsPrice, double goodsSalesPrice, int goodsRemain, String goodsImage){
+    public Goods(String goodsId, String goodsName, String goodsSummary, String goodsCate, double goodsPrice, double goodsSalesPrice, int goodsRemain, String goodsImage,int goodsSales,Date goodsCreateTime){
         this.goodsId = goodsId;
         this.goodsName = goodsName;
         this.goodsSummary = goodsSummary;
@@ -24,6 +28,24 @@ public class Goods {
         this.goodsRemain = goodsRemain;
         this.goodsImage = goodsImage;
         this.goodsCate=goodsCate;
+        this.goodsSales=goodsSales;
+        this.goodsCreateTime=goodsCreateTime;
+    }
+
+    public int getGoodsSales() {
+        return goodsSales;
+    }
+
+    public void setGoodsSales(int goodsSales) {
+        this.goodsSales = goodsSales;
+    }
+
+    public Date getGoodsCreateTime() {
+        return goodsCreateTime;
+    }
+
+    public void setGoodsCreateTime(Date goodsCreateTime) {
+        this.goodsCreateTime = goodsCreateTime;
     }
 
     @Override
@@ -35,6 +57,8 @@ public class Goods {
                 ", goodsPrice=" + goodsPrice +
                 ", goodsSalesPrice=" + goodsSalesPrice +
                 ", goodsCate='" + goodsCate + '\'' +
+                ", goodsSales=" + goodsSales +
+                ", goodsCreateTime=" + goodsCreateTime +
                 ", goodsRemain=" + goodsRemain +
                 ", goodsImage='" + goodsImage + '\'' +
                 '}';

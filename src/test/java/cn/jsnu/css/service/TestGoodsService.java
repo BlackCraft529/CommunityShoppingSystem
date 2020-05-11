@@ -64,5 +64,8 @@ public class TestGoodsService {
     @Test
     public void findGoodsByName() {
         List<Goods> goodsList = goodService.findGoodsByName("三星");
+        for(Goods goods:goodsList){
+            System.out.println(goods);
+        }
     }
 }
