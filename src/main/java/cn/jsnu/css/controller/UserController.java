@@ -51,9 +51,19 @@ public class UserController {
      */
     @RequestMapping("/register")
     public String register(String phoneNum, String password, HttpSession session) {
-        //String md5Password = MD5Util.getSaltMD5(password);
         userService.addUser(phoneNum, password);
         return "login";
+    }
+
+    /**
+     * 退出登录
+     * @param session session对象
+     * @return 首页
+     */
+    @RequestMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("user");
+        return "redirect:/index";
     }
 
     /**

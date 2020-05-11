@@ -26,7 +26,7 @@
                 <p class="user_info">
                     <!---->
                     <c:if test="${! empty sessionScope.user}">
-                        <span class="user_name">Double</span>您好！欢迎登录应急采购系统！[<a href="">安全退出</a>]
+                        <span class="user_name">${user.nickname}</span>您好！欢迎登录应急采购系统！[<a href="<%=path%>/user/logout">安全退出</a>]
                     </c:if>
                     <c:if test="${empty sessionScope.user}">
                         [<a href="<%=path%>/user/toLogin">登录</a>｜<a href="<%=path%>/user/toRegister" style="color: #3498db;">注册</a>]
