@@ -56,8 +56,9 @@ public class GoodController {
      * @return 商品列表页
      */
     @RequestMapping("/goodsListName")
-    public String goodsListByName(String goodsName) {
+    public String goodsListByName(String goodsName, Model model) {
         List<Goods> goods = goodService.findGoodsByName(goodsName);
+        model.addAttribute("goods", goods);
         return "goodsList";
     }
 }

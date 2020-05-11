@@ -63,7 +63,10 @@ public class TestGoodsService {
 
     @Test
     public void findGoodsByName() {
-        List<Goods> goodsList = goodService.findGoodsByName("三星");
+        List<Goods> goodsList = goodService.findGoodsByName("电脑");
+        for (Goods goods :goodsList) {
+            System.out.println(goods);
+        }
         for(Goods goods:goodsList){
             System.out.println(goods);
         }

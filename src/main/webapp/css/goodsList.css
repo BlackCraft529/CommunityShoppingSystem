@@ -26,6 +26,8 @@
 
 .goods-item h5 {
     height: 60px;
+    padding: 0 10px;
+    overflow: hidden;
 }
 
 .goods-item .price {
