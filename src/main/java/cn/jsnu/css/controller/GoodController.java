@@ -42,9 +42,7 @@ public class GoodController {
      */
     @RequestMapping("/goodsListCate")
     public String goodsListByCate(String cateId, Model model) {
-        System.out.println("goodsListCate");
         List<Goods> goods = goodService.findGoodsByCategory(cateId);
-        System.out.println(goods);
         model.addAttribute("goods", goods);
         return "goodsList";
     }
