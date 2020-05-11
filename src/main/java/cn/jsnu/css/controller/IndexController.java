@@ -27,10 +27,22 @@ public class IndexController {
     @Qualifier("GoodServiceImpl")
     private GoodService goodService;
 
+    /**
+     * 首页
+     * @param session session对象
+     * @return 首页
+     */
     @RequestMapping("/index")
     public String index(HttpSession session) {
         return "index";
     }
 
-
+    /**
+     * 跳转至首页
+     * @return 首页
+     */
+    @RequestMapping("/")
+    public String toIndex() {
+        return "redirect:/index";
+    }
 }
