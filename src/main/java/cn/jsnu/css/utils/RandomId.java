@@ -61,4 +61,16 @@ public class RandomId {
     public static String getRandomGoodId(){
         return getRandomString(15);
     }
+
+    /**
+     * 获取一个随机分类ID
+     * @return 随机分类ID
+     */
+    public static String getRandomCategoryId(){return getRandomString(8);}
+
+    /**
+     * 获取一个随机订单号
+     * @return 订单号
+     */
+    public static String getRandomOrderId(){return getRandomString(12);}
 }

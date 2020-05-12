@@ -3,5 +3,47 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/schema/mybatis-3-mapper.dtd">
 <mapper namespace="cn.jsnu.css.dao.CategoryMapper">
-
+    <!--参数集映射-->
+    <parameterMap id="CategoryParameterMap" type="cn.jsnu.css.pojo.Category">
+        <parameter property="cateId" resultMap="CategoryResultMap"/>
+        <parameter property="cateName" resultMap="CategoryResultMap"/>
+        <parameter property="cateLevel" resultMap="CategoryResultMap"/>
+        <parameter property="superCate" resultMap="CategoryResultMap"/>
+    </parameterMap>
+    <!--结果集映射-->
+    <resultMap id="CategoryResultMap" type="cn.jsnu.css.pojo.Category">
+        <id column="cate_id" property="cateId"/>
+        <id column="cate_name" property="cateName"/>
+        <id column="cate_level" property="cateLevel"/>
+        <id column="super_cate" property="superCate"/>
+    </resultMap>
+    <!--新增分类-->
+    <insert id="addCategory" parameterMap="CategoryParameterMap">
+        insert into eps_category (cate_id,cate_name,cate_level,super_cate)
+            values (#{cateId},#{cateName},#{cateLevel},#{superCate});
+    </insert>
+    <!--根据ID查找分类-->
+    <select id="findCategoryById" parameterType="string" resultMap="CategoryResultMap">
+        select * from eps_category where cate_id=#{categoryId};
+    </select>
+    <!--删除一个分类-->
+    <delete id="deleteCategoryById" parameterType="string">
+        delete from eps_category where cate_id=#{categoryId};
+    </delete>
+    <!--更新一个分类信息-->
+    <update id="updateCategoryById" parameterMap="CategoryParameterMap">
+        update eps_category set cate_name=#{cateName},cate_level=#{cateLevel},super_cate=#{superCate} where cate_id=#{categoryId};
+    </update>
+    <!--查找所有分类-->
+    <select id="findAllCategories" resultMap="CategoryResultMap">
+        select * from eps_category;
+    </select>
+    <!--根据分类名查找分类-->
+    <select id="findCategoryByName" parameterType="string" resultMap="CategoryResultMap">
+        select * from eps_category where cate_name=#{cateName};
+    </select>
+    <!--根据分类层级查找分类-->
+    <select id="findCategoryByLevel" parameterType="_int" resultMap="CategoryResultMap">
+        select * from eps_category where cate_level=#{cateLevel};
+    </select>
 </mapper>

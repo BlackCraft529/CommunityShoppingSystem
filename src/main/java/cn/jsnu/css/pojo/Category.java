@@ -11,7 +11,12 @@ public class Category {
     private String superCate;
 
     public Category(){}
-
+    public Category(String cateId,String cateName,int cateLevel,String superCate){
+        this.cateId=cateId;
+        this.cateLevel=cateLevel;
+        this.cateName=cateName;
+        this.superCate=superCate;
+    }
     @Override
     public String toString() {
         return "Category{" +

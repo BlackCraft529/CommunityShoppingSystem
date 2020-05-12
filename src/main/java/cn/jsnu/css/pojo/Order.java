@@ -8,14 +8,14 @@ import java.util.Date;
  */
 public class Order {
     private String orderId;
-    private String goodId;
+    private String goodsId;
     private String userId;
     private int quantity;
     private double settlementAmount;
     private double paymentAmount;
     private Date createTime;
     private int status;
-    private String makeId;
+    private String markId;
 
     public Order() { }
 
@@ -23,14 +23,14 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "orderId='" + orderId + '\'' +
-                ", goodId='" + goodId + '\'' +
+                ", goodId='" + goodsId + '\'' +
                 ", userId='" + userId + '\'' +
                 ", quantity=" + quantity +
                 ", settlementAmount=" + settlementAmount +
                 ", paymentAmount=" + paymentAmount +
                 ", createTime=" + createTime +
                 ", status=" + status +
-                ", makeId='" + makeId + '\'' +
+                ", makeId='" + markId + '\'' +
                 '}';
     }
 
@@ -42,12 +42,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getGoodId() {
-        return goodId;
+    public String getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoodId(String goodId) {
-        this.goodId = goodId;
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
     }
 
     public String getUserId() {
@@ -98,11 +98,11 @@ public class Order {
         this.status = status;
     }
 
-    public String getMakeId() {
-        return makeId;
+    public String getMarkId() {
+        return markId;
     }
 
-    public void setMakeId(String makeId) {
-        this.makeId = makeId;
+    public void setMarkId(String markId) {
+        this.markId = markId;
     }
 }
