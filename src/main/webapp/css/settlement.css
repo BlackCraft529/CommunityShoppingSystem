@@ -1,0 +1,156 @@
+.header {
+    padding: 5px 0;
+    border-bottom: 2px solid #3498db;
+}
+
+.header_top {
+    position: relative;
+}
+
+.settlement-logo {
+    position: absolute;
+    top: 18px;
+    left: 256px;
+    padding-left: 10px;
+
+    color: #3498db;
+    font-size: 20px;
+    font-weight: 700;
+
+    border-left: 2px solid #3498db;
+}
+
+.hd {
+    padding: 10px;
+}
+
+.hd h5 {
+    color: #2c3e50;
+    font-size: 18px;
+    line-height: 42px;
+}
+
+.settlement-form {
+    padding: 10px;
+
+    border: 1px solid #f0f0f0;
+}
+
+.form-item {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.address {
+    width: 800px;
+    height: 40px;
+    padding: 5px 20px 5px;
+    margin: 5px;
+    line-height: 40px;
+}
+
+.address:hover {
+}
+
+.address-item {
+    float: left;
+    display: block;
+    margin-right: 10px;
+}
+
+.address-item.btn {
+    width: 144px;
+    height: 30px;
+    margin-top: 5px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.address .address-selected {
+    border: 2px solid #3498db;
+}
+
+.default-address {
+    margin-top: 3px;
+    padding: 0 10px;
+    color: #fff;
+    line-height: 32px;
+    background-color: #95a5a6;
+}
+
+.more-address {
+    display: none;
+}
+
+.show-more-address {
+    margin-left: 24px;
+}
+
+.goods-list {
+    background-color: #f5fbfe;
+}
+
+.goods-list-item img {
+    float: left;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+.goods-list-item-content {
+    float: left;
+}
+
+.goods-content-item {
+    float: left;
+    height: 80px;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.goods-content-item.title {
+    width: 70%;
+    padding-top: 20px;
+}
+
+.goods-content-item.price {
+    width: 20%;
+    line-height: 40px;
+    color: #c81623;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.goods-content-item.nums {
+    width: 10%;
+    line-height: 40px;
+}
+
+.settlement-summary {
+    height: 80px;
+    padding: 10px 20px;
+    background-color: #f4f4f4;
+}
+
+.settlement-summary p {
+    text-align: right;
+    font-size: 16px;
+    line-height: 40px;
+}
+
+.submit-order {
+    display: block;
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
+    width: 120px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    background-color: #3498db;
+    outline: none;
+}

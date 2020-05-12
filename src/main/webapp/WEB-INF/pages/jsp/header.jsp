@@ -68,6 +68,8 @@
                     <button type="submit">搜索</button>
                 </form>
             </div>
+            <div class="settle-up"><a href="<%=path%>/cart/shopCar">购物车</a></div>
         </div>
+
     </div>
 </header>

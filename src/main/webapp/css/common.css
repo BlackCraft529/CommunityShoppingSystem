@@ -147,6 +147,23 @@
     background: #2980b9;
 }
 
+.settle-up {
+    float: right;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: #3498db;
+    border-radius: 4px;
+}
+
+.settle-up a {
+    display: block;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    font-size: 20px;
+}
+
 .footer {
     display: block;
     margin-top: 20px;
