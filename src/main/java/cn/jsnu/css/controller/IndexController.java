@@ -6,6 +6,7 @@ import cn.jsnu.css.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -33,7 +34,9 @@ public class IndexController {
      * @return 首页
      */
     @RequestMapping("/index")
-    public String index(HttpSession session) {
+    public String index(HttpSession session, Model model) {
+        List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("categories", categories);
         return "index";
     }
 

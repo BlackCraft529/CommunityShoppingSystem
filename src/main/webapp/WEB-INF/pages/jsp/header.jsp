@@ -37,14 +37,9 @@
         <nav class="nav clearfix">
             <ul>
                 <li><a class="nav_item" href="<%=path%>/index">首页</a></li>
-                <li><a class="nav_item" href="">蔬菜</a></li>
-                <li><a class="nav_item" href="">家禽</a></li>
-                <li><a class="nav_item" href="">蛋类</a></li>
-                <li><a class="nav_item" href="">水果</a></li>
-                <li><a class="nav_item" href="">洗化用品</a></li>
-                <li><a class="nav_item" href="">调味料</a></li>
-                <li><a class="nav_item" href="">图书</a></li>
-                <li><a class="nav_item" href="<%=path%>/goods/goodsListCate?cateId=4aa9838573f44772849f888b7b994095">小型家电</a></li>
+                <c:forEach items="${categories}" var="category">
+                    <li><a class="nav_item" href="<%=path%>/goods/goodsListCate?cateId=${category.cateId}">${category.cateName}</a></li>
+                </c:forEach>
             </ul>
         </nav>
         <div class="header_bottom clearfix">
@@ -52,14 +47,9 @@
                 <h3 class="cate_title" id="cate_title">全部商品分类</h3>
                 <div class="dropdown">
                     <li><a class="cate_item" href="<%=path%>/index">首页</a></li>
-                    <li><a class="cate_item" href="">蔬菜</a></li>
-                    <li><a class="cate_item" href="">家禽</a></li>
-                    <li><a class="cate_item" href="">蛋类</a></li>
-                    <li><a class="cate_item" href="">水果</a></li>
-                    <li><a class="cate_item" href="">洗化用品</a></li>
-                    <li><a class="cate_item" href="">调味料</a></li>
-                    <li><a class="cate_item" href="">图书</a></li>
-                    <li><a class="cate_item" href="">小型家电</a></li>
+                    <c:forEach items="${categories}" var="category">
+                        <li><a class="cate_item" href="<%=path%>/goods/goodsListCate?cateId=${category.cateId}">${category.cateName}</a></li>
+                    </c:forEach>
                 </div>
             </div>
             <div class="search">
