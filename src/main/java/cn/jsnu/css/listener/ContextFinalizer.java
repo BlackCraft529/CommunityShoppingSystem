@@ -30,7 +30,7 @@ public class ContextFinalizer implements ServletContextListener {
                 DriverManager.deregisterDriver(d);
                 System.out.println(String.format("ContextFinalizer:驱动 %s 已销毁", d));
             } catch (SQLException ex) {
-                System.out.println(String.format("ContextFinalizer:正在销毁: %s", d) + ":" + ex);
+                System.out.println(String.format("ContextFinalizer:正在销毁: %s 时发生错误!", d) + ":" + ex);
                 }
             }
         AbandonedConnectionCleanupThread.checkedShutdown();
