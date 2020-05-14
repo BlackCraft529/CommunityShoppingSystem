@@ -1,8 +1,10 @@
 package cn.jsnu.css.dao;
 
 import cn.jsnu.css.pojo.Order;
+import org.aspectj.weaver.ast.Or;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wrx-18090248
@@ -45,4 +47,18 @@ public interface OrderMapper {
      * @return 订单
      */
     Order findOrderById(String orderId);
+
+    /**
+     * 根据用户ID查找订单信息
+     * @param userId 客户ID
+     * @return 订单合集
+     */
+    List<Order> findOrdersByUserId(String userId);
+
+    /**
+     * 根据⽤户ID和订单状态查找订单信息
+     * @param date 用户ID和订单状态
+     * @return 订单合集
+     */
+    List<Order> findOrdersByUserIdAndStatus(Map<String,String> date);
 }

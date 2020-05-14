@@ -1,7 +1,6 @@
 package cn.jsnu.css.service;
 
 import cn.jsnu.css.pojo.Order;
-
 import java.util.List;
 
 /**
@@ -46,4 +45,18 @@ public interface OrderService {
      * @return 订单
      */
     Order findOrderById(String orderId);
+    /**
+     * 根据用户ID查找订单信息
+     * @param userId 客户ID
+     * @return 订单合集
+     */
+    List<Order> findOrdersByUserId(String userId);
+
+    /**
+     * 根据用户ID和订单状态查询订单
+     * @param userId 用户ID
+     * @param status 订单状态
+     * @return 订单合集
+     */
+    List<Order> findOrdersByUserIdAndStatus(String userId,int status);
 }
