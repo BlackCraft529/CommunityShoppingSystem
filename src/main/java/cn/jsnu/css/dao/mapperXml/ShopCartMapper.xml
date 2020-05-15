@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/schema/mybatis-3-mapper.dtd">
 <mapper namespace="cn.jsnu.css.dao.ShopCartMapper">
+
     <!--参数集映射-->
     <parameterMap id="ShopCartParameterMap" type="cn.jsnu.css.pojo.ShopCart">
         <parameter property="userId" resultMap="ShopCartResultMap"/>
@@ -12,8 +13,8 @@
     <!--结果集映射-->
     <resultMap id="ShopCartResultMap" type="cn.jsnu.css.pojo.ShopCart">
         <id column="user_id" property="userId"/>
-        <id column="goods_id" property="goodsId"/>
         <id column="quantity" property="quantity"/>
+        <association property="Goods" column="goods_id" resultMap="cn.jsnu.css.dao.GoodMapper"/>
     </resultMap>
     <!--新增一个购物车-->
     <insert id="addShopCart" parameterMap="ShopCartParameterMap">
@@ -21,7 +22,7 @@
     </insert>
     <!--通过用户ID和商品ID获取记录-->
     <select id="findShopCartByUserIdAndGoodsId" parameterType="map" resultMap="ShopCartResultMap">
-        select * from eps_shop_cart where user_id=#{userId} and goods_id=#{goodsId};
+        select * from eps_goods where goods_id in (select goods_id from eps_shop_cart where user_id=#{userId} and goods_id=#{goodsId});
     </select>
     <!--通过物品ID和商品ID删除记录-->
     <delete id="deleteByUserIdAndGoodsId" parameterType="map">
@@ -29,10 +30,11 @@
     </delete>
     <!--通过用户ID查询购物车记录-->
     <select id="findShopCartByUserId" parameterType="string" resultMap="ShopCartResultMap">
-        select * from eps_shop_cart where user_id=#{userId};
+        select eps_goods.goods_id,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image,goods_sales,goods_create_time
+            from eps_goods,eps_shop_cart where eps_goods.goods_id in (select goods_id from eps_shop_cart where user_id=#{userId});
     </select>
     <!--更新数量-->
-    <update id="updateQuantityByUserIdAndGoodsId" parameterType="map">
+    <update id="updateQuantityByUserIdAndGoodsId" parameterMap="ShopCartParameterMap">
         update eps_shop_cart set quantity=#{quantity} where user_id=#{userId} and goods_id=#{goodsId};
     </update>
 </mapper>

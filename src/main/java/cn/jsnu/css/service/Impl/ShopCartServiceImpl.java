@@ -1,6 +1,7 @@
 package cn.jsnu.css.service.Impl;
 
 import cn.jsnu.css.dao.ShopCartMapper;
+import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.pojo.ShopCart;
 import cn.jsnu.css.service.ShopCartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,11 @@ public class ShopCartServiceImpl implements ShopCartService {
      * @param userId  用户ID
      * @param goodsId 商品ID
      * @return 购物车记录
+     * @deprecated
      */
     @Override
-    public ShopCart findShopCartByUserIdAndGoodsId(String userId, String goodsId) {
-        Map<String , String> date=new HashMap<>();
+    public Goods findShopCartByUserIdAndGoodsId(String userId, String goodsId) {
+        Map<String , String> date=new HashMap<>(2);
         date.put("userId",userId);
         date.put("goodsId",goodsId);
         return shopCartMapper.findShopCartByUserIdAndGoodsId(date);
@@ -48,7 +50,7 @@ public class ShopCartServiceImpl implements ShopCartService {
      */
     @Override
     public void deleteByUserIdAndGoodsId(String userId, String goodsId) {
-        Map<String , String> date=new HashMap<>();
+        Map<String , String> date=new HashMap<>(2);
         date.put("userId",userId);
         date.put("goodsId",goodsId);
         shopCartMapper.deleteByUserIdAndGoodsId(date);
@@ -60,7 +62,7 @@ public class ShopCartServiceImpl implements ShopCartService {
      * @return 购物车记录
      */
     @Override
-    public List<ShopCart> findShopCartByUserId(String userId) {
+    public List<Goods> findShopCartByUserId(String userId) {
         return shopCartMapper.findShopCartByUserId(userId);
     }
 

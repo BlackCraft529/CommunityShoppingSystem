@@ -1,5 +1,6 @@
 package cn.jsnu.css.service;
 
+import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.pojo.ShopCart;
 import java.util.List;
 /**
@@ -20,9 +21,10 @@ public interface ShopCartService {
      * 根据用户ID和商品ID获取记录
      * @param userId 用户ID
      * @param goodsId 商品ID
-     * @return 购物车记录
+     * @return 购物车商品合集
+     * @deprecated
      */
-    ShopCart findShopCartByUserIdAndGoodsId(String userId,String goodsId);
+    Goods findShopCartByUserIdAndGoodsId(String userId, String goodsId);
 
     /**
      * 通过用户ID和商品ID删除记录
@@ -34,9 +36,9 @@ public interface ShopCartService {
     /**
      * 通过用户ID查询购物车
      * @param userId 用户ID
-     * @return 购物车记录
+     * @return 购物车商品合集
      */
-    List<ShopCart> findShopCartByUserId(String userId);
+    List<Goods> findShopCartByUserId(String userId);
 
     /**
      * 更新数量

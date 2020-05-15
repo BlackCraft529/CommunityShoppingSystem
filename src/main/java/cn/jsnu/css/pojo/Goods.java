@@ -17,6 +17,7 @@ public class Goods {
     private Date goodsCreateTime;
     private int goodsRemain;
     private String goodsImage;
+    private int quantity;
 
     public Goods(){}
     public Goods(String goodsId, String goodsName, String goodsSummary, String goodsCate, double goodsPrice, double goodsSalesPrice, int goodsRemain, String goodsImage,int goodsSales,Date goodsCreateTime){
@@ -30,6 +31,14 @@ public class Goods {
         this.goodsCate=goodsCate;
         this.goodsSales=goodsSales;
         this.goodsCreateTime=goodsCreateTime;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getGoodsSales() {

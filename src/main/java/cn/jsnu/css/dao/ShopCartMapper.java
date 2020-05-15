@@ -1,5 +1,6 @@
 package cn.jsnu.css.dao;
 
+import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.pojo.ShopCart;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +20,9 @@ public interface ShopCartMapper {
     /**
      * 通过用户ID和商品ID获取记录
      * @param date 数据
-     * @return 购物车记录
+     * @return 购物车商品合集
      */
-    ShopCart findShopCartByUserIdAndGoodsId(Map<String ,String> date);
+    Goods findShopCartByUserIdAndGoodsId(Map<String ,String> date);
 
     /**
      * 通过用户ID和商品ID删除记录
@@ -32,9 +33,9 @@ public interface ShopCartMapper {
     /**
      * 通过用户ID查询购物车
      * @param userId 用户ID
-     * @return 购物车记录
+     * @return 购物车商品合集
      */
-    List<ShopCart> findShopCartByUserId(String userId);
+    List<Goods> findShopCartByUserId(String userId);
 
     /**
      * 通过用户ID和商品ID更新数量
