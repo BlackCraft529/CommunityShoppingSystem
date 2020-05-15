@@ -12,6 +12,7 @@
         <mapper resource="cn/jsnu/css/dao/mapperXml/GoodMapper.xml"/>
         <mapper resource="cn/jsnu/css/dao/mapperXml/CategoryMapper.xml"/>
         <mapper resource="cn/jsnu/css/dao/mapperXml/OrderMapper.xml"/>
+        <mapper resource="cn/jsnu/css/dao/mapperXml/ShopCartMapper.xml"/>
     </mappers>
 
 </configuration>

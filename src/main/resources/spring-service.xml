@@ -24,4 +24,8 @@
     <bean id="CategoryServiceImpl" class="cn.jsnu.css.service.Impl.CategoryServiceImpl">
         <property name="categoryMapper" ref="categoryMapper"/>
     </bean>
+    <!--ShopCart-->
+    <bean id="ShopCartServiceImpl" class="cn.jsnu.css.service.Impl.ShopCartServiceImpl">
+        <property name="shopCartMapper" ref="shopCartMapper"/>
+    </bean>
 </beans>
