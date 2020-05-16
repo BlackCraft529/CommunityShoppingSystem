@@ -14,7 +14,21 @@
     <resultMap id="ShopCartResultMap" type="cn.jsnu.css.pojo.ShopCart">
         <id column="user_id" property="userId"/>
         <id column="quantity" property="quantity"/>
-        <association property="Goods" column="goods_id" resultMap="cn.jsnu.css.dao.GoodMapper"/>
+        <association property="goodsId" column="goods_id" resultMap="cn.jsnu.css.dao.GoodMapper"/>
+    </resultMap>
+    <!--结果集映射-->
+    <resultMap id="GoodsResultMap" type="cn.jsnu.css.pojo.Goods">
+        <id column="goods_id" property="goodsId"/>
+        <id column="goods_name" property="goodsName"/>
+        <id column="goods_summary" property="goodsSummary"/>
+        <id column="goods_price" property="goodsPrice"/>
+        <id column="goods_sales_price" property="goodsSalesPrice"/>
+        <id column="goods_cate" property="goodsCate"/>
+        <id column="goods_remain" property="goodsRemain"/>
+        <id column="goods_image" property="goodsImage"/>
+        <id column="goods_sales" property="goodsSales"/>
+        <id column="goods_create_time" property="goodsCreateTime"/>
+        <id column="quantity" property="quantity"/>
     </resultMap>
     <!--新增一个购物车-->
     <insert id="addShopCart" parameterMap="ShopCartParameterMap">
@@ -29,8 +43,8 @@
         delete from eps_shop_cart where user_id=#{userId} and goods_id=#{goodsId};
     </delete>
     <!--通过用户ID查询购物车记录-->
-    <select id="findShopCartByUserId" parameterType="string" resultMap="ShopCartResultMap">
-        select eps_goods.goods_id,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image,goods_sales,goods_create_time
+    <select id="findShopCartByUserId" parameterType="string" resultMap="GoodsResultMap">
+        select eps_goods.goods_id,eps_shop_cart.quantity,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image,goods_sales,goods_create_time
             from eps_goods,eps_shop_cart where eps_goods.goods_id in (select goods_id from eps_shop_cart where user_id=#{userId});
     </select>
     <!--更新数量-->

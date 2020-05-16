@@ -28,7 +28,7 @@
         <id column="goods_image" property="goodsImage"/>
         <id column="goods_sales" property="goodsSales"/>
         <id column="goods_create_time" property="goodsCreateTime"/>
-        <association property="quantity" column="?" resultMap="cn.jsnu.css.dao.ShopCartMapper"/>
+        <id column="quantity" property="quantity"/>
     </resultMap>
     <!--新增商品-->
     <insert id="addUser" parameterMap="GoodsParameterMap">
