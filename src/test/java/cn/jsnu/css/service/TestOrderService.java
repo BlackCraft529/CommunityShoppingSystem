@@ -25,6 +25,7 @@ public class TestOrderService {
     @Test
     public void testGetUserCart(){
         List<Goods> allGoods=shopCartService.findShopCartByUserId("0da6330bf9b9447d8f305eea29b4ae96");
+        System.out.println(allGoods.size());
         for(Goods goods:allGoods){
             System.out.println(goods);
         }

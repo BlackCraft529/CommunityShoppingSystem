@@ -44,8 +44,8 @@
     </delete>
     <!--通过用户ID查询购物车记录-->
     <select id="findShopCartByUserId" parameterType="string" resultMap="GoodsResultMap">
-        select distinct eps_goods.goods_id,eps_shop_cart.quantity,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image,goods_sales,goods_create_time
-            from eps_goods,eps_shop_cart where eps_goods.goods_id in (select goods_id from eps_shop_cart where user_id=#{userId});
+        select distinct a.user_id,a.goods_id,a.quantity,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image,goods_sales,goods_create_time
+            from eps_shop_cart as a left join eps_goods as b on b.goods_id in (select a.goods_id from eps_shop_cart where a.user_id=#{userId});
     </select>
     <!--更新数量-->
     <update id="updateQuantityByUserIdAndGoodsId" parameterMap="ShopCartParameterMap">
