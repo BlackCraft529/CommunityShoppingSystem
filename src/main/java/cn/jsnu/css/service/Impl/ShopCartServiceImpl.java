@@ -25,6 +25,14 @@ public class ShopCartServiceImpl implements ShopCartService {
      */
     @Override
     public void addShopCart(String userId, String goodsId, int quantity) {
+        Map<String,String> date=new HashMap<>(2);
+        date.put("userId",userId);
+        date.put("goodsId",goodsId);
+        if(shopCartMapper.findShopCartByUserIdAndGoodsId(date)!=null){
+            int count=shopCartMapper.findShopCartByUserIdAndGoodsId(date).getQuantity()+quantity;
+            shopCartMapper.updateQuantityByUserIdAndGoodsId(new ShopCart(userId,goodsId,count));
+            return;
+        }
         shopCartMapper.addShopCart(new ShopCart(userId,goodsId,quantity));
     }
 

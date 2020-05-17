@@ -30,4 +30,9 @@ public class TestOrderService {
             System.out.println(goods);
         }
     }
+
+    @Test
+    public void testAddShopCart(){
+        shopCartService.addShopCart("0da6330bf9b9447d8f305eea29b4ae96","034db61a861345f9bb681b7f283dd1e1",5);
+    }
 }
