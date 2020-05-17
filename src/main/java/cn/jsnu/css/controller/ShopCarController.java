@@ -1,7 +1,9 @@
 package cn.jsnu.css.controller;
 
+import cn.jsnu.css.pojo.Category;
 import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.pojo.User;
+import cn.jsnu.css.service.CategoryService;
 import cn.jsnu.css.service.ShopCartService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,11 +28,17 @@ public class ShopCarController {
     @Qualifier("ShopCartServiceImpl")
     private ShopCartService shopCartService;
 
+    @Autowired
+    @Qualifier("CategoryServiceImpl")
+    private CategoryService categoryService;
+
 
     @RequestMapping("/shopCar")
     public String shopCart(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
         List<Goods> goods = shopCartService.findShopCartByUserId(user.getUserId());
+        List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("categories", categories);
         model.addAttribute("goods", goods);
         return "shopCar";
     }

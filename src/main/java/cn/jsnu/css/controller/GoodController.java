@@ -1,6 +1,8 @@
 package cn.jsnu.css.controller;
 
+import cn.jsnu.css.pojo.Category;
 import cn.jsnu.css.pojo.Goods;
+import cn.jsnu.css.service.CategoryService;
 import cn.jsnu.css.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +22,11 @@ public class GoodController {
     @Autowired
     @Qualifier("GoodServiceImpl")
     private GoodService goodService;
+
+    @Autowired
+    @Qualifier("CategoryServiceImpl")
+    private CategoryService categoryService;
+
     /**
      * 跳转至商品详情页
      * @param goodsId 商品ID
@@ -29,6 +36,8 @@ public class GoodController {
     @RequestMapping("/goodsDetail")
     public String goodsDetail(String goodsId, Model model) {
         Goods goods = goodService.findGoodsById(goodsId);
+        List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("categories", categories);
         model.addAttribute("goods", goods);
         return "goodsInfo";
     }
@@ -43,6 +52,8 @@ public class GoodController {
     @RequestMapping("/goodsListCate")
     public String goodsListByCate(String cateId, Model model) {
         List<Goods> goods = goodService.findGoodsByCategory(cateId);
+        List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("categories", categories);
         model.addAttribute("goods", goods);
         return "goodsList";
     }
@@ -56,6 +67,8 @@ public class GoodController {
     @RequestMapping("/goodsListName")
     public String goodsListByName(String goodsName, Model model) {
         List<Goods> goods = goodService.findGoodsByName(goodsName);
+        List<Category> categories = categoryService.findAllCategories();
+        model.addAttribute("categories", categories);
         model.addAttribute("goods", goods);
         return "goodsList";
     }
