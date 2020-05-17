@@ -31,11 +31,10 @@ public class UserController {
      */
     @RequestMapping("/login")
     public String login(String phoneNum, String password, HttpSession session) {
-        //String md5Password = MD5Util.getSaltMD5(password);
         User user = userService.findUserByPhoneNumAndPassword(phoneNum, password);
         if (user != null) {
             session.setAttribute("user", user);
-            return "index";
+            return "redirect:/index";
         } else {
             return "login";
         }

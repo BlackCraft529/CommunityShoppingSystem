@@ -55,7 +55,6 @@ public class ShopCarController {
         User user = (User) session.getAttribute("user");
         JSONObject json = new JSONObject();
         if (user != null) {
-            System.out.println("goodsId" + goodsId + "成功加入购物车," + quantity + "件!");
             shopCartService.addShopCart(user.getUserId(), goodsId, quantity);
             json.put("status", true);
         } else {
@@ -73,7 +72,6 @@ public class ShopCarController {
     @RequestMapping("/deleteGoods")
     public @ResponseBody String deleteGoods(String goodsId, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        System.out.println("goodsId" + goodsId + "\t成功删除购物车中商品,");
         shopCartService.deleteByUserIdAndGoodsId(user.getUserId(), goodsId);
         JSONObject json = new JSONObject();
         json.put("status", true);
@@ -89,7 +87,6 @@ public class ShopCarController {
     @RequestMapping("/updateGoodsQuantity")
     public @ResponseBody String increaseGoods(String goodsId, Integer quantity, HttpSession session) {
         User user = (User) session.getAttribute("user");
-        System.out.println("goodsId" + goodsId + "成功增加购物车中商品数量," + quantity + "件!");
         shopCartService.updateQuantityByUserIdAndGoodsId(user.getUserId(), goodsId, quantity);
         JSONObject json = new JSONObject();
         json.put("status", true);
