@@ -56,7 +56,7 @@
             <div class="form-item">
                 <div class="hd"><h6>收货人信息</h6></div>
                 <div class="bd">
-                    <div class="first-address address">
+                    <div addressId="1" class="first-address address current">
                         <button class="address-item btn address-selected">李广帅</button>
                         <p class="address-item name">李广帅</p>
                         <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
@@ -64,25 +64,25 @@
                         <p class="address-item default-address">默认地址</p>
                     </div>
                     <div id="more-address" class="more-address">
-                        <div class=" address">
+                        <div addressId="2" class=" address">
                             <button class="address-item btn">李广帅</button>
                             <p class="address-item name">李广帅</p>
                             <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
                             <p class="address-item address-phoneNum">134****8799</p>
                         </div>
-                        <div class=" address">
+                        <div addressId="3" class=" address">
                             <button class="address-item btn">李广帅</button>
                             <p class="address-item name">李广帅</p>
                             <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
                             <p class="address-item address-phoneNum">134****8799</p>
                         </div>
-                        <div class=" address">
+                        <div addressId="4" class=" address">
                             <button class="address-item btn">李广帅</button>
                             <p class="address-item name">李广帅</p>
                             <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
                             <p class="address-item address-phoneNum">134****8799</p>
                         </div>
-                        <div class=" address">
+                        <div addressId="5" class=" address">
                             <button class="address-item btn">李广帅</button>
                             <p class="address-item name">李广帅</p>
                             <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
@@ -95,52 +95,62 @@
             <div class="form-item">
                 <div class="hd"><h6>购物清单</h6></div>
                 <div class="bd">
-                    <div class="goods-list">
+                    <div goodsId="1" class="goods-list">
                         <div class="goods-list-item clearfix">
-                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg" alt="">
+                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg"
+                                 alt="">
                             <div class="goods-list-item-content">
-                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标</div>
+                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标
+                                </div>
                                 <div class="goods-content-item price">￥ 564.00</div>
                                 <div class="goods-content-item nums">x1</div>
                             </div>
                         </div>
                     </div>
-                    <div class="goods-list">
+                    <div goodsId="1" class="goods-list">
                         <div class="goods-list-item clearfix">
-                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg" alt="">
+                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg"
+                                 alt="">
                             <div class="goods-list-item-content">
-                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标</div>
+                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标
+                                </div>
                                 <div class="goods-content-item price">￥ 564.00</div>
                                 <div class="goods-content-item nums">x1</div>
                             </div>
                         </div>
                     </div>
-                    <div class="goods-list">
+                    <div goodsId="1" class="goods-list">
                         <div class="goods-list-item clearfix">
-                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg" alt="">
+                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg"
+                                 alt="">
                             <div class="goods-list-item-content">
-                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标</div>
+                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标
+                                </div>
                                 <div class="goods-content-item price">￥ 564.00</div>
                                 <div class="goods-content-item nums">x1</div>
                             </div>
                         </div>
                     </div>
-                    <div class="goods-list">
+                    <div goodsId="1" class="goods-list">
                         <div class="goods-list-item clearfix">
-                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg" alt="">
+                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg"
+                                 alt="">
                             <div class="goods-list-item-content">
-                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标</div>
+                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标
+                                </div>
                                 <div class="goods-content-item price">￥ 564.00</div>
                                 <div class="goods-content-item nums">x1</div>
                             </div>
                         </div>
                     </div>
-                    <div class="goods-list">
+                    <div goodsId="1" class="goods-list">
                         <div class="goods-list-item clearfix">
-                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg" alt="">
+                            <img src="https://img14.360buyimg.com/N4/jfs/t22177/82/1089573379/28507/6ec3e933/5b1f7ae8N0bb18cd2.jpg"
+                                 alt="">
                             <div class="goods-list-item-content">
-                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标</div>
-                                <div class="goods-content-item price">￥ 564.00</div>
+                                <div class="goods-content-item title">Apple Magic Mouse/妙控鼠标 2代 - 银色 适用MacBook 无线鼠标
+                                </div>
+                                <div class="goods-content-item price">￥564.00</div>
                                 <div class="goods-content-item nums">x1</div>
                             </div>
                         </div>
@@ -221,5 +231,11 @@
         </p>
     </div>
 </footer>
+<script>
+    let orderInfo = {
+        goodsInfo: {${goodsInfo}},
+        addressId: $('.address.current').getAttribute('addressId')
+    }
+</script>
 </body>
 </html>

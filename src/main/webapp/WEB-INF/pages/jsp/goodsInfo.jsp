@@ -47,7 +47,7 @@
                     <dl class="support">
                         <dt>支持</dt>
                         <dd>
-                            以旧换新，闲置手机回收  4G套餐超值抢  礼品购
+                            以旧换新，闲置手机回收 4G套餐超值抢 礼品购
                         </dd>
                     </dl>
                     <dl class="remain">
@@ -56,13 +56,17 @@
                             ${goods.goodsRemain}
                         </dd>
                     </dl>
+                    <dl class="goodsId">
+                        <dt>商品编号</dt>
+                        <dd id="goodsId">${goods.goodsId}</dd>
+                    </dl>
                     <div class="chose-btn">
                         <div class="chose-amount">
-                            <input type="text" value="1">
+                            <input id="quantity" type="text" value="1">
                             <a href="javascript:;" class="add">+</a>
                             <a href="javascript:;" class="reduce not-reduce">-</a>
                         </div>
-                        <a href="#" class="addcar">加入购物车</a>
+                        <a id="addCart" href="#" class="addcar">加入购物车</a>
                     </div>
                 </div>
             </div>
@@ -144,5 +148,24 @@
 
 <script src="<%=path%>/js/jquery-3.5.0.min.js"></script>
 <script src="<%=path%>/js/common.js"></script>
+<script>
+    $(() => {
+        $('#addCart').on('click', () => {
+            let goodsId = $('#goodsId').text();
+            let quantity = parseInt($('#quantity').val());
+            $.getJSON('<%=path%>/cart/addToShopCart', {
+                'goodsId': goodsId,
+                'quantity': quantity
+            }, (response) => {
+                if (response.status === true) {
+                    console.log("加入购物车成功!!!")
+                    $(location).attr('href', '<%=path%>/cart/shopCar');
+                } else if (response.reason === 'notLogin') {
+                    $(location).attr('href', '<%=path%>/user/toLogin');
+                }
+            })
+        });
+    });
+</script>
 </body>
 </html>

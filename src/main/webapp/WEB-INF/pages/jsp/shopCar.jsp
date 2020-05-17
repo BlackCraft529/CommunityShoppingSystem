@@ -83,24 +83,24 @@
                 <div class="cart-head-item operation">操作</div>
             </div>
             <div class="cart-list clearfix">
-                <c:forEach items="{1,2,3,4,5,6,7,8,9,10}" step="1">
-                    <div class="goods-detail" goodsid="1" price="2658">
+                <c:forEach items="${goods}" var="item" step="1">
+                    <div id="goods${item.goodsId}" class="goods-detail" goodsid="${item.goodsId}" price="${item.goodsSalesPrice}">
                         <div class="goods-detail-item">
                             <input class="goodsCheckBox" type="checkbox">
                         </div>
                         <div class="goods-detail-item goods">
-                            <img alt="" src="<%=path%>/upload/e5adbeeb36534140b50c327f6fd71a6b.jpg">
-                            <p>佳能（Canon）IXUS 285 HS 家用小型数码照相机 便携高清卡片机 WiFi相机 年会奖品</p>
+                            <img alt="" src="${item.goodsImage}">
+                            <p>${item.goodsName}</p>
                         </div>
-                        <div class="goods-detail-item">¥2658.00</div>
+                        <div class="goods-detail-item">¥${item.goodsSalesPrice}</div>
                         <div class="goods-detail-item quantity">
-                            <input id="1_nums" class="goods-num" type="text" value="1">
-                            <a class="reduce" onclick="decreasement('#1_nums')">-</a>
-                            <a class="add" onclick="increasement('#1_nums')">+</a>
+                            <input id="quantity${item.goodsId}" class="goods-num" type="text" value="${item.quantity}">
+                            <a class="reduce" onclick="decreasement('${item.goodsId}')">-</a>
+                            <a class="add" onclick="increasement('${item.goodsId}')">+</a>
                         </div>
-                        <div class="goods-detail-item summery">¥2658.00</div>
+                        <div class="goods-detail-item summery">¥${item.goodsSalesPrice}</div>
                         <div class="goods-detail-item">
-                            <a href="javascript:;">删除</a>
+                            <a onclick="deleteGoods('${item.goodsId}')">删除</a>
                         </div>
                     </div>
                 </c:forEach>
@@ -142,6 +142,11 @@
     let checkBoxList = $('.goodsCheckBox');
 
     $(() => {
+
+        /**/
+        $('#settle-up').on('click', () => {
+
+        })
 
         $('#settle-up').on('click', () => {
 
@@ -225,21 +230,48 @@
         calculatePrice();
     }
 
+    /*商品增加*/
     function increasement(id) {
-        let numsInput = $(id);
+        let quantityId = '#quantity' + id;
+        let numsInput = $(quantityId);
         numsInput.val(parseInt(numsInput.val()) + 1);
+        let quantity = parseInt($(quantityId).val());
+        updateQuantity(id, quantity);
         calculatePrice();
     }
 
+    /*商品减少*/
     function decreasement(id) {
-        let numsInput = $(id);
-        if (numsInput.val() > 1) {
-            numsInput.val(numsInput.val() - 1);
+        let quantityId = '#quantity' + id;
+        let numsInput = $(quantityId);
+        numsInput.val(parseInt(numsInput.val()) - 1);
+        if (numsInput.val() <= 0) {
+            numsInput.val(1);
         }
-        if (numsInput.val() === 1) {
-            console.log($(id));
-        }
+        let quantity = parseInt($(quantityId).val());
+        updateQuantity(id, quantity);
         calculatePrice();
+    }
+
+    function updateQuantity(goodsId, quantity) {
+        $.getJSON('<%=path%>/cart/updateGoodsQuantity', {
+            'goodsId': goodsId,
+            'quantity': quantity
+        }, (response) => {
+            if (response.status === true) {
+                console.log("修改成功!")
+            }
+        })
+    }
+
+    function deleteGoods(id) {
+        $('#goods' + id).remove();
+        $.get({
+            url:'<%=path%>/cart/deleteGoods',
+            data: {
+                'goodsId':id
+            }
+        });
     }
 
     function calculatePrice() {

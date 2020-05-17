@@ -28,6 +28,18 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>cn.jsnu.css.filter.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/cart/shopCar</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/cart/addToShopCart</url-pattern>
+    </filter-mapping>
 
     <!--过滤器-乱码问题-->
     <filter>
@@ -38,6 +50,7 @@
             <param-value>utf-8</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
         <filter-name>encoding</filter-name>
         <url-pattern>/*</url-pattern>

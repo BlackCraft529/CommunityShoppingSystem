@@ -25,6 +25,8 @@
         <property name="jdbcUrl" value="jdbc:mysql://cdb-2tt4kxl0.bj.tencentcdb.com:10151/epsDB?useSSL=true&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
         <property name="user" value="admin"/>
         <property name="password" value="epsmysqladmin"/>
+
+        <property name="initialPoolSize" value="10"/>
         <!--池中最大最小连接数量-->
         <property name="maxPoolSize" value="25"/>
         <property name="minPoolSize" value="5"/>
