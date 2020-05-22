@@ -49,7 +49,8 @@
             <ul>
                 <li><a class="nav_item" href="<%=path%>/index">首页</a></li>
                 <c:forEach items="${categories}" var="category">
-                    <li><a class="nav_item" href="<%=path%>/goods/goodsListCate?cateId=${category.cateId}">${category.cateName}</a></li>
+                    <li><a class="nav_item"
+                           href="<%=path%>/goods/goodsListCate?cateId=${category.cateId}">${category.cateName}</a></li>
                 </c:forEach>
             </ul>
         </nav>
@@ -77,7 +78,8 @@
             </div>
             <div class="cart-list clearfix">
                 <c:forEach items="${goods}" var="item" step="1">
-                    <div id="goods${item.goodsId}" class="goods-detail" goodsid="${item.goodsId}" price="${item.goodsSalesPrice}">
+                    <div id="goods${item.goodsId}" class="goods-detail" goodsid="${item.goodsId}"
+                         price="${item.goodsSalesPrice}">
                         <div class="goods-detail-item">
                             <input class="goodsCheckBox" type="checkbox">
                         </div>
@@ -129,7 +131,7 @@
 <script src="<%=path%>/js/common.js"></script>
 
 <script>
-    let selectedGoodsList = [];
+    let selectedGoodsList = {};
     let goodsList = $('.goods-detail');
     let goodsNumList = $('.goods-num');
     let checkBoxList = $('.goodsCheckBox');
@@ -138,12 +140,28 @@
 
         /**/
         $('#settle-up').on('click', () => {
-
+            console.log(selectedGoodsList);
+            let map = JSON.stringify(selectedGoodsList);
+            console.log(map);
+            if (JSON.stringify(selectedGoodsList) === '{}') {
+                showAlert('未选择商品！')
+            } else {
+                console.log(JSON.stringify(selectedGoodsList));
+                let _this = this;
+                $.ajax({
+                    url: '<%=path%>/order/settlement',
+                    contentType: "application/json;charset=UTF-8",
+                    type: 'post',
+                    dataType: 'json',
+                    data: JSON.stringify(selectedGoodsList),
+                    success: (response) => {
+                        if (response.success) {
+                            window.location.href = "<%=path%>/order/settlementPage";
+                        }
+                    }
+                })
+            }
         })
-
-        $('#settle-up').on('click', () => {
-
-        });
 
         /* 设置复选框监听事件 */
         let list = checkBoxList;
@@ -208,8 +226,11 @@
         for (let i = 0; i < list.length; i++) {
             if (!list[i].checked) {
                 mark = false;
-                delete selectedGoodsList[$(goodsList[i]).attr('goodsid')]
+                // selectedGoodsList.delete($(goodsList[i]).attr('goodsid'));
+                delete selectedGoodsList[$(goodsList[i]).attr('goodsid')];
             } else {
+                // selectedGoodsList.set(($(goodsList[i]).attr('goodsid')), parseInt($(goodsNumList[i]).val()));
+                selectedGoodsList[$(goodsList[i]).attr('goodsid')] = parseInt($(goodsNumList[i]).val());
                 count += 1;
             }
         }
@@ -247,6 +268,8 @@
     }
 
     function updateQuantity(goodsId, quantity) {
+        selectedGoodsList.set(goodsId, quantity);
+        selectedGoodsList[goodsId] = quantity;
         $.getJSON('<%=path%>/cart/updateGoodsQuantity', {
             'goodsId': goodsId,
             'quantity': quantity
@@ -260,9 +283,9 @@
     function deleteGoods(id) {
         $('#goods' + id).remove();
         $.get({
-            url:'<%=path%>/cart/deleteGoods',
+            url: '<%=path%>/cart/deleteGoods',
             data: {
-                'goodsId':id
+                'goodsId': id
             }
         });
     }
