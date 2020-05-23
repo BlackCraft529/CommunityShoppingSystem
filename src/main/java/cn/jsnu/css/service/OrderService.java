@@ -12,7 +12,7 @@ public interface OrderService {
      * 新建一个订单
      * @param order 订单
      */
-    void addOrder(Order order);
+    void addOrder(String order);
 
     /**
      * 根据订单ID删除订单信息

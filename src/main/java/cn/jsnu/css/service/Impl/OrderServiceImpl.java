@@ -26,15 +26,15 @@ public class OrderServiceImpl implements OrderService {
      * @param order 订单
      */
     @Override
-    public void addOrder(Order order) {
-        String orderId= RandomId.getRandomOrderId();
+    public void addOrder(String order) {
+       /* String orderId= RandomId.getRandomOrderId();
         while(findOrderById(orderId)!=null){
             orderId= RandomId.getRandomOrderId();
         }
         order.setOrderId(orderId);
         order.setCreateTime(new Date());
         //生成 mark_id
-        orderMapper.addOrder(order);
+        orderMapper.addOrder(order);*/
     }
 
     /**

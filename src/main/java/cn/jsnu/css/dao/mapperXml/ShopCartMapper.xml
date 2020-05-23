@@ -35,7 +35,7 @@
         insert into eps_shop_cart (user_id,goods_id,quantity) values (#{userId},#{goodsId},#{quantity});
     </insert>
     <!--通过用户ID和商品ID获取记录-->
-    <select id="findShopCartByUserIdAndGoodsId" parameterType="map" resultMap="GoodsResultMap">
+    <select id="findShopCartByUserIdAndGoodsId" parameterType="map" resultMap="ShopCartResultMap">
         select * from eps_shop_cart where goods_id in (select goods_id from eps_shop_cart where user_id=#{userId} and goods_id=#{goodsId});
     </select>
     <!--通过物品ID和商品ID删除记录-->
@@ -43,7 +43,7 @@
         delete from eps_shop_cart where user_id=#{userId} and goods_id=#{goodsId};
     </delete>
     <!--通过用户ID查询购物车记录-->
-    <select id="findShopCartByUserId" parameterType="string" resultMap="ShopCartResultMap">
+    <select id="findShopCartByUserId" parameterType="string" resultMap="GoodsResultMap">
         select distinct a.user_id,a.goods_id,a.quantity,goods_name,goods_summary,goods_cate,goods_price,goods_sales_price,goods_remain,goods_image,goods_sales,goods_create_time
             from eps_shop_cart as a left join eps_goods as b on b.goods_id in (select a.goods_id from eps_shop_cart where a.user_id=#{userId});
     </select>
