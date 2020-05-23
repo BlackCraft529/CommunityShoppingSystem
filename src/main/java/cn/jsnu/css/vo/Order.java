@@ -1,47 +1,40 @@
-package cn.jsnu.css.pojo;
+package cn.jsnu.css.vo;
 
+import cn.jsnu.css.pojo.Address;
+import cn.jsnu.css.pojo.Goods;
 import java.util.Date;
+import java.util.List;
 
 /**
- * @author wrx-18090248
- * @date 2020/5/5 20:32
+ * @author 魏荣轩-18090248
+ * @date 2020/5/23 18:27
  */
 public class Order {
     private String orderId;
-    private String goodsId;
+    private List<Goods> goodsList;
     private String userId;
-    private int quantity;
     private double settlementAmount;
     private double paymentAmount;
     private Date createTime;
     private int status;
     private String markId;
-    private int addressId;
+    private Address address;
 
-    public Order() { }
+    public Order(){}
 
     @Override
     public String toString() {
         return "Order{" +
                 "orderId='" + orderId + '\'' +
-                ", goodsId='" + goodsId + '\'' +
+                ", goodsId=" + goodsList +
                 ", userId='" + userId + '\'' +
-                ", quantity=" + quantity +
                 ", settlementAmount=" + settlementAmount +
                 ", paymentAmount=" + paymentAmount +
                 ", createTime=" + createTime +
                 ", status=" + status +
                 ", markId='" + markId + '\'' +
-                ", addressId=" + addressId +
+                ", address=" + address +
                 '}';
-    }
-
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
     }
 
     public String getOrderId() {
@@ -52,12 +45,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getGoodsId() {
-        return goodsId;
+    public List<Goods> getGoodsList() {
+        return goodsList;
     }
 
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId;
+    public void setGoodsList(List<Goods> goodsList) {
+        this.goodsList = goodsList;
     }
 
     public String getUserId() {
@@ -66,14 +59,6 @@ public class Order {
 
     public void setUserId(String userId) {
         this.userId = userId;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public double getSettlementAmount() {
@@ -114,5 +99,13 @@ public class Order {
 
     public void setMarkId(String markId) {
         this.markId = markId;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddressId(Address addressId) {
+        this.address = address;
     }
 }

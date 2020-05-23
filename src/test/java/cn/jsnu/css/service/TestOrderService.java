@@ -40,6 +40,5 @@ public class TestOrderService {
     @Test
     public void testAddOrder(){
         String json="{\"goodsInfo\":{\"034db61a861345f9bb681b7f283dd1e1\":7,\"09099d7e183349669e3596462bd8846d\":5,\"c8caa8d0ee694f48a84b91e5d7e02a10\":4},\"addressId\":\"1\"}\n";
-        JsonUtils.parseJSONWithJSONObject(json);
     }
 }

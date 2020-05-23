@@ -1,9 +1,12 @@
 package cn.jsnu.css.service.Impl;
 
 import cn.jsnu.css.dao.OrderMapper;
+import cn.jsnu.css.dao.ShopCartMapper;
 import cn.jsnu.css.pojo.Order;
 import cn.jsnu.css.service.OrderService;
+import cn.jsnu.css.utils.JsonUtils;
 import cn.jsnu.css.utils.RandomId;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.text.SimpleDateFormat;
@@ -21,20 +24,43 @@ public class OrderServiceImpl implements OrderService {
     private OrderMapper orderMapper;
     public void setOrderMapper(OrderMapper orderMapper){this.orderMapper=orderMapper;}
 
+    @Autowired
+    private ShopCartMapper shopCartMapper;
+    public void setShopCartMapper(ShopCartMapper shopCartMapper){this.shopCartMapper=shopCartMapper;}
     /**
      * 新建一个订单
-     * @param order 订单
+     * @param orderInfo 订单Json字符串
+     * @param userId 用户ID
      */
     @Override
-    public void addOrder(String order) {
-       /* String orderId= RandomId.getRandomOrderId();
-        while(findOrderById(orderId)!=null){
-            orderId= RandomId.getRandomOrderId();
+    public void addOrder(String orderInfo,String userId) {
+        String markId=RandomId.getRandomMarkId();
+        while(orderMapper.findOrdersByMarkId(markId)!=null){
+            markId=RandomId.getRandomMarkId();
         }
-        order.setOrderId(orderId);
-        order.setCreateTime(new Date());
-        //生成 mark_id
-        orderMapper.addOrder(order);*/
+        String orderId= RandomId.getRandomOrderId();
+        Map<String,Integer> goodsInfo=JsonUtils.getGoodsInfoFromJson(orderInfo);
+        for(String key: goodsInfo.keySet()){
+            while(findOrderById(orderId)!=null){
+                orderId= RandomId.getRandomOrderId();
+            }
+            Order order=new Order();
+            order.setOrderId(orderId);
+            order.setGoodsId(key);
+            order.setUserId(userId);
+            order.setQuantity(goodsInfo.get(key));
+            order.setSettlementAmount(0D);
+            order.setPaymentAmount(0D);
+            order.setCreateTime(new Date());
+            order.setStatus(1);
+            order.setMarkId(markId);
+            order.setAddressId(JsonUtils.getAddressIdFromJson(orderInfo));
+            orderMapper.addOrder(order);
+            Map<String ,String> shopCartData=new HashMap<>(2);
+            shopCartData.put("userId",userId);
+            shopCartData.put("goodsId",key);
+            shopCartMapper.deleteByUserIdAndGoodsId(shopCartData);
+        }
     }
 
     /**

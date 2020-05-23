@@ -73,4 +73,10 @@ public class RandomId {
      * @return 订单号
      */
     public static String getRandomOrderId(){return getRandomString(12);}
+
+    /**
+     * 获取随机标识符ID-Order用
+     * @return 标识符ID25位
+     */
+    public static String getRandomMarkId(){return  getRandomString(25);}
 }

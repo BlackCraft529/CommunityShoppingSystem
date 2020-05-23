@@ -10,9 +10,10 @@ import java.util.List;
 public interface OrderService {
     /**
      * 新建一个订单
-     * @param order 订单
+     * @param orderJson 订单Json字符串
+     * @param userId 用户ID
      */
-    void addOrder(String order);
+    void addOrder(String orderJson ,String userId);
 
     /**
      * 根据订单ID删除订单信息

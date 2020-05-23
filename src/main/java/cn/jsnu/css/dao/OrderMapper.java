@@ -61,4 +61,11 @@ public interface OrderMapper {
      * @return 订单合集
      */
     List<Order> findOrdersByUserIdAndStatus(Map<String,String> date);
+
+    /**
+     * 查询MarkId是否存在于数据库
+     * @param markId 标识符ID
+     * @return 订单集合
+     */
+    List<Order> findOrdersByMarkId(String markId);
 }
