@@ -1,5 +1,6 @@
 package cn.jsnu.css.service;
 
+import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.utils.RandomId;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 /**
  * @author 李广帅
@@ -23,6 +26,15 @@ public class TestShopCartService {
     @Test
     public void testAddGoods() {
         shopCartService.addShopCart("123", RandomId.getRandomGoodId(), 6);
+    }
+
+    @Test
+    public void testFindGoodsByUserId() {
+        List<Goods> goodsList = shopCartService.findShopCartByUserId("0da6330bf9b9447d8f305eea29b4ae96");
+        for (Goods goods :
+                goodsList) {
+            System.out.println(goods);
+        }
     }
 
 }

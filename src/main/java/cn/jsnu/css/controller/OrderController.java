@@ -4,6 +4,7 @@ import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.pojo.User;
 import cn.jsnu.css.service.GoodService;
 import cn.jsnu.css.service.OrderService;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -69,7 +70,7 @@ public class OrderController {
     }
 
     @RequestMapping("/addOrder")
-    public String addOrder(@RequestParam(value = "goodsInfo", required = false) List<Goods> goodsList, @RequestParam(value = "addressId", required = false) String addressId, HttpServletRequest request, @RequestBody String param) {
+    public String addOrder(HttpServletRequest request, @RequestBody String param) {
         return "/index";
     }
 }
