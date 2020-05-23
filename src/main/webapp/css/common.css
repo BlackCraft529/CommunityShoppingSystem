@@ -14,7 +14,7 @@
     width: 250px;
 }
 
-.header .logo a{
+.header .logo .prim_logo {
     display: block;
     background: url(../img/logo.png) no-repeat;
     width: 250px;
@@ -219,21 +219,3 @@
 .copyright .beian:hover {
     text-decoration: underline;
 }
-/*弹窗样式*/
-.alert {
-    display: none;
-    position: absolute;
-    width: 500px;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid #f5c6cb;
-    border-radius: .25rem;
-
-    text-align: center;
-    color: #721c24;
-    background-color: #f8d7da;
-}
-/*弹窗样式*/

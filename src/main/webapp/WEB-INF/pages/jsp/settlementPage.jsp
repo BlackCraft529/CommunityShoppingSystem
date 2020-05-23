@@ -207,6 +207,9 @@
                 dataType: 'json',
                 success:(response)=>{
                     console.log(response);
+                    if (response.success) {
+                        window.location.href = "<%=path%>/order/orderList";
+                    }
                 }
             });
             console.log('helloworld');

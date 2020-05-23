@@ -29,6 +29,20 @@ public class TestShopCartService {
     }
 
     @Test
+    public void testGetUserCart(){
+        List<Goods> allGoods=shopCartService.findShopCartByUserId("0da6330bf9b9447d8f305eea29b4ae96");
+        System.out.println(allGoods.size());
+        for(Goods goods:allGoods){
+            System.out.println(goods);
+        }
+    }
+
+    @Test
+    public void testAddShopCart(){
+        shopCartService.addShopCart("0da6330bf9b9447d8f305eea29b4ae96","034db61a861345f9bb681b7f283dd1e1",5);
+    }
+
+    @Test
     public void testFindGoodsByUserId() {
         List<Goods> goodsList = shopCartService.findShopCartByUserId("0da6330bf9b9447d8f305eea29b4ae96");
         for (Goods goods :

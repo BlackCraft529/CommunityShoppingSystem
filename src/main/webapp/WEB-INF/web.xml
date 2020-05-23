@@ -40,6 +40,10 @@
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/cart/addToShopCart</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/order/orderList</url-pattern>
+    </filter-mapping>
 
     <!--过滤器-乱码问题-->
     <filter>

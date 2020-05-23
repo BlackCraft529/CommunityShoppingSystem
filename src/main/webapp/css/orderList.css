@@ -1,0 +1,227 @@
+.main {
+    padding-top: 20px;
+    background-color: #f5f5f5;
+}
+.logo {
+    position: relative;
+    display: block;
+}
+.sub_logo {
+    position: absolute;
+    left: 500px;
+    top: 16px;
+
+    color: #3498db;
+    font-size: 20px;
+}
+
+.side_nav {
+    width: 170px;
+    background-color: #fff;
+    margin-right: 30px;
+}
+
+.content {
+    width: 1000px;
+}
+
+.content-order {
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.side_nav dt,
+.side_nav dd {
+    line-height: 32px;
+}
+
+.side_nav dl {
+    padding: 15px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+}
+
+.side_nav dl dt {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.content .head {
+    font-size: 12px;
+    color: #666;
+    padding: 10px 20px 20px;
+    background-color: #fff;
+}
+
+.tool_bar {
+    padding: 10px;
+}
+
+.order_type {
+    float: left;
+}
+
+.order_type a {
+    display: inline-block;
+    padding: 10px;
+}
+
+.order_type a.current {
+    color: #3498db;
+    font-weight: 700;
+    border-bottom: 1px solid #3498db;
+    box-sizing: border-box;
+}
+
+.order_search {
+    float: right;
+    padding-top: 5px;
+    padding-right: 10px;
+}
+
+.order_search input {
+    float: left;
+    display: block;
+    width: 200px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+}
+
+.order_search button {
+    float: left;
+    width: 30px;
+    height: 27px;
+}
+
+.order_title {
+    margin-top: 10px;
+    padding: 5px 0;
+    background-color: #f5f5f5;
+}
+
+.order_item .item,
+.order_title li {
+    width: 110px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}
+
+.order_title .order_detail {
+    width: 531px;
+}
+.order_item .order_address,
+.order_title .order_address {
+    width: 115px;
+}
+.order_item .order_operation,
+.order_title .order_operation {
+    width: 114px;
+}
+
+.order_item {
+    margin: 10px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+}
+
+.order_item .hd {
+    width: 958px;
+    height: 29px;
+    padding: 10px;
+    line-height: 29px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+}
+.order_item .hd li {
+    float: left;
+    padding: 0 10px;
+    color: #aaa;
+}
+.order_item .hd li a {
+    color: #333333;
+}
+.order_item .hd li a:hover {
+    color: #3498db;
+}
+
+.order_item .order_detail {
+    width: 524px;
+}
+
+.order_detail .goods_item:nth-last-child(1) {
+    border-bottom: none;
+}
+
+.order_item .bd .item {
+    float: left;
+    height: inherit;
+}
+
+.goods_item {
+    position: relative;
+    float: left;
+    width: 100%;
+    padding: 14px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.g_img {
+    float: left;
+}
+
+.g_name {
+    float: left;
+    width: 240px;
+    height: 36px;
+    line-height: 18px;
+    overflow: hidden;
+}
+
+.g_name a {
+    color: #333;
+}
+.g_name a:hover {
+    color: #3498db;
+    cursor: pointer;
+}
+
+.g_num {
+    position: absolute;
+    top: 16px;
+    font-size: 16px;
+    color: #aaa;
+}
+
+.goods_item img {
+    margin: 0 10px;
+    width: 60px;
+    height: 60px;
+}
+
+.goods_item p {
+    float: left;
+}
+
+.order_money .money {
+    color: #aaa;
+    border-bottom: 1px solid #ccc;
+}
+
+.order_status  .status {
+    color: #aaa;
+}
+
+.order_operation a {
+    display: block;
+}
+
+.none_list {
+    height: 40px;
+    line-height: 30px;
+}
+
+.none_list p {
+    font-size: 16px;
+}

@@ -2,12 +2,14 @@
 
 /* CSS初始化 */
 
+body {
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+}
+
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,dt,dd,li {
     margin: 0;
     padding: 0;
     list-style: none;
-    font-size: 14px;
-    font-family: 宋体;
     color: #000;
 }
 
@@ -48,6 +50,14 @@ input,image {
     margin: 0 auto;
 }
 
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
 
 
 

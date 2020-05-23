@@ -1,6 +1,7 @@
 package cn.jsnu.css.controller;
 
 import cn.jsnu.css.pojo.Goods;
+import cn.jsnu.css.pojo.Order;
 import cn.jsnu.css.pojo.User;
 import cn.jsnu.css.service.GoodService;
 import cn.jsnu.css.service.OrderService;
@@ -40,6 +41,21 @@ public class OrderController {
     @Qualifier("GoodServiceImpl")
     private GoodService goodService;
 
+
+    @RequestMapping("/orderList")
+    public String orderList(Integer status, Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        String userId = user.getUserId();
+        List<Order> orderList;
+        if (status != null) {
+            orderList = orderService.findOrdersByUserIdAndStatus(userId, status);
+        } else {
+            orderList = orderService.findOrdersByUserId(userId);
+        }
+        model.addAttribute("orderList", orderList);
+        return "orderList";
+    }
+
     @RequestMapping("/settlement")
     @ResponseBody
     public String settlement(@RequestBody Map<String, Integer> selectedGoodsList, HttpServletRequest request, HttpSession session, Model model) {
@@ -70,7 +86,16 @@ public class OrderController {
     }
 
     @RequestMapping("/addOrder")
-    public String addOrder(HttpServletRequest request, @RequestBody String param) {
-        return "/index";
+    @ResponseBody
+    public String addOrder(HttpSession session, HttpServletRequest request, @RequestBody String param) {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            User user = (User) session.getAttribute("user");
+            orderService.addOrder(param, user.getUserId());
+            jsonObject.put("success", true);
+        } catch (Exception e) {
+            jsonObject.put("success", false);
+        }
+        return jsonObject.toString();
     }
 }
