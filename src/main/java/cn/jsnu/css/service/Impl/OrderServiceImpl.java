@@ -35,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void addOrder(String orderInfo,String userId) {
         String markId=RandomId.getRandomMarkId();
-        while(orderMapper.findOrdersByMarkId(markId).size()<=0){
+        while(orderMapper.findOrdersByMarkId(markId).size()>0){
             markId=RandomId.getRandomMarkId();
         }
         String orderId= RandomId.getRandomOrderId();
