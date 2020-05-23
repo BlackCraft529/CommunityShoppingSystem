@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/schema/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jsnu.css.dao.AddressMapper">
+    <!--参数集-->
+    <parameterMap id="AddressParameterMap" type="cn.jsnu.css.pojo.Address">
+        <parameter property="addressId" resultMap="AddressResultMap"/>
+        <parameter property="userId" resultMap="AddressResultMap"/>
+        <parameter property="province" resultMap="AddressResultMap"/>
+        <parameter property="city" resultMap="AddressResultMap"/>
+        <parameter property="district" resultMap="AddressResultMap"/>
+        <parameter property="detailAddress" resultMap="AddressResultMap"/>
+        <parameter property="contact" resultMap="AddressResultMap"/>
+        <parameter property="phoneNum" resultMap="AddressResultMap"/>
+    </parameterMap>
+    <!--结果集-->
+    <resultMap id="AddressResultMap" type="cn.jsnu.css.pojo.Address">
+        <id column="id" property="addressId"/>
+        <id column="user_id" property="userId"/>
+        <id column="province" property="province"/>
+        <id column="city" property="city"/>
+        <id column="district" property="district"/>
+        <id column="detail_address" property="detailAddress"/>
+        <id column="contact" property="contact"/>
+        <id column="phone_num" property="phoneNum"/>
+    </resultMap>
+
+    <!--新增一个地址-->
+    <insert id="addAddress" parameterMap="AddressParameterMap">
+        insert into eps_address (id,user_id,province,city,district,detail_address,contact,phone_num)
+                values (#{addressId},#{userId},#{province},#{city},#{district},#{detailAddress},#{contact},#{phoneNum});
+    </insert>
+    <!--根据地址ID获取地址详情-->
+    <select id="findAddressByAddressId" parameterType="string" resultMap="AddressResultMap">
+        select * from eps_address where id=#{addressId};
+    </select>
+    <!--根据玩家ID获取地址类表-->
+    <select id="findAddressByUserId" parameterType="string" resultMap="AddressResultMap">
+        select * from eps_address where user_id=#{userId};
+    </select>
+    <!--根据ID修改省份-->
+    <update id="updateProvinceByAddressId" parameterMap="AddressParameterMap">
+        update eps_address set province=#{province} where id=#{addressId};
+    </update>
+    <!--根据ID修改城市-->
+    <update id="updateCityByAddressId" parameterMap="AddressParameterMap">
+        update eps_address set city=#{city} where id=#{addressId};
+    </update>
+    <!--根据ID修改区-->
+    <update id="updateDistrictByAddressId" parameterMap="AddressParameterMap">
+        update eps_address set district=#{district} where id=#{addressId};
+    </update>
+    <!--根据ID修改详细地址-->
+    <update id="updateDetailAddressByAddressId" parameterMap="AddressParameterMap">
+        update eps_address set detail_address=#{detailAddress} where id=#{addressId};
+    </update>
+    <!--根据ID修改联系人-->
+    <update id="updateContactByAddressId" parameterMap="AddressParameterMap">
+        update eps_address set contact=#{contact} where id=#{addressId};
+    </update>
+    <!--根据ID修改电话号-->
+    <update id="updatePhoneNumByAddressId" parameterMap="AddressParameterMap">
+        update eps_address set phone_num=#{phoneNum} where id=#{addressId};
+    </update>
+    <!--根据用户ID修改联系人-->
+    <update id="updateContactByUserId" parameterType="map">
+        update eps_address set contact=#{contact} where user_id=#{userId};
+    </update>
+    <!--根据手机号获取所有地址-->
+    <select id="findAddressByPhoneNum" parameterType="string" resultMap="AddressResultMap">
+        select * from eps_address where phone_num=#{phoneNum};
+    </select>
+    <!--根据联系人获取所有地址-->
+    <select id="findAddressByContact" parameterType="string" resultMap="AddressResultMap">
+        select * from eps_address where contact=#{contact};
+    </select>
+</mapper>

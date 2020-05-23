@@ -79,4 +79,10 @@ public class RandomId {
      * @return 标识符ID25位
      */
     public static String getRandomMarkId(){return  getRandomString(25);}
+
+    /**
+     * 获取一个随机地址ID
+     * @return 随机地址ID
+     */
+    public static String getRandomAddressId(){return getRandomString(32);}
 }

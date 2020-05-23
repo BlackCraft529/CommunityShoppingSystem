@@ -28,4 +28,8 @@
     <bean id="ShopCartServiceImpl" class="cn.jsnu.css.service.Impl.ShopCartServiceImpl">
         <property name="shopCartMapper" ref="shopCartMapper"/>
     </bean>
+    <!--Address-->
+    <bean id="AddressServiceImpl" class="cn.jsnu.css.service.Impl.AddressServiceImpl">
+        <property name="addressMapper" ref="addressMapper"/>
+    </bean>
 </beans>
