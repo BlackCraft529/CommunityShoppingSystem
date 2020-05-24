@@ -1,6 +1,7 @@
 package cn.jsnu.css.service;
 
 import cn.jsnu.css.pojo.Goods;
+import cn.jsnu.css.pojo.Order;
 import cn.jsnu.css.utils.JsonUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +25,19 @@ public class TestOrderService {
     private OrderService orderService;
 
     @Test
-    public void testAddOrder(){
+    public void testAddOrder() {
         /*String json="{\"goodsInfo\":{\"034db61a861345f9bb681b7f283dd1e1\":7,\"09099d7e183349669e3596462bd8846d\":5,\"c8caa8d0ee694f48a84b91e5d7e02a10\":4},\"addressId\":\"1\"}\n";*/
         String json = "{\"goodsInfo\":{\"c8caa8d0ee694f48a84b91e5d7e02a10\":4},\"addressId\":\"1\"}";
         String userId = "0da6330bf9b9447d8f305eea29b4ae96";
         orderService.addOrder(json, userId);
+    }
+
+    @Test
+    public void testFindAllOrders() {
+        List<Order> orderList = orderService.findAllOrder();
+        for (Order order :
+                orderList) {
+            System.out.println(order);
+        }
     }
 }

@@ -43,22 +43,7 @@
 </header>
 <div class="main">
     <div class="w clearfix">
-        <div class="side_nav fl">
-            <dl>
-                <dt><a href="#">用户信息</a></dt>
-                <dd><a href="#">个人信息</a></dd>
-                <dd><a href="#">账户安全</a></dd>
-            </dl>
-            <dl>
-                <dt><a href="#">订单中心</a></dt>
-                <dd><a href="#">我的订单</a></dd>
-                <dd><a href="#">晒单评论</a></dd>
-            </dl>
-            <dl>
-                <dt><a href="#">收货地址</a></dt>
-                <dd><a href="#">我的地址</a></dd>
-            </dl>
-        </div>
+        <jsp:include page="sideNav.jsp"/>
         <div class="content fl">
             <div class="head">
                 我的订单

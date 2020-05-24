@@ -77,28 +77,33 @@
                 <div class="cart-head-item operation">操作</div>
             </div>
             <div class="cart-list clearfix">
-                <c:forEach items="${goods}" var="item" step="1">
-                    <div id="goods${item.goodsId}" class="goods-detail" goodsid="${item.goodsId}"
-                         price="${item.goodsSalesPrice}">
-                        <div class="goods-detail-item">
-                            <input class="goodsCheckBox" type="checkbox">
+                <c:if test="${empty goods}">
+                    购物车暂无商品,快去买买买～
+                </c:if>
+                <c:if test="${!empty goods}">
+                    <c:forEach items="${goods}" var="item" step="1">
+                        <div id="goods${item.goodsId}" class="goods-detail" goodsid="${item.goodsId}"
+                             price="${item.goodsSalesPrice}">
+                            <div class="goods-detail-item">
+                                <input class="goodsCheckBox" type="checkbox">
+                            </div>
+                            <div class="goods-detail-item goods">
+                                <img alt="" src="${item.goodsImage}">
+                                <p>${item.goodsName}</p>
+                            </div>
+                            <div class="goods-detail-item">¥${item.goodsSalesPrice}</div>
+                            <div class="goods-detail-item quantity">
+                                <input id="quantity${item.goodsId}" class="goods-num" type="text" value="${item.quantity}">
+                                <a class="reduce" onclick="decreasement('${item.goodsId}')">-</a>
+                                <a class="add" onclick="increasement('${item.goodsId}')">+</a>
+                            </div>
+                            <div class="goods-detail-item summery">¥${item.goodsSalesPrice}</div>
+                            <div class="goods-detail-item">
+                                <a onclick="deleteGoods('${item.goodsId}')">删除</a>
+                            </div>
                         </div>
-                        <div class="goods-detail-item goods">
-                            <img alt="" src="${item.goodsImage}">
-                            <p>${item.goodsName}</p>
-                        </div>
-                        <div class="goods-detail-item">¥${item.goodsSalesPrice}</div>
-                        <div class="goods-detail-item quantity">
-                            <input id="quantity${item.goodsId}" class="goods-num" type="text" value="${item.quantity}">
-                            <a class="reduce" onclick="decreasement('${item.goodsId}')">-</a>
-                            <a class="add" onclick="increasement('${item.goodsId}')">+</a>
-                        </div>
-                        <div class="goods-detail-item summery">¥${item.goodsSalesPrice}</div>
-                        <div class="goods-detail-item">
-                            <a onclick="deleteGoods('${item.goodsId}')">删除</a>
-                        </div>
-                    </div>
-                </c:forEach>
+                    </c:forEach>
+                </c:if>
             </div>
         </div>
     </div>

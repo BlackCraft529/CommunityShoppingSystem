@@ -219,3 +219,71 @@
 .copyright .beian:hover {
     text-decoration: underline;
 }
+
+
+/*用户中心*/
+.main {
+    padding-top: 20px;
+    background-color: #f5f5f5;
+}
+.logo {
+    position: relative;
+    display: block;
+}
+.sub_logo {
+    position: absolute;
+    left: 500px;
+    top: 16px;
+
+    color: #3498db;
+    font-size: 20px;
+}
+
+.side_nav {
+    width: 170px;
+    background-color: #fff;
+    margin-right: 30px;
+}
+
+.content {
+    width: 1000px;
+}
+
+.content .head {
+    font-size: 12px;
+    color: #666;
+    padding: 10px 20px 20px;
+    background-color: #fff;
+}
+
+.content-order {
+    margin-top: 20px;
+    background-color: #fff;
+}
+
+.side_nav dt,
+.side_nav dd {
+    line-height: 32px;
+}
+
+.side_nav dl {
+    padding: 15px 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #ccc;
+}
+
+.side_nav dl dt {
+    font-size: 16px;
+    font-weight: 700;
+}
+/*用户中心*/
+
+.none_list {
+    height: 40px;
+    line-height: 30px;
+}
+
+.none_list p {
+    text-align: center;
+    font-size: 16px;
+}
