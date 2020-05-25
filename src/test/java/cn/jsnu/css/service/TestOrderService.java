@@ -1,8 +1,8 @@
 package cn.jsnu.css.service;
 
 import cn.jsnu.css.pojo.Goods;
-import cn.jsnu.css.pojo.Order;
 import cn.jsnu.css.utils.JsonUtils;
+import cn.jsnu.css.vo.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +34,21 @@ public class TestOrderService {
 
     @Test
     public void testFindAllOrders() {
-        List<Order> orderList = orderService.findAllOrder();
-        for (Order order :
-                orderList) {
-            System.out.println(order);
+        List<Order> orderList=orderService.findOrdersByUserId("0da6330bf9b9447d8f305eea29b4ae96");
+        for(Order order:orderList){
+            System.out.println(order+"\n\n\n");
         }
+    }
+
+    @Test
+    public void testFindAllOrdersByStatusAndId() {
+        List<Order> orderList=orderService.findOrdersByUserIdAndStatus("0da6330bf9b9447d8f305eea29b4ae96",2);
+        for(Order order:orderList){
+            System.out.println(order+"\n\n\n");
+        }
+    }
+    @Test
+    public void testUpdateStatus(){
+        orderService.updateOrderStatus("M4W307iA7NuH",2);
     }
 }

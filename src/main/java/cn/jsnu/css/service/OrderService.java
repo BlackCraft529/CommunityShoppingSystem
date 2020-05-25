@@ -22,12 +22,6 @@ public interface OrderService {
     void deleteOrderById(String orderId);
 
     /**
-     * 更新一个订单
-     * @param order 订单
-     */
-    void updateOrder(Order order);
-
-    /**
      * 更新订单状态
      * @param orderId 订单ID
      * @param status 订单状态
@@ -37,6 +31,7 @@ public interface OrderService {
     /**
      * 查找所有订单
      * @return 订单合集
+     * @deprecated
      */
     List<cn.jsnu.css.pojo.Order> findAllOrder();
 

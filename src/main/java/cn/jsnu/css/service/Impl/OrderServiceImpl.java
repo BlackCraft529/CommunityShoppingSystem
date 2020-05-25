@@ -74,25 +74,19 @@ public class OrderServiceImpl implements OrderService {
     }
 
     /**
-     * 更新一个订单
-     * @param order 订单
-     */
-    @Override
-    public void updateOrder(Order order) {
-        //orderMapper.updateOrder(order);
-    }
-
-    /**
      * 更新订单状态
      * @param orderId 订单ID
      * @param status  订单状态
      */
     @Override
     public void updateOrderStatus(String orderId, int status) {
-        cn.jsnu.css.pojo.Order order=new cn.jsnu.css.pojo.Order();
-        order.setOrderId(orderId);
-        order.setStatus(status);
-        orderMapper.updateOrderStatus(order);
+        String markId=orderMapper.findOrderById(orderId).getMarkId();
+        List<cn.jsnu.css.pojo.Order> orderList=orderMapper.findOrdersByMarkId(markId);
+        for(cn.jsnu.css.pojo.Order order:orderList) {
+            order.setStatus(status);
+            orderMapper.updateOrderStatus(order);
+        }
+
     }
 
     /**
@@ -122,14 +116,23 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 根据用户ID查找订单信息
-     *
      * @param userId 客户ID
      * @return 订单合集
      */
     @Override
     public List<Order> findOrdersByUserId(String userId) {
-        //return orderMapper.findOrdersByUserId(userId);
-        return new ArrayList<>();
+        List<Order> orderVoList=new ArrayList<>();
+        List<String> markIdList=orderMapper.findAllMarkIdByUserId(userId);
+        for(String markId:markIdList){
+            List<cn.jsnu.css.pojo.Order> orders=orderMapper.findOrdersByMarkId(markId);
+            for(cn.jsnu.css.pojo.Order order:orders){
+                Order orderVo=new Order(order);
+                orderVo.setGoodsList(shopCartMapper.findShopCartByUserId(order.getUserId()));
+                orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
+                orderVoList.add(orderVo);
+            }
+        }
+        return orderVoList;
     }
 
     /**
@@ -141,11 +144,20 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public List<Order> findOrdersByUserIdAndStatus(String userId, int status) {
-        Map<String ,String> date=new HashMap<>();
-        date.put("userId",userId);
-        date.put("status",status+"");
-        //return orderMapper.findOrdersByUserIdAndStatus(date);
-        return new ArrayList<>();
+        List<Order> orderVoList=new ArrayList<>();
+        cn.jsnu.css.pojo.Order orderPojo=new cn.jsnu.css.pojo.Order();
+        orderPojo.setUserId(userId);orderPojo.setStatus(status);
+        List<String> markIdList=orderMapper.findAllMarkIdByUserIdAndStatus(orderPojo);
+        for(String markId:markIdList){
+            List<cn.jsnu.css.pojo.Order> orders=orderMapper.findOrdersByMarkId(markId);
+            for(cn.jsnu.css.pojo.Order order:orders){
+                Order orderVo=new Order(order);
+                orderVo.setGoodsList(shopCartMapper.findShopCartByUserId(order.getUserId()));
+                orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
+                orderVoList.add(orderVo);
+            }
+        }
+        return orderVoList;
     }
 
 }

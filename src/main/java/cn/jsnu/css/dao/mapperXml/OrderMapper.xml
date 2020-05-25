@@ -67,4 +67,13 @@
     <select id="findOrdersByMarkId" parameterType="string" resultMap="OrderResultMap">
         select * from eps_orders where mark_id=#{markId};
     </select>
+    <!--根据用户查询MarkId-->
+    <select id="findAllMarkIdByUserId" parameterType="string" resultType="string">
+        select distinct mark_id from eps_orders where user_id=#{userId};
+    </select>
+    <!--根据用户查询MarkId-->
+    <select id="findAllMarkIdByUserIdAndStatus" parameterMap="OrderParameterMap" resultType="string">
+        select distinct mark_id from eps_orders where user_id=#{userId} and status=#{status};
+    </select>
+
 </mapper>

@@ -68,4 +68,18 @@ public interface OrderMapper {
      * @return 订单集合
      */
     List<Order> findOrdersByMarkId(String markId);
+
+    /**
+     * 根据用户ID查找所有MarkId
+     * @param userId 用户ID
+     * @return 标识符ID合集
+     */
+    List<String> findAllMarkIdByUserId(String userId);
+
+    /**
+     * 根据用户ID和状态查找所有MarkId
+     * @param order 订单类
+     * @return 标识符ID合集
+     */
+    List<String> findAllMarkIdByUserIdAndStatus(cn.jsnu.css.pojo.Order order);
 }
