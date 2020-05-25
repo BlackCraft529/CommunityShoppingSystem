@@ -105,6 +105,9 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public Order findOrderById(String orderId) {
+        if(orderMapper.findOrderById(orderId)==null){
+            return null;
+        }
         cn.jsnu.css.pojo.Order order = orderMapper.findOrderById(orderId);
         Order orderVo=new Order(order);
         List<Goods> goods=shopCartMapper.findShopCartByUserId(order.getUserId());
