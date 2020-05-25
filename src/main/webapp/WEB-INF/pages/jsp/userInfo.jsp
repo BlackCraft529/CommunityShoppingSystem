@@ -20,28 +20,7 @@
     <link href="<%=path%>/css/userInfo.css" rel="stylesheet">
 </head>
 <body>
-<header class="header">
-    <div class="w">
-        <div class="header_top clearfix">
-            <h1 class="logo">
-                <a class="prim_logo" href="<%=path%>/index">应急采购系统</a>
-            </h1>
-            <a class="sub_logo" href="#">用户中心</a>
-            <div class="top_right">
-                <ul class="system_link clearfix">
-                    <li><a href="<%=path%>/user/info">会员中心</a></li>
-                    <li><a href="<%=path%>/order/orderList">我的订单</a></li>
-                    <li><a href="<%=path%>/">后台管理</a></li>
-                    <li><a href="<%=path%>/">使用帮助</a></li>
-                </ul>
-                <p class="user_info">
-                    <span class="user_name">${sessionScope.user.nickname}</span>您好！欢迎登录应急采购系统！[<a
-                        href="<%=path%>/user/logout">安全退出</a>]
-                </p>
-            </div>
-        </div>
-    </div>
-</header>
+<jsp:include page="userCenterHeader.jsp"/>
 <div class="main">
     <div class="w clearfix">
         <jsp:include page="sideNav.jsp"/>

@@ -11,8 +11,8 @@
 %>
 <div class="side_nav fl">
     <dl>
-        <dt><a href="#">用户信息</a></dt>
-        <dd><a href="#">个人信息</a></dd>
+        <dt><a href="<%=path%>/user/info">用户信息</a></dt>
+        <dd><a href="<%=path%>/user/info">个人信息</a></dd>
         <dd><a href="#">账户安全</a></dd>
     </dl>
     <dl>

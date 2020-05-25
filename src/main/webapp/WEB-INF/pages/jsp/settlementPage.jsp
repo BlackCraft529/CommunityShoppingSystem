@@ -24,12 +24,12 @@
     <div class="w">
         <div class="header_top clearfix">
             <h1 class="logo">
-                <a href="<%=path%>/index">应急采购系统</a>
+                <a class="prim_logo" href="<%=path%>/index">应急采购系统</a>
             </h1>
             <div class="top_right">
                 <ul class="system_link clearfix">
-                    <li><a href="#">会员中心</a></li>
-                    <li><a href="#">我的订单</a></li>
+                    <li><a href="<%=path%>/user/info">会员中心</a></li>
+                    <li><a href="<%=path%>/order/orderList">我的订单</a></li>
                     <li><a href="#">后台管理</a></li>
                     <li><a href="#">使用帮助</a></li>
                 </ul>
