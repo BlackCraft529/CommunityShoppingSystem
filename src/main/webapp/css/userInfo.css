@@ -1,0 +1,45 @@
+.content {
+    background-color: #fff;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.item {
+    width: 400px;
+    height: 60px;
+
+    font-size: 14px;
+}
+
+.item .update {
+    margin-left: 20px;
+    color: #3498db;
+}
+
+.item input {
+    padding: 3px;
+    width: 300px;
+    border: 1px solid #3498db;
+    border-radius: 3px;
+}
+
+.item button {
+    display: block;
+    margin-left: 100px;
+    width: 50px;
+    height: 30px;
+    border-radius: 4px;
+    outline: none;
+}
+
+.content .hd {
+    float: left;
+    width: 80px;
+    text-align: right;
+}
+
+.content .bd {
+    float: left;
+    padding-left: 20px;
+    text-align: left;
+}

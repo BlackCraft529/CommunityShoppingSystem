@@ -6,6 +6,7 @@ import cn.jsnu.css.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -34,6 +35,7 @@ public class UserController {
         User user = userService.findUserByPhoneNumAndPassword(phoneNum, password);
         if (user != null) {
             session.setAttribute("user", user);
+            System.out.println(user);
             return "redirect:/index";
         } else {
             return "login";
@@ -52,6 +54,25 @@ public class UserController {
     public String register(String phoneNum, String password, HttpSession session) {
         userService.addUser(phoneNum, password);
         return "login";
+    }
+
+    @RequestMapping("/info")
+    public String info(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
+        User newUser = userService.findUserById(user.getUserId());
+        System.out.println(newUser);
+        model.addAttribute("user", newUser);
+        return "/userInfo";
+    }
+
+    @RequestMapping("/update")
+    public String update(String phoneNum, String nickname, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        user.setPhoneNum(phoneNum);
+        user.setNickname(nickname);
+        System.out.println(user);
+        userService.updateUser(user);
+        return "redirect:/user/info";
     }
 
     /**
