@@ -5,7 +5,6 @@ import cn.jsnu.css.pojo.Address;
 import cn.jsnu.css.service.AddressService;
 import cn.jsnu.css.utils.RandomId;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

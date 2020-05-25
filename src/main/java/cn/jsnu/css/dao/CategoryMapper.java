@@ -1,7 +1,6 @@
 package cn.jsnu.css.dao;
 
 import cn.jsnu.css.pojo.Category;
-
 import java.util.List;
 
 /**

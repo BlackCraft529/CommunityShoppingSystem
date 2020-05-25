@@ -1,7 +1,6 @@
 package cn.jsnu.css.service;
 
 import cn.jsnu.css.pojo.Goods;
-import cn.jsnu.css.pojo.ShopCart;
 import java.util.List;
 /**
  * @author 魏荣轩-18090248
