@@ -25,6 +25,7 @@ public class Order {
     public Order(cn.jsnu.css.pojo.Order order){
         this.setCreateTime(order.getCreateTime());
         this.setMarkId(order.getMarkId());
+        this.setUserId(order.getUserId());
         this.setOrderId(order.getOrderId());
         this.setPaymentAmount(order.getPaymentAmount());
         this.setSettlementAmount(order.getSettlementAmount());

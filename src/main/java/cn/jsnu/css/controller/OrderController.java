@@ -48,11 +48,11 @@ public class OrderController {
         String userId = user.getUserId();
         List<Order> orderList;
         if (status != null) {
-            orderList = orderService.findOrdersByUserIdAndStatus(userId, status);
+            //orderList = orderService.findOrdersByUserIdAndStatus(userId, status);
         } else {
-            orderList = orderService.findOrdersByUserId(userId);
+            //orderList = orderService.findOrdersByUserId(userId);
         }
-        model.addAttribute("orderList", orderList);
+        //model.addAttribute("orderList", orderList);
         return "orderList";
     }
 

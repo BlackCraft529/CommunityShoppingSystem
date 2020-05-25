@@ -1,6 +1,7 @@
 package cn.jsnu.css.service.Impl;
 
 import cn.jsnu.css.dao.AddressMapper;
+import cn.jsnu.css.dao.GoodMapper;
 import cn.jsnu.css.dao.OrderMapper;
 import cn.jsnu.css.dao.ShopCartMapper;
 import cn.jsnu.css.pojo.Goods;
@@ -23,6 +24,10 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ShopCartMapper shopCartMapper;
     public void setShopCartMapper(ShopCartMapper shopCartMapper){this.shopCartMapper=shopCartMapper;}
+
+    @Autowired
+    private GoodMapper goodMapper;
+    public void setGoodMapper(GoodMapper goodMapper){this.goodMapper=goodMapper;}
 
     @Autowired
     private AddressMapper addressMapper;
@@ -129,7 +134,9 @@ public class OrderServiceImpl implements OrderService {
             List<cn.jsnu.css.pojo.Order> orders=orderMapper.findOrdersByMarkId(markId);
             for(cn.jsnu.css.pojo.Order order:orders){
                 Order orderVo=new Order(order);
-                orderVo.setGoodsList(shopCartMapper.findShopCartByUserId(order.getUserId()));
+                List<Goods> goodsList=new ArrayList<>();
+                goodsList.add(goodMapper.findGoodsById(order.getGoodsId()));
+                orderVo.setGoodsList(goodsList);
                 orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
                 orderVoList.add(orderVo);
             }
@@ -154,7 +161,9 @@ public class OrderServiceImpl implements OrderService {
             List<cn.jsnu.css.pojo.Order> orders=orderMapper.findOrdersByMarkId(markId);
             for(cn.jsnu.css.pojo.Order order:orders){
                 Order orderVo=new Order(order);
-                orderVo.setGoodsList(shopCartMapper.findShopCartByUserId(order.getUserId()));
+                List<Goods> goodsList=new ArrayList<>();
+                goodsList.add(goodMapper.findGoodsById(order.getGoodsId()));
+                orderVo.setGoodsList(goodsList);
                 orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
                 orderVoList.add(orderVo);
             }
