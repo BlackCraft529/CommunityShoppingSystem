@@ -33,8 +33,8 @@ public class JsonUtils {
      * @param json json字符串
      * @return 地址ID
      */
-    public static int getAddressIdFromJson(String json){
-        return Integer.parseInt(parseJSONWithJSONObject(json).get("addressId"));
+    public static String getAddressIdFromJson(String json){
+        return parseJSONWithJSONObject(json).get("addressId");
     }
 
     /**

@@ -22,6 +22,15 @@ public class Order {
 
     public Order(){}
 
+    public Order(cn.jsnu.css.pojo.Order order){
+        this.setCreateTime(order.getCreateTime());
+        this.setMarkId(order.getMarkId());
+        this.setOrderId(order.getOrderId());
+        this.setPaymentAmount(order.getPaymentAmount());
+        this.setSettlementAmount(order.getSettlementAmount());
+        this.setStatus(order.getStatus());
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -105,7 +114,7 @@ public class Order {
         return address;
     }
 
-    public void setAddressId(Address addressId) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 }

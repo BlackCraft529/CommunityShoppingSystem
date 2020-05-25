@@ -65,6 +65,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void updateUser(User user) {
+        user.setPassword(MD5Util.getSaltMD5(user.getPassword()));
         userMapper.updateUser(user);
     }
 

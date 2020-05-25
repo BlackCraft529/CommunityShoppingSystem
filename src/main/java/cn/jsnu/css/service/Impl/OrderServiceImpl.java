@@ -1,19 +1,16 @@
 package cn.jsnu.css.service.Impl;
 
+import cn.jsnu.css.dao.AddressMapper;
 import cn.jsnu.css.dao.OrderMapper;
 import cn.jsnu.css.dao.ShopCartMapper;
-import cn.jsnu.css.pojo.Order;
+import cn.jsnu.css.pojo.Goods;
+import cn.jsnu.css.vo.Order;
 import cn.jsnu.css.service.OrderService;
 import cn.jsnu.css.utils.JsonUtils;
 import cn.jsnu.css.utils.RandomId;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author wrx-18090248
@@ -27,6 +24,10 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ShopCartMapper shopCartMapper;
     public void setShopCartMapper(ShopCartMapper shopCartMapper){this.shopCartMapper=shopCartMapper;}
+
+    @Autowired
+    private AddressMapper addressMapper;
+    public void setAddressMapper(AddressMapper addressMapper){this.addressMapper=addressMapper;}
     /**
      * 新建一个订单
      * @param orderInfo 订单Json字符串
@@ -44,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
             while(findOrderById(orderId)!=null){
                 orderId= RandomId.getRandomOrderId();
             }
-            Order order=new Order();
+            cn.jsnu.css.pojo.Order order= new cn.jsnu.css.pojo.Order();
             order.setOrderId(orderId);
             order.setGoodsId(key);
             order.setUserId(userId);
@@ -78,7 +79,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public void updateOrder(Order order) {
-        orderMapper.updateOrder(order);
+        //orderMapper.updateOrder(order);
     }
 
     /**
@@ -88,7 +89,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public void updateOrderStatus(String orderId, int status) {
-        Order order=new Order();
+        cn.jsnu.css.pojo.Order order=new cn.jsnu.css.pojo.Order();
         order.setOrderId(orderId);
         order.setStatus(status);
         orderMapper.updateOrderStatus(order);
@@ -100,7 +101,7 @@ public class OrderServiceImpl implements OrderService {
      * @deprecated
      */
     @Override
-    public List<Order> findAllOrder() {
+    public List<cn.jsnu.css.pojo.Order> findAllOrder() {
         return orderMapper.findAllOrder();
     }
 
@@ -111,7 +112,12 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public Order findOrderById(String orderId) {
-        return orderMapper.findOrderById(orderId);
+        cn.jsnu.css.pojo.Order order = orderMapper.findOrderById(orderId);
+        Order orderVo=new Order(order);
+        List<Goods> goods=shopCartMapper.findShopCartByUserId(order.getUserId());
+        orderVo.setGoodsList(goods);
+        orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
+        return orderVo;
     }
 
     /**
@@ -122,7 +128,8 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public List<Order> findOrdersByUserId(String userId) {
-        return orderMapper.findOrdersByUserId(userId);
+        //return orderMapper.findOrdersByUserId(userId);
+        return new ArrayList<>();
     }
 
     /**
@@ -137,7 +144,8 @@ public class OrderServiceImpl implements OrderService {
         Map<String ,String> date=new HashMap<>();
         date.put("userId",userId);
         date.put("status",status+"");
-        return orderMapper.findOrdersByUserIdAndStatus(date);
+        //return orderMapper.findOrdersByUserIdAndStatus(date);
+        return new ArrayList<>();
     }
 
 }

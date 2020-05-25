@@ -18,8 +18,8 @@
         <!--column数据库字段 property实体类字段-->
         <result column="id" property="userId"/>
         <result column="nickname" property="nickname"/>
-        <result column="phoneNum" property="password"/>
-        <result column="password" property="phoneNum"/>
+        <result column="phoneNum" property="phoneNum"/>
+        <result column="password" property="password"/>
         <result column="email" property="email"/>
         <result column="avatar" property="avatar"/>
         <result column="last_login_time" property="lastLoginTime"/>

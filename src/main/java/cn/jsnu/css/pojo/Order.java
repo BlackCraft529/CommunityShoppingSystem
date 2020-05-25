@@ -16,7 +16,7 @@ public class Order {
     private Date createTime;
     private int status;
     private String markId;
-    private int addressId;
+    private String addressId;
 
     public Order() { }
 
@@ -36,11 +36,11 @@ public class Order {
                 '}';
     }
 
-    public int getAddressId() {
+    public String getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(int addressId) {
+    public void setAddressId(String addressId) {
         this.addressId = addressId;
     }
 
