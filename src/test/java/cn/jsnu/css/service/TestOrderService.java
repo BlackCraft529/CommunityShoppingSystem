@@ -1,5 +1,6 @@
 package cn.jsnu.css.service;
 
+import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.vo.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,9 +40,13 @@ public class TestOrderService {
 
     @Test
     public void testFindAllOrdersByStatusAndId() {
-        List<Order> orderList=orderService.findOrdersByUserIdAndStatus("0da6330bf9b9447d8f305eea29b4ae96",2);
+        List<Order> orderList=orderService.findOrdersByUserIdAndStatus("0da6330bf9b9447d8f305eea29b4ae96",1);
         for(Order order:orderList){
-            System.out.println(order+"\n\n\n");
+            System.out.println("OrderId="+order.getOrderId()+"  MarkId="+order.getMarkId()+"  GoodsList:");
+            for(Goods goods:order.getGoodsList()){
+                System.out.print(goods.getGoodsId()+" // ");
+            }
+            System.out.print("\n\n");
         }
     }
     @Test

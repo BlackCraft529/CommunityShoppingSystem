@@ -131,15 +131,7 @@ public class OrderServiceImpl implements OrderService {
         List<Order> orderVoList=new ArrayList<>();
         List<String> markIdList=orderMapper.findAllMarkIdByUserId(userId);
         for(String markId:markIdList){
-            List<cn.jsnu.css.pojo.Order> orders=orderMapper.findOrdersByMarkId(markId);
-            for(cn.jsnu.css.pojo.Order order:orders){
-                Order orderVo=new Order(order);
-                List<Goods> goodsList=new ArrayList<>();
-                goodsList.add(goodMapper.findGoodsById(order.getGoodsId()));
-                orderVo.setGoodsList(goodsList);
-                orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
-                orderVoList.add(orderVo);
-            }
+            orderVoList.add(getOrderVo(markId));
         }
         return orderVoList;
     }
@@ -158,17 +150,26 @@ public class OrderServiceImpl implements OrderService {
         orderPojo.setUserId(userId);orderPojo.setStatus(status);
         List<String> markIdList=orderMapper.findAllMarkIdByUserIdAndStatus(orderPojo);
         for(String markId:markIdList){
-            List<cn.jsnu.css.pojo.Order> orders=orderMapper.findOrdersByMarkId(markId);
-            for(cn.jsnu.css.pojo.Order order:orders){
-                Order orderVo=new Order(order);
-                List<Goods> goodsList=new ArrayList<>();
-                goodsList.add(goodMapper.findGoodsById(order.getGoodsId()));
-                orderVo.setGoodsList(goodsList);
-                orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
-                orderVoList.add(orderVo);
-            }
+            orderVoList.add(getOrderVo(markId));
         }
         return orderVoList;
     }
 
+    /**
+     * 根据markId获取Vo Order对象
+     * @param markId 标识ID
+     * @return Vo Order对象
+     */
+    private Order getOrderVo(String markId){
+        List<cn.jsnu.css.pojo.Order> orders=orderMapper.findOrdersByMarkId(markId);
+        Order orderVo=new Order();
+        List<Goods> goodsList=new ArrayList<>();
+        for(cn.jsnu.css.pojo.Order order:orders){
+            orderVo=new Order(order);
+            goodsList.add(goodMapper.findGoodsById(order.getGoodsId()));
+            orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
+        }
+        orderVo.setGoodsList(goodsList);
+        return orderVo;
+    }
 }
