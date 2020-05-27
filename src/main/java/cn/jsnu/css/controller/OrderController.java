@@ -58,8 +58,7 @@ public class OrderController {
             model.addAttribute("type", status);
         }
         if (search_text != null) {
-            orderList = new ArrayList<>();
-            orderList.add(orderService.findOrderById(search_text));
+            orderList = orderService.findOrderByVagueString(search_text, userId);
         } else {
             orderList = orderService.findOrdersByUserId(userId);
             model.addAttribute("type", 0);
