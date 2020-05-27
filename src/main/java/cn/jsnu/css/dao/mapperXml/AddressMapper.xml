@@ -75,4 +75,10 @@
     <select id="findAddressByContact" parameterType="string" resultMap="AddressResultMap">
         select * from eps_address where contact=#{contact};
     </select>
+
+    <!--根据地址ID修改地址信息-->
+    <update id="updateAddressByAddressId" parameterMap="AddressParameterMap">
+        update eps_address set user_id=#{userId},province=#{province},city=#{city},district=#{district},detail_address=#{detailAddress},contact=#{contact},phone_num=#{phoneNum}
+            where id=#{addressId};
+    </update>
 </mapper>

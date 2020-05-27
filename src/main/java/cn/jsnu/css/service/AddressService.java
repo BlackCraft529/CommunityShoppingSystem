@@ -39,6 +39,7 @@ public interface AddressService {
      * 根据地址ID修改省份
      * @param addressId 地址ID
      * @param province 省份
+     * @deprecated
      */
     void updateProvinceByAddressId(String addressId,String province);
 
@@ -46,6 +47,7 @@ public interface AddressService {
      * 根据地址ID修改地址城市
      * @param addressId 地址ID
      * @param city 市
+     * @deprecated
      */
     void updateCityByAddressId(String addressId,String city);
 
@@ -53,13 +55,21 @@ public interface AddressService {
      * 根据地址ID修改地址区
      * @param addressId 地址ID
      * @param district 地区
+     * @deprecated
      */
     void updateDistrictByAddressId(String addressId,String district);
+
+    /**
+     * 修改地址信息
+     * @param address 地址对象
+     */
+    void updateAddressByAddressId(Address address);
 
     /**
      * 根据地址ID修改详细地址
      * @param addressId 地址Id
      * @param detailAddress 详细地址
+     * @deprecated
      */
     void updateDetailAddressByAddressId(String addressId,String detailAddress);
 
@@ -67,6 +77,7 @@ public interface AddressService {
      * 根据地址ID修改地址联系人
      * @param addressId 地址ID
      * @param contact 联系人
+     * @deprecated
      */
     void updateContactByAddressId(String addressId,String contact);
 
@@ -74,6 +85,7 @@ public interface AddressService {
      * 根据用户ID修改地址联系人
      * @param userId 用户ID
      * @param contact 联系人
+     * @deprecated
      */
     void updateContactByUserId(String userId,String contact);
 
@@ -81,6 +93,7 @@ public interface AddressService {
      * 根据地址Id修改地址手机号
      * @param addressId 地址ID
      * @param phoneNum 电话号
+     * @deprecated
      */
     void updatePhoneNumByAddressId(String addressId,String phoneNum);
 

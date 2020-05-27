@@ -101,6 +101,16 @@ public class AddressServiceImpl implements AddressService {
     }
 
     /**
+     * 修改地址信息
+     * @param address 地址对象
+     */
+    @Override
+    public void updateAddressByAddressId(Address address) {
+        addressMapper.updateAddressByAddressId(address);
+    }
+
+
+    /**
      * 根据地址ID修改详细地址
      *
      * @param addressId     地址Id

@@ -85,4 +85,10 @@ public interface AddressMapper {
      * @return 地址合集
      */
     List<Address> findAddressByContact(String contact);
+
+    /**
+     * 根据地址ID修改地址信息
+     * @param address 地址ID
+     */
+    void updateAddressByAddressId(Address address);
 }
