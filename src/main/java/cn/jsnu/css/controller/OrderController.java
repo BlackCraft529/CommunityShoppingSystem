@@ -49,14 +49,20 @@ public class OrderController {
 
 
     @RequestMapping("/orderList")
-    public String orderList(Integer status, Model model, HttpSession session) {
+    public String orderList(Integer status, String search_text, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         String userId = user.getUserId();
         List<Order> orderList;
         if (status != null) {
             orderList = orderService.findOrdersByUserIdAndStatus(userId, status);
+            model.addAttribute("type", status);
+        }
+        if (search_text != null) {
+            orderList = new ArrayList<>();
+            orderList.add(orderService.findOrderById(search_text));
         } else {
             orderList = orderService.findOrdersByUserId(userId);
+            model.addAttribute("type", 0);
         }
         model.addAttribute("orderList", orderList);
         return "orderList";

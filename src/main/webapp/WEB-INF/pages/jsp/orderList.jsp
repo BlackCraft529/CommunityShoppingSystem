@@ -33,10 +33,13 @@
                     <div class="hd">
                         <ul class="clearfix">
                             <li class="order_type">
-                                <a class="current" href="<%=path%>/order/orderList">全部订单</a><a href="#">代付款</a><a href="#">待收货</a><a href="#">待评价</a>
+                                <a <c:if test="${type eq 0}">class="current"</c:if> href="<%=path%>/order/orderList">全部订单</a>
+                                <a <c:if test="${type eq 1}">class="current"</c:if> href="<%=path%>/order/orderList?status=1">代付款</a>
+                                <a <c:if test="${type eq 2}">class="current"</c:if> href="<%=path%>/order/orderList?status=2">待收货</a>
+                                <a <c:if test="${type eq 3}">class="current"</c:if> href="<%=path%>/order/orderList?status=3">待评价</a>
                             </li>
                             <li class="order_search">
-                                <form action="">
+                                <form action="<%=path%>/order/orderList">
                                     <input id="search_text" name="search_text" placeholder="请输入订单号、商品名、商品编号"
                                            type="text">
                                     <button type="submit"></button>
