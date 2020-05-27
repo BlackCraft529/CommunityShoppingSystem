@@ -159,8 +159,8 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 模糊查询订单 通过订单号、商品名、商品编号 查询订单信息
-     *
      * @param vagueString 字符串
+     * @param userId 用户ID
      * @return 订单信息
      */
     @Override
