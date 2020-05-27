@@ -4,6 +4,7 @@ import cn.jsnu.css.dao.AddressMapper;
 import cn.jsnu.css.dao.GoodMapper;
 import cn.jsnu.css.dao.OrderMapper;
 import cn.jsnu.css.dao.ShopCartMapper;
+import cn.jsnu.css.length.Length;
 import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.vo.Order;
 import cn.jsnu.css.service.OrderService;
@@ -154,6 +155,74 @@ public class OrderServiceImpl implements OrderService {
             orderVoList.add(getOrderVo(markId));
         }
         return orderVoList;
+    }
+
+    /**
+     * 模糊查询订单 通过订单号、商品名、商品编号 查询订单信息
+     *
+     * @param vagueString 字符串
+     * @return 订单信息
+     */
+    @Override
+    public List<Order> findOrderByVagueString(String vagueString,String userId) {
+        List<String> markIdList;
+        //订单号
+        if(vagueString.length()== Length.ORDER.getLength()){
+            if(orderMapper.findOrderById(vagueString)!=null){
+                cn.jsnu.css.pojo.Order order=orderMapper.findOrderById(vagueString);
+                List<Order> returnOrders=new ArrayList<>();
+                returnOrders.add(getOrderVo(order.getMarkId()));
+                return returnOrders;
+            }
+        }
+        //商品ID
+        if(vagueString.length()==Length.GOODS.getLength()){
+            Map<String,String> data=new HashMap<>(2);
+            data.put("userId",userId);
+            data.put("goodsId",vagueString);
+            if(orderMapper.findOrdersByGoodsIdAndUserId(data)!=null){
+                List<cn.jsnu.css.pojo.Order> orderList=orderMapper.findOrdersByGoodsIdAndUserId(data);
+                markIdList=new ArrayList<>();
+                //获取所有不重复的markId
+                for(cn.jsnu.css.pojo.Order order:orderList){
+                    if(!markIdList.contains(order.getMarkId())){
+                        markIdList.add(order.getMarkId());
+                    }
+                }
+                List<Order> orderVoList=new ArrayList<>();
+                //通过MarkId获取订单vo类，返回
+                for(String markId:markIdList){
+                    orderVoList.add(getOrderVo(markId));
+                }
+                if(orderVoList.size()>0) {
+                    return orderVoList;
+                }
+            }
+        }
+        //通过模糊商品名查询订单
+        List<cn.jsnu.css.pojo.Order> orderList = orderMapper.findOrdersByUserId(userId);
+        //获取所有不重复的markId
+        markIdList=new ArrayList<>();
+        for (cn.jsnu.css.pojo.Order order : orderList) {
+            if (!markIdList.contains(order.getMarkId())) {
+                markIdList.add(order.getMarkId());
+            }
+        }
+        List<Order> orderVoList = new ArrayList<>();
+        //通过MarkId获取订单vo类，返回
+        for (String markId : markIdList) {
+            orderVoList.add(getOrderVo(markId));
+        }
+        List<Order> returnOrders=new ArrayList<>();
+        for(Order order:orderVoList){
+            for(Goods goods:order.getGoodsList()){
+                if(goods.getGoodsName().contains(vagueString)){
+                    returnOrders.add(order);
+                    break;
+                }
+            }
+        }
+        return returnOrders;
     }
 
     /**

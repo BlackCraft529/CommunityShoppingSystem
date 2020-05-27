@@ -81,5 +81,10 @@ public interface OrderMapper {
      */
     List<String> findAllMarkIdByUserIdAndStatus(cn.jsnu.css.pojo.Order order);
 
-
+    /**
+     * 根据商品ID和用户ID查询订单信息
+     * @param data 数据
+     * @return 订单合集
+     */
+    List<Order> findOrdersByGoodsIdAndUserId(Map<String,String> data);
 }

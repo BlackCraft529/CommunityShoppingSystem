@@ -75,5 +75,8 @@
     <select id="findAllMarkIdByUserIdAndStatus" parameterMap="OrderParameterMap" resultType="string">
         select distinct mark_id from eps_orders where user_id=#{userId} and status=#{status};
     </select>
-
+    <!--根据商品ID查询订单-->
+    <select id="findOrdersByGoodsIdAndUserId" parameterType="map" resultMap="OrderResultMap">
+        select * from eps_orders where goods_id=#{goodsId} and user_id=#{userId};
+    </select>
 </mapper>

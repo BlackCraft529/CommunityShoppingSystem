@@ -55,4 +55,12 @@ public interface OrderService {
      * @return 订单合集
      */
     List<Order> findOrdersByUserIdAndStatus(String userId,int status);
+
+    /**
+     * 模糊查询订单 通过订单号、商品名、商品编号 查询订单信息
+     * @param vagueString 字符串 -订单号、商品名(模糊)、商品编号
+     * @param userId 用户ID
+     * @return 订单信息合集
+     */
+    List<Order> findOrderByVagueString(String vagueString,String userId);
 }
