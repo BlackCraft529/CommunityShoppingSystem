@@ -56,40 +56,26 @@
             <div class="form-item">
                 <div class="hd"><h6>收货人信息</h6></div>
                 <div class="bd">
-                    <div addressId="1" class="first-address address current">
-                        <button class="address-item btn address-selected">李广帅</button>
-                        <p class="address-item name">李广帅</p>
-                        <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
-                        <p class="address-item address-phoneNum">134****8799</p>
+                    <div id="${addressList.get(0).addressId}" class=" address current">
+                        <button type="button" class="address-item btn"
+                                onclick="changeAddress('${addressList.get(0).addressId}')">${addressList.get(0).contact}</button>
+                        <p class="address-item name">${addressList.get(0).contact}</p>
+                        <p class="address-item address-content">${addressList.get(0).province} ${addressList.get(0).city} ${addressList.get(0).district} ${addressList.get(0).detailAddress}</p>
+                        <p class="address-item address-phoneNum">${addressList.get(0).phoneNum}</p>
                         <p class="address-item default-address">默认地址</p>
                     </div>
                     <div id="more-address" class="more-address">
-                        <div addressId="2" class=" address">
-                            <button class="address-item btn">李广帅</button>
-                            <p class="address-item name">李广帅</p>
-                            <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
-                            <p class="address-item address-phoneNum">134****8799</p>
-                        </div>
-                        <div addressId="3" class=" address">
-                            <button class="address-item btn">李广帅</button>
-                            <p class="address-item name">李广帅</p>
-                            <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
-                            <p class="address-item address-phoneNum">134****8799</p>
-                        </div>
-                        <div addressId="4" class=" address">
-                            <button class="address-item btn">李广帅</button>
-                            <p class="address-item name">李广帅</p>
-                            <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
-                            <p class="address-item address-phoneNum">134****8799</p>
-                        </div>
-                        <div addressId="5" class=" address">
-                            <button class="address-item btn">李广帅</button>
-                            <p class="address-item name">李广帅</p>
-                            <p class="address-item address-content">江苏 徐州市 铜山经济技术开发区 蟠桃花园三期24号楼4单元101</p>
-                            <p class="address-item address-phoneNum">134****8799</p>
-                        </div>
+                        <c:forEach items="${addressList}" var="address" begin="1">
+                            <div id="${address.addressId}" class=" address">
+                                <button type="button" onclick="changeAddress('${address.addressId}')"
+                                        class="address-item btn">${address.contact}</button>
+                                <p class="address-item name">${address.contact}</p>
+                                <p class="address-item address-content">${address.province} ${address.city} ${address.district} ${address.detailAddress}</p>
+                                <p class="address-item address-phoneNum">${address.phoneNum}</p>
+                            </div>
+                        </c:forEach>
                     </div>
-                    <a href="#" class="show-more-address">更多地址>></a>
+                    <a id="showMoreAddress" class="show-more-address">更多地址>></a>
                 </div>
             </div>
             <div class="form-item">
@@ -111,8 +97,8 @@
                 </div>
             </div>
             <div class="settlement-summary">
-                <p>应付总额：￥202171.40</p>
-                <p>寄送至：江苏 徐州市 金山桥开发区 蟠桃花园东贺A区阳光便利店收货人：李广帅 131****8799</p>
+                <p id="settlement-summary-money">应付总额：￥${money}</p>
+                <p id="settlement-summary-address">寄送至：${addressList.get(0).province} ${addressList.get(0).city} ${addressList.get(0).district} ${addressList.get(0).detailAddress}</p>
             </div>
             <button id="addOrder" class="submit-order">提交订单</button>
         </form>
@@ -190,10 +176,10 @@
     console.log();
     let orderInfo = {
         goodsInfo: {},
-        addressId: $('.address.current')[0].getAttribute('addressId')
+        addressId: '${addressList.get(0).addressId}'
     }
     <c:forEach items="${goodsList}" var="goods">
-        orderInfo.goodsInfo['${goods.goodsId}'] = ${goods.quantity};
+    orderInfo.goodsInfo['${goods.goodsId}'] = ${goods.quantity};
     </c:forEach>
 
     $(() => {
@@ -205,7 +191,7 @@
                 data: JSON.stringify(orderInfo),
                 type: 'post',
                 dataType: 'json',
-                success:(response)=>{
+                success: (response) => {
                     console.log(response);
                     if (response.success) {
                         window.location.href = "<%=path%>/order/orderList";
@@ -215,7 +201,34 @@
             console.log('helloworld');
             return false;
         })
+
+        $('#showMoreAddress').on('click', () => {
+            $('#more-address').fadeIn();
+        })
     });
+
+    function changeAddress(id) {
+        console.log(id);
+        $.ajax({
+            url: '<%=path%>/address/getAddressInfo',
+            data: {'id': id},
+            dataType: 'json',
+            success: (response) => {
+                if (response.success) {
+                    let address = response.address;
+                    let addressString = '寄送至：' + address.province + address.city + address.district + address.detailAddress + ' 收货人：' + address.contact + ' ' + address.phoneNum;
+                    $('#settlement-summary-address').text(addressString);
+
+                    let addressList = $('.address');
+                    for (let i = 0; i < addressList.length; i++) {
+                        $(addressList[i]).attr('class', 'address');
+                    }
+                    $('#' + address.addressId).attr('class', 'address current');
+                    orderInfo['addressId'] = address.addressId;
+                }
+            }
+        })
+    }
 </script>
 </body>
 </html>

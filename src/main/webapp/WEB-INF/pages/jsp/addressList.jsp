@@ -143,7 +143,7 @@
 <div class="shield" id="shield">
     <div class="address-dialog">
         <div class="dialog-title">
-            <span>添加收货地址</span>
+            <span class="dialog-title-con">添加收货地址</span>
             <span class="close" id="close">X</span>
         </div>
         <div class="dialog-con">
@@ -192,14 +192,21 @@
             $('#shield').fadeOut();
         })
         $('#addAddress').on('click', () => {
-            $('#addressForm').setAttribute('action', '<%=path%>/address/add');
-            $('.dialog-title span').text('添加收货地址');
+            $('#addressForm').attr('action', '<%=path%>/address/add');
+            $('.dialog-title-con').text('添加收货地址');
+            $('#contact').val('');
+            $('#province').val('');
+            $('#city').val('');
+            $('#district').val('');
+            $('#detailAddress').val('');
+            $('#phoneNum').val('');
             $('#shield').fadeIn();
         });
         $('.dialog-title span')
     });
 
     function editAddress(id) {
+        $('.dialog-title-con').text('修改收货地址');
         $('#addressForm').attr('action', '<%=path%>/address/update');
         $.ajax({
             url: '<%=path%>/address/getAddressInfo',

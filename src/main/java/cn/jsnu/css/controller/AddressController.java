@@ -44,11 +44,12 @@ public class AddressController {
         return "";
     }
 
-    @RequestMapping("/getAddressInfo")
+    @RequestMapping(value = "/getAddressInfo", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String getAddressInfo(String id) {
         JSONObject jsonObject = new JSONObject();
         try {
+            System.out.println(id);
             Address address = addressService.findAddressByAddressId(id);
             jsonObject.put("success", true);
             jsonObject.put("address", address);
