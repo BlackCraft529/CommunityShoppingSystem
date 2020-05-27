@@ -33,10 +33,13 @@
                     <div class="hd">
                         <ul class="clearfix">
                             <li class="order_type">
-                                <a class="current" href="<%=path%>/order/orderList">全部订单</a><a href="#">代付款</a><a href="#">待收货</a><a href="#">待评价</a>
+                                <a <c:if test="${type eq 0}">class="current"</c:if> href="<%=path%>/order/orderList">全部订单</a>
+                                <a <c:if test="${type eq 1}">class="current"</c:if> href="<%=path%>/order/orderList?status=1">代付款</a>
+                                <a <c:if test="${type eq 2}">class="current"</c:if> href="<%=path%>/order/orderList?status=2">待收货</a>
+                                <a <c:if test="${type eq 3}">class="current"</c:if> href="<%=path%>/order/orderList?status=3">待评价</a>
                             </li>
                             <li class="order_search">
-                                <form action="">
+                                <form action="<%=path%>/order/orderList">
                                     <input id="search_text" name="search_text" placeholder="请输入订单号、商品名、商品编号"
                                            type="text">
                                     <button type="submit"></button>
@@ -65,56 +68,33 @@
                             <div class="order_item clearfix">
                                 <div class="hd">
                                     <ul>
-                                        <li class="create_time">2020-05-20 12:43:22</li>
-                                        <li>订单号:<a href="#">115715933302</a></li>
+                                        <li class="create_time">${order.createTime}</li>
+                                        <li>订单号:<a href="#">${order.orderId}</a></li>
                                     </ul>
                                 </div>
                                 <div class="bd clearfix">
                                     <div class="item order_detail">
-                                        <div class="goods_item clearfix">
-                                            <div class="g_img">
-                                                <a href="#">
-                                                    <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                                </a>
+                                        <c:forEach items="${order.goodsList}" var="goods">
+                                            <div class="goods_item clearfix">
+                                                <div class="g_img">
+                                                    <a href="<%=path%>/goods/goodsDetail?goodsId=${goods.goodsId}">
+                                                        <img alt="" src="${goods.goodsImage}">
+                                                    </a>
+                                                </div>
+                                                <div class="g_name">
+                                                    <a href="<%=path%>/goods/goodsDetail?goodsId=${goods.goodsId}">${goods.goodsName}</a>
+                                                </div>
+                                                <span class="g_num">x${goods.quantity}</span>
                                             </div>
-                                            <div class="g_name">
-                                                <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                    WDR7660千兆 六信号放大器 高速路由</a>
-                                            </div>
-                                            <span class="g_num">x1</span>
-                                        </div>
-                                        <div class="goods_item clearfix">
-                                            <div class="g_img">
-                                                <a href="#">
-                                                    <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="g_name">
-                                                <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                    WDR7660千兆 六信号放大器 高速路由</a>
-                                            </div>
-                                            <span class="g_num">x1</span>
-                                        </div>
-                                        <div class="goods_item clearfix">
-                                            <div class="g_img">
-                                                <a href="#">
-                                                    <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                                </a>
-                                            </div>
-                                            <div class="g_name">
-                                                <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                    WDR7660千兆 六信号放大器 高速路由</a>
-                                            </div>
-                                            <span class="g_num">x1</span>
-                                        </div>
+                                        </c:forEach>
                                     </div>
-                                    <div class="item order_address">李广帅</div>
+                                    <div class="item order_address">${order.address.contact}</div>
                                     <div class="item order_money">
-                                        <p class="money">¥74.03</p>
+                                        <p class="money">¥${order.paymentAmount}</p>
                                         <p class="pay_type">在线支付</p>
                                     </div>
                                     <div class="item order_status">
-                                        <p class="status">已完成</p>
+                                        <p class="status">${order.status}</p>
                                         <a href="#" class="order_detail_link">订单详情</a>
                                     </div>
                                     <div class="item order_operation">
@@ -123,186 +103,6 @@
                                 </div>
                             </div>
                         </c:forEach>
-                        <div class="order_item clearfix">
-                            <div class="hd">
-                                <ul>
-                                    <li class="create_time">2020-05-20 12:43:22</li>
-                                    <li>订单号:<a href="#">115715933302</a></li>
-                                </ul>
-                            </div>
-                            <div class="bd clearfix">
-                                <div class="item order_detail">
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                </div>
-                                <div class="item order_address">李广帅</div>
-                                <div class="item order_money">
-                                    <p class="money">¥74.03</p>
-                                    <p class="pay_type">在线支付</p>
-                                </div>
-                                <div class="item order_status">
-                                    <p class="status">已完成</p>
-                                    <a href="#" class="order_detail_link">订单详情</a>
-                                </div>
-                                <div class="item order_operation">
-                                    <a href="#">查看发票</a><a href="#">评价</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order_item clearfix">
-                            <div class="hd">
-                                <ul>
-                                    <li class="create_time">2020-05-20 12:43:22</li>
-                                    <li>订单号:<a href="#">115715933302</a></li>
-                                </ul>
-                            </div>
-                            <div class="bd clearfix">
-                                <div class="item order_detail">
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                </div>
-                                <div class="item order_address">李广帅</div>
-                                <div class="item order_money">
-                                    <p class="money">¥74.03</p>
-                                    <p class="pay_type">在线支付</p>
-                                </div>
-                                <div class="item order_status">
-                                    <p class="status">已完成</p>
-                                    <a href="#" class="order_detail_link">订单详情</a>
-                                </div>
-                                <div class="item order_operation">
-                                    <a href="#">查看发票</a><a href="#">评价</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="order_item clearfix">
-                            <div class="hd">
-                                <ul>
-                                    <li class="create_time">2020-05-20 12:43:22</li>
-                                    <li>订单号:<a href="#">115715933302</a></li>
-                                </ul>
-                            </div>
-                            <div class="bd clearfix">
-                                <div class="item order_detail">
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                    <div class="goods_item clearfix">
-                                        <div class="g_img">
-                                            <a href="#">
-                                                <img alt="" src="upload/9ecf0b5491ed4aa69c41de609d2ded30.jpg">
-                                            </a>
-                                        </div>
-                                        <div class="g_name">
-                                            <a>TP-LINK双千兆路由器 1900M无线家用5G双频 WDR7660千兆 六信号放大器 高速路由TP-LINK双千兆路由器 1900M无线家用5G双频
-                                                WDR7660千兆 六信号放大器 高速路由</a>
-                                        </div>
-                                        <span class="g_num">x1</span>
-                                    </div>
-                                </div>
-                                <div class="item order_address">李广帅</div>
-                                <div class="item order_money">
-                                    <p class="money">¥74.03</p>
-                                    <p class="pay_type">在线支付</p>
-                                </div>
-                                <div class="item order_status">
-                                    <p class="status">已完成</p>
-                                    <a href="#" class="order_detail_link">订单详情</a>
-                                </div>
-                                <div class="item order_operation">
-                                    <a href="#">查看发票</a><a href="#">评价</a>
-                                </div>
-                            </div>
-                        </div>
                     </c:if>
                 </div>
             </div>

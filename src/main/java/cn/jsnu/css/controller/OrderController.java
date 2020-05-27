@@ -1,10 +1,12 @@
 package cn.jsnu.css.controller;
 
+import cn.jsnu.css.pojo.Address;
 import cn.jsnu.css.pojo.Goods;
-import cn.jsnu.css.pojo.Order;
 import cn.jsnu.css.pojo.User;
+import cn.jsnu.css.service.AddressService;
 import cn.jsnu.css.service.GoodService;
 import cn.jsnu.css.service.OrderService;
+import cn.jsnu.css.vo.Order;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,18 +43,28 @@ public class OrderController {
     @Qualifier("GoodServiceImpl")
     private GoodService goodService;
 
+    @Autowired
+    @Qualifier("AddressServiceImpl")
+    private AddressService addressService;
+
 
     @RequestMapping("/orderList")
-    public String orderList(Integer status, Model model, HttpSession session) {
+    public String orderList(Integer status, String search_text, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         String userId = user.getUserId();
         List<Order> orderList;
         if (status != null) {
-            //orderList = orderService.findOrdersByUserIdAndStatus(userId, status);
-        } else {
-            //orderList = orderService.findOrdersByUserId(userId);
+            orderList = orderService.findOrdersByUserIdAndStatus(userId, status);
+            model.addAttribute("type", status);
         }
-        //model.addAttribute("orderList", orderList);
+        if (search_text != null) {
+            orderList = new ArrayList<>();
+            orderList.add(orderService.findOrderById(search_text));
+        } else {
+            orderList = orderService.findOrdersByUserId(userId);
+            model.addAttribute("type", 0);
+        }
+        model.addAttribute("orderList", orderList);
         return "orderList";
     }
 
@@ -69,6 +81,7 @@ public class OrderController {
             }
             json.put("success", true);
         } catch (Exception e) {
+            e.printStackTrace();
             json.put("success", false);
         }
         session.setAttribute("goodsList", goods);
@@ -77,23 +90,33 @@ public class OrderController {
 
     @RequestMapping("/settlementPage")
     public String settlementPage(Model model, HttpSession session) {
-        List<Goods> goods = (List<Goods>) session.getAttribute("goodsList");
-        if (goods == null) {
+        List<Goods> goodsList = (List<Goods>) session.getAttribute("goodsList");
+        if (goodsList == null) {
             return "/index";
         }
-        model.addAttribute("goodsList", goods);
+        Double money = 0.0;
+        for (Goods goods : goodsList) {
+            money += goods.getGoodsSalesPrice() * goods.getQuantity();
+        }
+        User user = (User) session.getAttribute("user");
+        List<Address> addressList = addressService.findAddressByUserId(user.getUserId());
+        model.addAttribute("money", money);
+        model.addAttribute("goodsList", goodsList);
+        model.addAttribute("addressList", addressList);
         return "settlementPage";
     }
 
     @RequestMapping("/addOrder")
     @ResponseBody
     public String addOrder(HttpSession session, HttpServletRequest request, @RequestBody String param) {
+        System.out.println(param);
         JSONObject jsonObject = new JSONObject();
         try {
             User user = (User) session.getAttribute("user");
             orderService.addOrder(param, user.getUserId());
             jsonObject.put("success", true);
         } catch (Exception e) {
+            e.printStackTrace();
             jsonObject.put("success", false);
         }
         return jsonObject.toString();

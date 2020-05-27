@@ -59,7 +59,13 @@ public class TestGoodsService {
     void findAllGoods() {}
 
 
-    void findGoodsByCategory(String goodsCate) {}
+    @Test
+    public void findGoodsByCategory() {
+        List<Goods> goodsList = goodService.findGoodsByCategory("dbeed826550f4d3d82ea9bb27478c381");
+        for (Goods goods :goodsList) {
+            System.out.println(goods);
+        }
+    }
 
     @Test
     public void findGoodsByName() {
