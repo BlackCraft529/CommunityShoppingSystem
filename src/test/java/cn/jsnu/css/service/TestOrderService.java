@@ -1,6 +1,7 @@
 package cn.jsnu.css.service;
 
 import cn.jsnu.css.pojo.Goods;
+import cn.jsnu.css.utils.MD5Util;
 import cn.jsnu.css.vo.Order;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,5 +68,10 @@ public class TestOrderService {
     public void testFindByVagueString(){
         //臻品 520玫瑰花束 DIY花材包 39.9元起 小束花礼 云南礼物 【相遇】粉玫瑰混搭花材（玫瑰+康乃馨+叶上黄金）
         System.out.println(orderService.findOrderByVagueString("【相遇】粉玫瑰混搭花材（","762e98daddcd4aa080e8348a5139be82"));
+    }
+
+    @Test
+    public void getMD5Password(){
+        System.out.println(MD5Util.getSaltMD5("15152063727"));
     }
 }

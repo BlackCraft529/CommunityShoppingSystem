@@ -23,10 +23,13 @@ public class UserServiceImpl implements UserService {
      * 新增一个用户
      * @param phoneNum 用户手机号
      * @param password 用户密码
-     * @return 成功条数 1
+     * @return 成功条数 1/0
      */
     @Override
     public int addUser(String phoneNum, String password) {
+        if(checkPhoneNumExist(phoneNum)){
+            return 0;
+        }
         //确定UUID
         String UUID= RandomId.getUUID().replaceAll("-","");
         while(userMapper.findUserById(UUID)!=null){
@@ -64,7 +67,6 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public void updateUser(User user) {
-        user.setPassword(MD5Util.getSaltMD5(user.getPassword()));
         userMapper.updateUser(user);
     }
 
@@ -136,7 +138,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Boolean checkPhoneNumExist(String phoneNum) {
-        return userMapper.checkPhoneNumExist(phoneNum)==null?false:true;
+        return userMapper.checkPhoneNumExist(phoneNum) != null;
     }
 
     /**
@@ -146,7 +148,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Boolean checkEmailExist(String email) {
-        return userMapper.checkEmailExist(email)==null?false:true;
+        return userMapper.checkEmailExist(email) != null;
     }
 
     /**
