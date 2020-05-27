@@ -18,7 +18,6 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
     @Autowired
     public UserMapper userMapper;
-    public void setUserMapper(UserMapper userMapper) { this.userMapper=userMapper; }
 
     /**
      * 新增一个用户

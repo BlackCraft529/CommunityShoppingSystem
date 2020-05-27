@@ -16,7 +16,6 @@ import java.util.Map;
 public class AddressServiceImpl implements AddressService {
     @Autowired
     private AddressMapper addressMapper;
-    public void setAddressMapper(AddressMapper addressMapper){this.addressMapper=addressMapper;}
     /**
      * 新增一个地址
      *

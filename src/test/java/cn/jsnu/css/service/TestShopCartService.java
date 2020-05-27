@@ -1,6 +1,7 @@
 package cn.jsnu.css.service;
 
 import cn.jsnu.css.pojo.Goods;
+import cn.jsnu.css.pojo.ShopCart;
 import cn.jsnu.css.utils.RandomId;
 import org.junit.Test;
 import org.junit.runner.RunWith;

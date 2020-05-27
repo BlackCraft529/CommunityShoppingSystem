@@ -9,27 +9,15 @@
     <!--扫描service下的包-->
     <context:component-scan base-package="cn.jsnu.css.service"/>
     <!--Users-->
-    <bean id="UserServiceImpl" class="cn.jsnu.css.service.Impl.UserServiceImpl">
-        <property name="userMapper" ref="userMapper"/>
-    </bean>
+    <bean id="UserServiceImpl" class="cn.jsnu.css.service.Impl.UserServiceImpl"/>
     <!--Goods-->
-    <bean id="GoodServiceImpl" class="cn.jsnu.css.service.Impl.GoodServiceImpl">
-        <property name="goodMapper" ref="goodMapper"/>
-    </bean>
+    <bean id="GoodServiceImpl" class="cn.jsnu.css.service.Impl.GoodServiceImpl"/>
     <!--Order-->
-    <bean id="OrderServiceImpl" class="cn.jsnu.css.service.Impl.OrderServiceImpl">
-        <property name="orderMapper" ref="orderMapper"/>
-    </bean>
+    <bean id="OrderServiceImpl" class="cn.jsnu.css.service.Impl.OrderServiceImpl"/>
     <!--Category-->
-    <bean id="CategoryServiceImpl" class="cn.jsnu.css.service.Impl.CategoryServiceImpl">
-        <property name="categoryMapper" ref="categoryMapper"/>
-    </bean>
+    <bean id="CategoryServiceImpl" class="cn.jsnu.css.service.Impl.CategoryServiceImpl"/>
     <!--ShopCart-->
-    <bean id="ShopCartServiceImpl" class="cn.jsnu.css.service.Impl.ShopCartServiceImpl">
-        <property name="shopCartMapper" ref="shopCartMapper"/>
-    </bean>
+    <bean id="ShopCartServiceImpl" class="cn.jsnu.css.service.Impl.ShopCartServiceImpl"/>
     <!--Address-->
-    <bean id="AddressServiceImpl" class="cn.jsnu.css.service.Impl.AddressServiceImpl">
-        <property name="addressMapper" ref="addressMapper"/>
-    </bean>
+    <bean id="AddressServiceImpl" class="cn.jsnu.css.service.Impl.AddressServiceImpl"/>
 </beans>

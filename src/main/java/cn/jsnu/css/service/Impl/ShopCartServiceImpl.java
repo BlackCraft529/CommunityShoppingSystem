@@ -3,6 +3,7 @@ package cn.jsnu.css.service.Impl;
 import cn.jsnu.css.dao.ShopCartMapper;
 import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.pojo.ShopCart;
+import cn.jsnu.css.service.GoodService;
 import cn.jsnu.css.service.ShopCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.HashMap;
@@ -16,7 +17,6 @@ import java.util.Map;
 public class ShopCartServiceImpl implements ShopCartService {
     @Autowired
     private ShopCartMapper shopCartMapper;
-    public void setShopCartMapper (ShopCartMapper shopCartMapper){this.shopCartMapper=shopCartMapper;}
     /**
      * 新增一个购物车记录
      * @param userId   用户ID
@@ -44,7 +44,7 @@ public class ShopCartServiceImpl implements ShopCartService {
      * @deprecated
      */
     @Override
-    public Goods findShopCartByUserIdAndGoodsId(String userId, String goodsId) {
+    public ShopCart findShopCartByUserIdAndGoodsId(String userId, String goodsId) {
         Map<String , String> date=new HashMap<>(2);
         date.put("userId",userId);
         date.put("goodsId",goodsId);

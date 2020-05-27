@@ -31,8 +31,8 @@
     </resultMap>
     <!--新增一个订单-->
     <insert id="addOrder" parameterMap="OrderParameterMap">
-        insert into eps_orders (order_id,goods_id,user_id,quantity,settlement_amount,payment_amount,create_time,status,mark_id)
-            values (#{orderId},#{goodsId},#{userId},#{quantity},#{settlementAmount},#{paymentAmount},#{createTime},#{status},#{markId});
+        insert into eps_orders (order_id,goods_id,user_id,quantity,settlement_amount,payment_amount,create_time,status,mark_id,address_id)
+            values (#{orderId},#{goodsId},#{userId},#{quantity},#{settlementAmount},#{paymentAmount},#{createTime},#{status},#{markId},#{addressId});
     </insert>
     <!--删除一个订单-->
     <delete id="deleteOrderById" parameterType="string">

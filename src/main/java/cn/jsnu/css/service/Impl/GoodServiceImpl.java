@@ -14,7 +14,6 @@ import java.util.List;
 public class GoodServiceImpl implements GoodService {
     @Autowired
     private GoodMapper goodMapper;
-    public void setGoodMapper(GoodMapper goodMapper){this.goodMapper=goodMapper;}
 
     /**
      * 新增一个商品

@@ -19,19 +19,16 @@ import java.util.*;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     private OrderMapper orderMapper;
-    public void setOrderMapper(OrderMapper orderMapper){this.orderMapper=orderMapper;}
 
     @Autowired
     private ShopCartMapper shopCartMapper;
-    public void setShopCartMapper(ShopCartMapper shopCartMapper){this.shopCartMapper=shopCartMapper;}
 
     @Autowired
     private GoodMapper goodMapper;
-    public void setGoodMapper(GoodMapper goodMapper){this.goodMapper=goodMapper;}
 
     @Autowired
     private AddressMapper addressMapper;
-    public void setAddressMapper(AddressMapper addressMapper){this.addressMapper=addressMapper;}
+
     /**
      * 新建一个订单
      * @param orderInfo 订单Json字符串
@@ -49,13 +46,17 @@ public class OrderServiceImpl implements OrderService {
             while(findOrderById(orderId)!=null){
                 orderId= RandomId.getRandomOrderId();
             }
+            int goodsCount=goodsInfo.get(key);
+            Goods goods=goodMapper.findGoodsById(key);
+            double settlementAmount=goods.getGoodsPrice()*goodsCount;
+            double paymentAmount=goods.getGoodsSalesPrice()*goodsCount;
             cn.jsnu.css.pojo.Order order= new cn.jsnu.css.pojo.Order();
             order.setOrderId(orderId);
             order.setGoodsId(key);
             order.setUserId(userId);
-            order.setQuantity(goodsInfo.get(key));
-            order.setSettlementAmount(0D);
-            order.setPaymentAmount(0D);
+            order.setQuantity(goodsCount);
+            order.setSettlementAmount(settlementAmount);
+            order.setPaymentAmount(paymentAmount);
             order.setCreateTime(new Date());
             order.setStatus(1);
             order.setMarkId(markId);

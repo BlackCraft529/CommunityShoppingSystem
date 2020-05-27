@@ -14,7 +14,6 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
-    public void setCategoryMapper(CategoryMapper categoryMapper){this.categoryMapper=categoryMapper;}
 
     /**
      * 新增一个分类

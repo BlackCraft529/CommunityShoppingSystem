@@ -22,7 +22,7 @@ public interface ShopCartMapper {
      * @param date 数据
      * @return 购物车商品合集
      */
-    Goods findShopCartByUserIdAndGoodsId(Map<String ,String> date);
+    ShopCart findShopCartByUserIdAndGoodsId(Map<String ,String> date);
 
     /**
      * 通过用户ID和商品ID删除记录
