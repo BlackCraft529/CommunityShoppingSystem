@@ -53,4 +53,13 @@ public class TestOrderService {
     public void testUpdateStatus(){
         orderService.updateOrderStatus("M4W307iA7NuH",2);
     }
+
+    @Test
+    public void testFindOrdersByUserId(){
+        String userId="762e98daddcd4aa080e8348a5139be82";
+        for(Order order:orderService.findOrdersByUserId(userId)){
+            for(Goods goods:order.getGoodsList())
+                System.out.println(goods.getQuantity());
+        }
+    }
 }

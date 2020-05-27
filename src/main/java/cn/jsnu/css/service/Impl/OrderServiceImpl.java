@@ -167,7 +167,9 @@ public class OrderServiceImpl implements OrderService {
         List<Goods> goodsList=new ArrayList<>();
         for(cn.jsnu.css.pojo.Order order:orders){
             orderVo=new Order(order);
-            goodsList.add(goodMapper.findGoodsById(order.getGoodsId()));
+            Goods goods=goodMapper.findGoodsById(order.getGoodsId());
+            goods.setQuantity(orderMapper.findOrderById(order.getOrderId()).getQuantity());
+            goodsList.add(goods);
             orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
         }
         orderVo.setGoodsList(goodsList);
