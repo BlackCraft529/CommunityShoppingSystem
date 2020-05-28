@@ -68,7 +68,6 @@ public class AddressController {
 
     @RequestMapping(value = "/update", produces = "text/html;charset=UTF-8")
     public String update(Address address, HttpSession session) {
-        System.out.println(address);
         try {
             User user = (User) session.getAttribute("user");
             address.setUserId(user.getUserId());

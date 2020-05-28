@@ -53,7 +53,6 @@ public class OrderController {
         User user = (User) session.getAttribute("user");
         String userId = user.getUserId();
         List<Order> orderList;
-        System.out.println(status);
         if (status != null) {
             orderList = orderService.findOrdersByUserIdAndStatus(userId, status);
             model.addAttribute("type", status);
@@ -109,7 +108,6 @@ public class OrderController {
     @RequestMapping("/addOrder")
     @ResponseBody
     public String addOrder(HttpSession session, HttpServletRequest request, @RequestBody String param) {
-        System.out.println(param);
         JSONObject jsonObject = new JSONObject();
         try {
             User user = (User) session.getAttribute("user");

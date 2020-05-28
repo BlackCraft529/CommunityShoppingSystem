@@ -35,7 +35,6 @@ public class UserController {
         User user = userService.findUserByPhoneNumAndPassword(phoneNum, password);
         if (user != null) {
             session.setAttribute("user", user);
-            System.out.println(user);
             return "redirect:/index";
         } else {
             return "login";
@@ -60,7 +59,6 @@ public class UserController {
     public String info(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
         User newUser = userService.findUserById(user.getUserId());
-        System.out.println(newUser);
         model.addAttribute("user", newUser);
         return "/userInfo";
     }
@@ -70,7 +68,6 @@ public class UserController {
         User user = (User) session.getAttribute("user");
         user.setPhoneNum(phoneNum);
         user.setNickname(nickname);
-        System.out.println(user);
         userService.updateUser(user);
         return "redirect:/user/info";
     }
