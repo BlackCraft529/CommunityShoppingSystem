@@ -31,7 +31,7 @@
             <div class="content-address">
                 <div class="hd clearfix">
                     <button id="addAddress">创建新地址</button>
-                    <p>您已经创建3个地址，最多可以创建25个地址</p>
+                    <p>您已经创建${addressList.size()}个地址，最多可以创建25个地址</p>
                 </div>
                 <div class="bd">
                     <c:if test="${empty addressList}">

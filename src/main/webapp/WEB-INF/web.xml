@@ -44,6 +44,10 @@
         <filter-name>LoginFilter</filter-name>
         <url-pattern>/address/list</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/user/info</url-pattern>
+    </filter-mapping>
 
     <!--过滤器-乱码问题-->
     <filter>
