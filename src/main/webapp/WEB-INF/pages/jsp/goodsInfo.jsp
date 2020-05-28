@@ -66,7 +66,7 @@
                             <a id="add" class="add">+</a>
                             <a id="reduce" class="reduce not-reduce">-</a>
                         </div>
-                        <a id="addCart" href="#" class="addcar">加入购物车</a>
+                        <a id="addCart" class="addcar">加入购物车</a>
                     </div>
                 </div>
             </div>
@@ -150,6 +150,27 @@
 <script src="<%=path%>/js/common.js"></script>
 <script>
     $(() => {
+        $('#addCart').on('click', () => {
+            let goodsId = $('#goodsId').text();
+            let quantity = parseInt($('#quantity').val());
+            $.ajax({
+                url: '<%=path%>/cart/addToShopCart',
+                data: {
+                    'goodsId': goodsId,
+                    'quantity': parseInt(quantity)
+                },
+                type:'post',
+                dataType:'json',
+                success: (response) => {
+                    if (response.success) {
+                        showAlert("加入购物车成功！！！")
+                        /*$(location).attr('href', '<%=path%>/cart/shopCar');*/
+                    } else {
+                        $(location).attr('href', '<%=path%>/user/toLogin');
+                    }
+                }
+            });
+        });
 
         $('#add').on('click', () => {
             $('#quantity').val(parseInt($('#quantity').val()) + 1);
@@ -157,7 +178,7 @@
 
         $('#reduce').on('click', () => {
             $('#quantity').val(parseInt($('#quantity').val()) - 1);
-            if (parseInt($('#quantity').val()) <= 0){
+            if (parseInt($('#quantity').val()) <= 0) {
                 $('#quantity').val(1);
                 $('#reduce').attr('class', 'reduce not-reduce');
             } else {
@@ -165,21 +186,7 @@
             }
         })
 
-        $('#addCart').on('click', () => {
-            let goodsId = $('#goodsId').text();
-            let quantity = parseInt($('#quantity').val());
-            $.getJSON('<%=path%>/cart/addToShopCart', {
-                'goodsId': goodsId,
-                'quantity': quantity
-            }, (response) => {
-                if (response.status === true) {
-                    console.log("加入购物车成功!!!")
-                    $(location).attr('href', '<%=path%>/cart/shopCar');
-                } else if (response.reason === 'notLogin') {
-                    $(location).attr('href', '<%=path%>/user/toLogin');
-                }
-            })
-        });
+
     });
 </script>
 </body>

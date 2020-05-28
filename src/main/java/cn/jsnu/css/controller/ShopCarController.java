@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -51,15 +52,19 @@ public class ShopCarController {
      * @return 添加成功
      */
     @RequestMapping("/addToShopCart")
-    public @ResponseBody String addGoods(String goodsId, Integer quantity, HttpSession session) {
+    @ResponseBody
+    public String addGoods(@RequestParam("goodsId") String goodsId, @RequestParam("quantity") Integer quantity, HttpSession session) {
         User user = (User) session.getAttribute("user");
         JSONObject json = new JSONObject();
-        if (user != null) {
-            shopCartService.addShopCart(user.getUserId(), goodsId, quantity);
-            json.put("status", true);
-        } else {
-            json.put("status", false);
-            json.put("reason", "notLogin");
+        try {
+            if (user != null) {
+                shopCartService.addShopCart(user.getUserId(), goodsId, quantity);
+                json.put("success", true);
+            } else {
+                json.put("success", false);
+            }
+        } catch (Exception e) {
+            json.put("success", false);
         }
         return json.toString();
     }
