@@ -78,7 +78,9 @@
             </div>
             <div class="cart-list clearfix">
                 <c:if test="${empty goods}">
-                    购物车暂无商品,快去买买买～
+                    <div class="none_list">
+                        <p>购物车暂无商品,快去买买买～</p>
+                    </div>
                 </c:if>
                 <c:if test="${!empty goods}">
                     <c:forEach items="${goods}" var="item" step="1">
