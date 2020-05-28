@@ -1,6 +1,7 @@
 package cn.jsnu.css.controller;
 
 import cn.jsnu.css.pojo.Category;
+import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.service.CategoryService;
 import cn.jsnu.css.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,10 @@ public class IndexController {
     @RequestMapping("/index")
     public String index(HttpSession session, Model model) {
         List<Category> categories = categoryService.findAllCategories();
+        List<Goods> newsList = goodService.findNewestGoods(8);
+        List<Goods> hotsList = goodService.findHotGoods(8);
+        model.addAttribute("hotsList", hotsList);
+        model.addAttribute("newsList", newsList);
         model.addAttribute("categories", categories);
         return "index";
     }

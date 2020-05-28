@@ -29,7 +29,7 @@
     <div class="w clearfix">
         <c:forEach items="${goods}" var="item" step="1">
             <div class="goods-item">
-                <a href="<%=path%>/goods/goodsDetail?goodsId=${item.goodsId}">
+                <a target="_blank" href="<%=path%>/goods/goodsDetail?goodsId=${item.goodsId}">
                     <img src="${item.goodsImage}" alt="">
                     <h5>${item.goodsName}</h5>
                     <p class="price"><i class="new-price">¥${item.goodsSalesPrice}</i>&nbsp;<del>￥${item.goodsPrice}</del></p>

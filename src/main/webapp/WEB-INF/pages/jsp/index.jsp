@@ -28,14 +28,14 @@
             <div class="new_goods_box clearfix">
                 <h3 class="new_goods_title">最新商品</h3>
                 <div class="new_goods">
-                    <c:forEach items="{1,2,3,4,5,6,7,8}" step="1">
+                    <c:forEach items="${newsList}" var="goods">
                         <div class="goods">
-                            <a href="#"><img alt="" class="goods_img"
-                                             src="<%=path%>/upload/e5adbeeb36534140b50c327f6fd71a6b.jpg"></a>
-                            <p class="goods_name">小米4 2GB内存版 白色 移动4G</p>
-                            <p class="new_price">优惠价：<span>￥1299.0</span></p>
+                            <a target="_blank" href="<%=path%>/goods/goodsDetail?goodsId=${goods.goodsId}"><img alt="" class="goods_img"
+                                             src="${goods.goodsImage}"></a>
+                            <p class="goods_name">${goods.goodsName}</p>
+                            <p class="new_price">优惠价：<span>￥${goods.goodsSalesPrice}</span></p>
                             <p class="old_price">市场价：
-                                <del>￥1300.0</del>
+                                <del>￥${goods.goodsPrice}</del>
                             </p>
                         </div>
                     </c:forEach>
@@ -45,12 +45,12 @@
         <div class="side_bar">
             <h3 class="hot_goods_title">最热商品</h3>
             <div class="hot_goods_box">
-                <c:forEach items="{1,2,3,4,5,6,7,8}" step="1">
+                <c:forEach items="${hotsList}" var="goods">
                     <div class="hot_goods">
-                        <a href="#"><img alt="mi4" class="goods_img"
-                                         src="<%=path%>/upload/e5adbeeb36534140b50c327f6fd71a6b.jpg"></a>
-                        <p class="goods_name">小米4 2GB内存</p>
-                        <p class="new_price">￥1299.0</p>
+                        <a target="_blank" href="<%=path%>/goods/goodsDetail?goodsId=${goods.goodsId}"><img alt="mi4" class="goods_img"
+                                         src="${goods.goodsImage}"></a>
+                        <p class="goods_name">${goods.goodsName}</p>
+                        <p class="new_price">￥${goods.goodsSalesPrice}</p>
                     </div>
                 </c:forEach>
             </div>

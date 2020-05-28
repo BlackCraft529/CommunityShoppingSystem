@@ -18,10 +18,10 @@
             </h1>
             <div class="top_right">
                 <ul class="system_link clearfix">
-                    <li><a href="<%=path%>/user/info">会员中心</a></li>
-                    <li><a href="<%=path%>/order/orderList">我的订单</a></li>
-                    <li><a href="#">后台管理</a></li>
-                    <li><a href="#">使用帮助</a></li>
+                    <li><a target="_blank" href="<%=path%>/user/info">会员中心</a></li>
+                    <li><a target="_blank" href="<%=path%>/order/orderList">我的订单</a></li>
+                    <li><a target="_blank" href="#">后台管理</a></li>
+                    <li><a target="_blank" href="#">使用帮助</a></li>
                 </ul>
                 <p class="user_info">
                     <!---->
