@@ -81,4 +81,18 @@ public interface GoodService {
      * @return 商品集合
      */
     List<Goods> findGoodsByName(String goodsName);
+
+    /**
+     * 查找最新的商品
+     * @param count 查找条数
+     * @return 商品合集
+     */
+    List<Goods> findNewestGoods(int count);
+
+    /**
+     * 查找销量最多的商品
+     * @param count 查找条数
+     * @return 商品合集
+     */
+    List<Goods> findHotGoods(int count);
 }

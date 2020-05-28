@@ -77,4 +77,12 @@
     <select id="findGoodsByName" parameterType="string" resultMap="GoodsResultMap">
         select * from eps_goods where goods_name like #{goodsName};
     </select>
+    <!--查找最新商品-->
+    <select id="findNewestGoods" parameterType="_int" resultMap="GoodsResultMap">
+        select * from eps_goods order by goods_create_time desc limit #{count};
+    </select>
+    <!--查找最热商品-->
+    <select id="findHotGoods" parameterType="_int" resultMap="GoodsResultMap">
+        select * from eps_goods order by goods_sales desc limit #{count};
+    </select>
 </mapper>
