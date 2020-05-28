@@ -12,6 +12,7 @@ import java.util.UUID;
 public class RandomId {
     /**
      * 获取指定长度随机字符串
+     *
      * @param length 长度
      * @return 随机字符串
      */
@@ -41,6 +42,7 @@ public class RandomId {
 
     /**
      * 获取随机UUID
+     *
      * @return 转换为String返回
      */
     public static String getUUID(){
@@ -49,6 +51,7 @@ public class RandomId {
 
     /**
      * 获取一个随机昵称
+     *
      * @param phoneNum 用户ID
      * @return 随机ID：手机号-随机字符5个
      */
@@ -58,6 +61,7 @@ public class RandomId {
 
     /**
      * 获取一个随机的商品ID
+     *
      * @return 随机商品ID
      */
     public static String getRandomGoodId(){
@@ -66,24 +70,28 @@ public class RandomId {
 
     /**
      * 获取一个随机分类ID
+     *
      * @return 随机分类ID
      */
     public static String getRandomCategoryId(){return getRandomString(Length.CATEGORY.getLength());}
 
     /**
      * 获取一个随机订单号
+     *
      * @return 订单号
      */
     public static String getRandomOrderId(){return getRandomString(Length.ORDER.getLength());}
 
     /**
      * 获取随机标识符ID-Order用
+     *
      * @return 标识符ID25位
      */
     public static String getRandomMarkId(){return  getRandomString(Length.MARK.getLength());}
 
     /**
      * 获取一个随机地址ID
+     *
      * @return 随机地址ID
      */
     public static String getRandomAddressId(){return getRandomString(Length.ADDRESS.getLength());}

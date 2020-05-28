@@ -10,6 +10,7 @@ import java.util.List;
 public interface GoodMapper {
     /**
      * 添加商品
+     *
      * @param goods 商品
      * @return 添加条数
      */
@@ -17,6 +18,7 @@ public interface GoodMapper {
 
     /**
      * 通过商品ID获取商品
+     *
      * @param goodsId 商品ID
      * @return 商品
      */
@@ -24,48 +26,56 @@ public interface GoodMapper {
 
     /**
      * 删除商品信息
+     *
      * @param goodsId 商品ID
      */
     void deleteGoodsById(String goodsId);
 
     /**
      * 更新商品信息
+     *
      * @param goods 商品
      */
     void updateGoods(Goods goods);
 
     /**
      * 更新商品价格
+     *
      * @param goods 商品
      */
     void updateGoodsPrice(Goods goods);
 
     /**
      * 更新商品售价
+     *
      * @param goods 商品
      */
     void updateGoodsSalesPrice(Goods goods);
 
     /**
      * 更新商品剩余数量
+     *
      * @param goods 商品
      */
     void updateGoodsRemain(Goods goods);
 
     /**
      * 更新商品图片链接
+     *
      * @param goods 商品
      */
     void updateGoodsImage(Goods goods);
 
     /**
      * 查找所有商品信息
+     *
      * @return 商品集合
      */
     List<Goods> findAllGoods();
 
     /**
      * 根据分类寻找商品
+     *
      * @param goodsCate 商品分类
      * @return 分类商品集合
      */
@@ -73,6 +83,7 @@ public interface GoodMapper {
 
     /**
      * 根据商品名查找- 模糊查询
+     *
      * @param goodsName 商品名
      * @return 商品集合
      */
@@ -80,6 +91,7 @@ public interface GoodMapper {
 
     /**
      * 查找最新的商品
+     *
      * @param count 查找条数
      * @return 商品合集
      */
@@ -87,6 +99,7 @@ public interface GoodMapper {
 
     /**
      * 查找销量最多的商品
+     *
      * @param count 查找条数
      * @return 商品合集
      */

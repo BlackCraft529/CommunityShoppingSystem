@@ -110,4 +110,10 @@ public interface AddressService {
      * @return 地址合集
      */
     List<Address> findAddressByContact(String contact);
+
+    /**
+     * 通过地址ID删除地址
+     * @param addressId 地址ID
+     */
+    void deleteAddressByAddressId(String addressId);
 }

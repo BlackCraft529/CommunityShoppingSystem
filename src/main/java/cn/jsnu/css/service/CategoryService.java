@@ -10,6 +10,7 @@ import java.util.List;
 public interface CategoryService {
     /**
      * 新增商品
+     *
      * @param cateName 商品名称
      * @param cateLevel 分类等级
      * @param superCate 上层分类ID
@@ -18,6 +19,7 @@ public interface CategoryService {
 
     /**
      * 根据ID查找分类
+     *
      * @param categoryId 分类ID
      * @return 分类
      */
@@ -25,24 +27,28 @@ public interface CategoryService {
 
     /**
      * 删除一个分类
+     *
      * @param categoryId 分类ID
      */
     void deleteCategoryById(String categoryId);
 
     /**
      * 更新分类信息
+     *
      * @param category 分类
      */
     void updateCategoryById(Category category);
 
     /**
      * 查找所有分类信息
+     *
      * @return 分类合集
      */
     List<Category> findAllCategories();
 
     /**
      * 根据分类层级查找分类
+     *
      * @param cateLevel 等级
      * @return 分类集合
      */

@@ -81,4 +81,8 @@
         update eps_address set user_id=#{userId},province=#{province},city=#{city},district=#{district},detail_address=#{detailAddress},contact=#{contact},phone_num=#{phoneNum}
             where id=#{addressId};
     </update>
+    <!--根据地址ID删除地址-->
+    <delete id="deleteAddressByAddressId" parameterType="string">
+        delete from eps_address where id=#{addressId};
+    </delete>
 </mapper>

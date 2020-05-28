@@ -10,6 +10,7 @@ import java.util.List;
 public interface GoodService {
     /**
      * 新增一个商品
+     *
      * @param goods 商品
      * @return 影响条数
      */
@@ -17,6 +18,7 @@ public interface GoodService {
 
     /**
      * 通过商品ID获取商品
+     *
      * @param goodsId 商品ID
      * @return 商品
      */
@@ -24,18 +26,21 @@ public interface GoodService {
 
     /**
      * 根据商品ID删除商品
+     *
      * @param goodsId 商品ID
      */
     void deleteGoodsById(String goodsId);
 
     /**
      * 更新商品信息
+     *
      * @param goods 商品
      */
     void updateGoods(Goods goods);
 
     /**
      * 更新商品价格
+     *
      * @param goodsId 商品ID
      * @param goodsPrice 商品价格
      */
@@ -43,6 +48,7 @@ public interface GoodService {
 
     /**
      * 更新商品售价
+     *
      * @param goodsId 商品ID
      * @param goodsSalesPrice 商品售价
      */
@@ -50,6 +56,7 @@ public interface GoodService {
 
     /**
      * 更新商品剩余数量
+     *
      * @param goodsId 商品
      * @param goodsRemain 商品库存
      */
@@ -57,6 +64,7 @@ public interface GoodService {
 
     /**
      * 更新商品图片链接
+     *
      * @param goodsId 商品ID
      * @param goodsImage 商品图片
      */
@@ -64,12 +72,14 @@ public interface GoodService {
 
     /**
      * 查找所有商品
+     *
      * @return 商品集合
      */
     List<Goods> findAllGoods();
 
     /**
      * 根据分类寻找商品
+     *
      * @param goodsCate 商品分类
      * @return 分类商品集合
      */
@@ -77,6 +87,7 @@ public interface GoodService {
 
     /**
      * 根据商品名查找- 模糊查询
+     *
      * @param goodsName 商品名
      * @return 商品集合
      */
@@ -84,6 +95,7 @@ public interface GoodService {
 
     /**
      * 查找最新的商品
+     *
      * @param count 查找条数
      * @return 商品合集
      */
@@ -91,6 +103,7 @@ public interface GoodService {
 
     /**
      * 查找销量最多的商品
+     *
      * @param count 查找条数
      * @return 商品合集
      */

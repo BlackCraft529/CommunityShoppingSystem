@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 新增一个用户
+     *
      * @param phoneNum 用户手机号
      * @param password 用户密码
      * @return 成功条数 1/0
@@ -44,6 +45,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 查找一个用户
+     *
      * @param id 用户ID
      * @return 用户
      */
@@ -54,6 +56,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 删除一个用户
+     *
      * @param id 用户ID
      */
     @Override
@@ -63,6 +66,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 更新用户数据
+     *
      * @param user 用户类
      */
     @Override
@@ -72,6 +76,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 修改用户昵称
+     *
      * @param id 用户UUID
      * @param nickname 用户昵称
      */
@@ -85,6 +90,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 更新用户密码
+     *
      * @param id 用户ID
      * @param password 密码
      */
@@ -97,6 +103,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 更新用户邮箱
+     *
      * @param id 用户ID
      * @param email 邮箱
      */
@@ -109,6 +116,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 更新用户电话号
+     *
      * @param id 用户ID
      * @param phoneNum 电话
      */
@@ -121,6 +129,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 更新用户头像连接
+     *
      * @param id 用户ID
      * @param avatar 用户头像连接
      */
@@ -133,6 +142,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 查找用户是否存在
+     *
      * @param phoneNum 手机号
      * @return 是否存在
      */
@@ -143,6 +153,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 查找用户邮箱是否存在
+     *
      * @param email 邮箱
      * @return 是否存在
      */
@@ -153,6 +164,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 根据手机号和密码获取用户
+     *
      * @param phoneNum 用户手机号
      * @param password 用户密码
      * @return 用户
@@ -171,6 +183,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 返回所有用户合集
+     *
      * @return 所有用户
      */
     @Override
@@ -180,6 +193,7 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 根据用户手机号获取密码
+     *
      * @param phoneNum 用户手机号
      * @return 密码
      */

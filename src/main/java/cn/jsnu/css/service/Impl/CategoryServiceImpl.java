@@ -17,6 +17,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 新增一个分类
+     *
      * @param cateName 商品名称
      * @param cateLevel 分类等级
      * @param superCate 上层分类ID
@@ -32,6 +33,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 根据分类ID查找分类
+     *
      * @param categoryId 分类ID
      * @return 分类
      */
@@ -42,6 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 删除一个分类
+     *
      * @param categoryId 分类ID
      */
     @Override
@@ -51,6 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 更新分类信息
+     *
      * @param category 分类
      */
     @Override
@@ -60,6 +64,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 查找所有分类信息
+     *
      * @return 分类合集
      */
     @Override
@@ -69,6 +74,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * 根据分类层级查找分类
+     *
      * @param cateLevel 等级
      * @return 分类集合
      */

@@ -18,6 +18,7 @@ public class ContextFinalizer implements ServletContextListener {
 
     /**
      * 线程销毁
+     *
      * @param servletContextEvent servlet事件
      */
     @Override

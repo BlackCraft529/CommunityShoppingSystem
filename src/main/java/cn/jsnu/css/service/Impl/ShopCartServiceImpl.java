@@ -3,7 +3,6 @@ package cn.jsnu.css.service.Impl;
 import cn.jsnu.css.dao.ShopCartMapper;
 import cn.jsnu.css.pojo.Goods;
 import cn.jsnu.css.pojo.ShopCart;
-import cn.jsnu.css.service.GoodService;
 import cn.jsnu.css.service.ShopCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.HashMap;
@@ -17,8 +16,10 @@ import java.util.Map;
 public class ShopCartServiceImpl implements ShopCartService {
     @Autowired
     private ShopCartMapper shopCartMapper;
+
     /**
      * 新增一个购物车记录
+     *
      * @param userId   用户ID
      * @param goodsId  商品ID
      * @param quantity 数量
@@ -38,6 +39,7 @@ public class ShopCartServiceImpl implements ShopCartService {
 
     /**
      * 根据用户ID和商品ID获取记录
+     *
      * @param userId  用户ID
      * @param goodsId 商品ID
      * @return 购物车记录
@@ -53,6 +55,7 @@ public class ShopCartServiceImpl implements ShopCartService {
 
     /**
      * 通过用户ID和商品ID删除记录
+     *
      * @param userId  用户ID
      * @param goodsId 商品ID
      */
@@ -66,6 +69,7 @@ public class ShopCartServiceImpl implements ShopCartService {
 
     /**
      * 通过用户ID查询购物车
+     *
      * @param userId 用户ID
      * @return 购物车记录
      */
@@ -76,6 +80,7 @@ public class ShopCartServiceImpl implements ShopCartService {
 
     /**
      * 更新数量
+     *
      * @param userId   用户ID
      * @param goodsId  商品ID
      * @param quantity 数量

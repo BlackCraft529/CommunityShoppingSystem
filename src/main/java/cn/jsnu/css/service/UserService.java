@@ -10,6 +10,7 @@ import java.util.List;
 public interface UserService {
     /**
      * 新增用户
+     *
      * @param phoneNum 用户手机号
      * @param password 用户密码
      * @return 受影响条数
@@ -18,6 +19,7 @@ public interface UserService {
 
     /**
      * 根据用户ID查找用户
+     *
      * @param id 用户ID
      * @return 对应用户
      */
@@ -25,18 +27,21 @@ public interface UserService {
 
     /**
      * 删除用户
+     *
      * @param id 用户ID
      */
     void deleteUserById(String id);
 
     /**
      * 更新用户数据
+     *
      * @param user 用户类
      */
     void updateUser(User user);
 
     /**
      * 修改用户昵称
+     *
      * @param id 用户UUID
      * @param nickname 用户昵称
      */
@@ -44,6 +49,7 @@ public interface UserService {
 
     /**
      * 更新用户密码
+     *
      * @param id 用户id
      * @param  password 密码
      */
@@ -51,6 +57,7 @@ public interface UserService {
 
     /**
      * 更新用户邮箱
+     *
      * @param id 用户ID
      * @param email 邮箱
      */
@@ -58,6 +65,7 @@ public interface UserService {
 
     /**
      * 更新用户电话号
+     *
      * @param id 用户ID
      * @param phoneNum 电话
      */
@@ -65,6 +73,7 @@ public interface UserService {
 
     /**
      * 更新用户头像连接
+     *
      * @param id 用户ID
      * @param avatar 用户头像连接
      */
@@ -72,6 +81,7 @@ public interface UserService {
 
     /**
      * 根据手机号检查用户是否存在
+     *
      * @param phoneNum 手机号
      * @return 是否存在用户
      */
@@ -79,6 +89,7 @@ public interface UserService {
 
     /**
      * 根据邮箱检查用户是否存在
+     *
      * @param email 邮箱
      * @return 用户
      */
@@ -86,6 +97,7 @@ public interface UserService {
 
     /**
      * 根据手机号和密码获取用户
+     *
      * @param phoneNum 用户手机号
      * @param password 用户密码
      * @return 用户
@@ -94,12 +106,14 @@ public interface UserService {
 
     /**
      * 获取所有用户
+     *
      * @return 用户集合
      */
     List<User> findAllUsers();
 
     /**
      * 根据手机号获取用密码
+     *
      * @param phoneNum 用户手机号
      * @return 用户密码
      */

@@ -12,6 +12,7 @@ public interface ShopCartService {
 
     /**
      * 新增一个购物车记录
+     *
      * @param userId 用户ID
      * @param goodsId 商品ID
      * @param quantity 数量
@@ -20,6 +21,7 @@ public interface ShopCartService {
 
     /**
      * 根据用户ID和商品ID获取记录
+     *
      * @param userId 用户ID
      * @param goodsId 商品ID
      * @return 购物车商品合集
@@ -29,6 +31,7 @@ public interface ShopCartService {
 
     /**
      * 通过用户ID和商品ID删除记录
+     *
      * @param userId 用户ID
      * @param goodsId 商品ID
      */
@@ -36,6 +39,7 @@ public interface ShopCartService {
 
     /**
      * 通过用户ID查询购物车
+     *
      * @param userId 用户ID
      * @return 购物车商品合集
      */
@@ -43,6 +47,7 @@ public interface ShopCartService {
 
     /**
      * 更新数量
+     *
      * @param userId 用户ID
      * @param goodsId 商品ID
      * @param quantity 数量

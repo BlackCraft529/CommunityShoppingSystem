@@ -102,6 +102,7 @@ public class AddressServiceImpl implements AddressService {
 
     /**
      * 修改地址信息
+     *
      * @param address 地址对象
      */
     @Override
@@ -187,4 +188,15 @@ public class AddressServiceImpl implements AddressService {
     public List<Address> findAddressByContact(String contact) {
         return addressMapper.findAddressByContact(contact);
     }
+
+    /**
+     * 通过地址ID删除地址
+     *
+     * @param addressId 地址ID
+     */
+    @Override
+    public void deleteAddressByAddressId(String addressId) {
+        addressMapper.deleteAddressByAddressId(addressId);
+    }
+
 }

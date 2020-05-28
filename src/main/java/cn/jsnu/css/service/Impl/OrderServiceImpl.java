@@ -32,6 +32,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 新建一个订单
+     *
      * @param orderInfo 订单Json字符串
      * @param userId 用户ID
      */
@@ -72,6 +73,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 根据订单ID删除订单信息
+     *
      * @param orderId 订单ID
      */
     @Override
@@ -81,6 +83,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 更新订单状态
+     *
      * @param orderId 订单ID
      * @param status  订单状态
      */
@@ -97,6 +100,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 查找所有订单
+     *
      * @return 订单合集
      * @deprecated
      */
@@ -107,6 +111,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 根据订单ID查询订单
+     *
      * @param orderId 订单ID
      * @return 订单
      */
@@ -125,6 +130,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 根据用户ID查找订单信息
+     *
      * @param userId 客户ID
      * @return 订单合集
      */
@@ -159,6 +165,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 模糊查询订单 通过订单号、商品名、商品编号 查询订单信息
+     *
      * @param vagueString 字符串
      * @param userId 用户ID
      * @return 订单信息
@@ -227,6 +234,7 @@ public class OrderServiceImpl implements OrderService {
 
     /**
      * 根据markId获取Vo Order对象
+     *
      * @param markId 标识ID
      * @return Vo Order对象
      */
