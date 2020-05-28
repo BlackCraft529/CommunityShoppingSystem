@@ -22,47 +22,15 @@ public class TestGoodsService {
     @Qualifier("GoodServiceImpl")
     private GoodService goodService;
 
-    public void testAddGoods() {
-
-    }
-
-
     @Test
     public void testFindGoodsById() {
         System.out.println(goodService.findGoodsById("f08d9059e95849f6b685e974c75f53eb"));
     }
 
-
-    void deleteGoodsById() {}
-
-
-    void updateGoods() {}
-
-
-    void updateGoodsPrice() {}
-
-
-    void updateGoodsSalesPrice() {}
-
-
-    void updateGoodsRemain() {
-
-    }
-
-
-    void updateGoodsImage() {
-
-    }
-
-
-
-    void findAllGoods() {}
-
-
     @Test
     public void findGoodsByCategory() {
         List<Goods> goodsList = goodService.findGoodsByCategory("dbeed826550f4d3d82ea9bb27478c381");
-        for (Goods goods :goodsList) {
+        for (Goods goods : goodsList) {
             System.out.println(goods);
         }
     }
@@ -70,10 +38,10 @@ public class TestGoodsService {
     @Test
     public void findGoodsByName() {
         List<Goods> goodsList = goodService.findGoodsByName("电脑");
-        for (Goods goods :goodsList) {
+        for (Goods goods : goodsList) {
             System.out.println(goods);
         }
-        for(Goods goods:goodsList){
+        for (Goods goods : goodsList) {
             System.out.println(goods);
         }
     }

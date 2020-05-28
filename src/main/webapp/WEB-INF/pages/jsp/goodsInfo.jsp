@@ -63,8 +63,8 @@
                     <div class="chose-btn">
                         <div class="chose-amount">
                             <input id="quantity" type="text" value="1">
-                            <a href="javascript:;" class="add">+</a>
-                            <a href="javascript:;" class="reduce not-reduce">-</a>
+                            <a id="add" class="add">+</a>
+                            <a id="reduce" class="reduce not-reduce">-</a>
                         </div>
                         <a id="addCart" href="#" class="addcar">加入购物车</a>
                     </div>
@@ -150,6 +150,21 @@
 <script src="<%=path%>/js/common.js"></script>
 <script>
     $(() => {
+
+        $('#add').on('click', () => {
+            $('#quantity').val(parseInt($('#quantity').val()) + 1);
+        })
+
+        $('#reduce').on('click', () => {
+            $('#quantity').val(parseInt($('#quantity').val()) - 1);
+            if (parseInt($('#quantity').val()) <= 0){
+                $('#quantity').val(1);
+                $('#reduce').attr('class', 'reduce not-reduce');
+            } else {
+                $('#reduce').attr('class', 'reduce');
+            }
+        })
+
         $('#addCart').on('click', () => {
             let goodsId = $('#goodsId').text();
             let quantity = parseInt($('#quantity').val());

@@ -50,10 +50,6 @@ public class TestOrderService {
             System.out.print("\n\n");
         }
     }
-    @Test
-    public void testUpdateStatus(){
-        orderService.updateOrderStatus("M4W307iA7NuH",2);
-    }
 
     @Test
     public void testFindOrdersByUserId(){
