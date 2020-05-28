@@ -59,14 +59,4 @@ public class IndexController {
     public String toIndex() {
         return "redirect:/index";
     }
-
-
-    @RequestMapping("/indexText")
-    public @ResponseBody String test(@RequestBody String value) {
-        System.out.println(value);
-        for (int i = 0; i < 10; i++) {
-            /*System.out.println(value.get("1"));*/
-        }
-        return "helloWorld";
-    }
 }

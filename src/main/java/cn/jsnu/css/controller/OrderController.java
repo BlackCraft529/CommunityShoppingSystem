@@ -49,16 +49,16 @@ public class OrderController {
 
 
     @RequestMapping("/orderList")
-    public String orderList(Integer status, String search_text, Model model, HttpSession session) {
+    public String orderList(@RequestParam(value = "status", required = false) Integer status, String search_text, Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         String userId = user.getUserId();
         List<Order> orderList;
         if (status != null) {
             orderList = orderService.findOrdersByUserIdAndStatus(userId, status);
             model.addAttribute("type", status);
-        }
-        if (search_text != null) {
+        } else if (search_text != null) {
             orderList = orderService.findOrderByVagueString(search_text, userId);
+            model.addAttribute("type", 0);
         } else {
             orderList = orderService.findOrdersByUserId(userId);
             model.addAttribute("type", 0);
@@ -108,7 +108,6 @@ public class OrderController {
     @RequestMapping("/addOrder")
     @ResponseBody
     public String addOrder(HttpSession session, HttpServletRequest request, @RequestBody String param) {
-        System.out.println(param);
         JSONObject jsonObject = new JSONObject();
         try {
             User user = (User) session.getAttribute("user");
