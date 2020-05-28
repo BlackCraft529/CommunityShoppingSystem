@@ -138,5 +138,25 @@ public class GoodServiceImpl implements GoodService {
         return goodMapper.findGoodsByName("%"+goodsName+"%");
     }
 
+    /**
+     * 查找最新的商品
+     * @param count 查找条数
+     * @return 商品合集
+     */
+    @Override
+    public List<Goods> findNewestGoods(int count) {
+        return goodMapper.findNewestGoods(count);
+    }
+
+    /**
+     * 查找销量最多的商品
+     * @param count 查找条数
+     * @return 商品合集
+     */
+    @Override
+    public List<Goods> findHotGoods(int count) {
+        return goodMapper.findHotGoods(count);
+    }
+
 
 }

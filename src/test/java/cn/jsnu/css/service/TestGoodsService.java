@@ -45,4 +45,22 @@ public class TestGoodsService {
             System.out.println(goods);
         }
     }
+
+    @Test
+    public void testNewestGoodsList(){
+        List<Goods> newestGoods=goodService.findNewestGoods(10);
+        int i=1;
+        for(Goods goods:newestGoods){
+            System.out.println(i+++"  "+goods.getGoodsId()+"  "+goods.getGoodsCreateTime());
+        }
+    }
+
+    @Test
+    public void testHotGoodsList(){
+        List<Goods> hotGoods=goodService.findHotGoods(10);
+        int i=1;
+        for(Goods goods:hotGoods){
+            System.out.println(i+++"  "+goods.getGoodsId()+"  "+goods.getGoodsSales());
+        }
+    }
 }
