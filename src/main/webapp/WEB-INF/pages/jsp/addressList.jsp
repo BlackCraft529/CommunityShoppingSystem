@@ -44,7 +44,7 @@
                             <div id="${address.addressId}" class="address-item">
                                 <div class="item-head">
                                     <h4>${address.contact}</h4>
-                                    <span class="delete" onclick="deleteAddress(${address.addressId})">X</span>
+                                    <span class="delete" onclick="deleteAddress('${address.addressId}')">X</span>
                                 </div>
                                 <table>
                                     <tr>
@@ -148,6 +148,12 @@
         </div>
         <div class="dialog-con">
             <form id="addressForm" action="" method="post">
+                <div class="dialog-item" style="display: none;">
+                    <div class="hd">编号</div>
+                    <div class="bd">
+                        <input id="addressId" class="addressId" type="text" name="addressId">
+                    </div>
+                </div>
                 <div class="dialog-item">
                     <div class="hd">收件人</div>
                     <div class="bd">
@@ -217,8 +223,8 @@
             dataType: 'json',
             success: (response) => {
                 if (response.success) {
-                    console.log(response.address);
                     let address = response.address;
+                    $('#addressId').val(address.addressId);
                     $('#contact').val(address.contact);
                     $('#province').val(address.province);
                     $('#city').val(address.city);
@@ -232,7 +238,20 @@
     }
 
     function deleteAddress(id) {
-        $('#' + id).remove();
+        $.ajax({
+            url: '<%=path%>/address/delete',
+            data: {
+                'addressId':id
+            },
+            type: 'get',
+            dataType: 'json',
+            success:(response)=>{
+                if (response.success) {
+                    $('#' + id).remove();
+                    showAlert('删除成功!!!')
+                }
+            }
+        })
     }
 </script>
 </body>

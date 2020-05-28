@@ -40,8 +40,16 @@ public class AddressController {
         return "redirect:/address/list";
     }
 
+    @RequestMapping("/delete")
+    @ResponseBody
     public String delete(String addressId) {
-        return "";
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("success", true);
+        } catch (Exception e) {
+            jsonObject.put("success", false);
+        }
+        return jsonObject.toString();
     }
 
     @RequestMapping(value = "/getAddressInfo", produces = "text/html;charset=UTF-8")
@@ -49,21 +57,25 @@ public class AddressController {
     public String getAddressInfo(String id) {
         JSONObject jsonObject = new JSONObject();
         try {
-            System.out.println(id);
             Address address = addressService.findAddressByAddressId(id);
             jsonObject.put("success", true);
             jsonObject.put("address", address);
-            System.out.println(address);
-            System.out.println(jsonObject.toString());
         } catch (Exception e) {
             jsonObject.put("success", false);
         }
         return jsonObject.toString();
     }
 
-    @RequestMapping("/update")
-    public String update(Address address) {
+    @RequestMapping(value = "/update", produces = "text/html;charset=UTF-8")
+    public String update(Address address, HttpSession session) {
         System.out.println(address);
+        try {
+            User user = (User) session.getAttribute("user");
+            address.setUserId(user.getUserId());
+            addressService.updateAddressByAddressId(address);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "redirect:/address/list";
     }
 }
