@@ -38,13 +38,19 @@
                                         href="<%=path%>/order/orderList">全部订单</a>
                                 <a
                                         <c:if test="${type eq 1}">class="current"</c:if>
-                                        href="<%=path%>/order/orderList?status=1">代付款</a>
+                                        href="<%=path%>/order/orderList?status=1">待付款</a>
                                 <a
                                         <c:if test="${type eq 2}">class="current"</c:if>
                                         href="<%=path%>/order/orderList?status=2">待收货</a>
                                 <a
-                                        <c:if test="${type eq 3}">class="current"</c:if>
+                                        <c:if test="${type eq 4}">class="current"</c:if>
                                         href="<%=path%>/order/orderList?status=3">待评价</a>
+                                <a
+                                        <c:if test="${type eq 5}">class="current"</c:if>
+                                        href="<%=path%>/order/orderList?status=4">已完成</a>
+                                <a
+                                        <c:if test="${type eq 6}">class="current"</c:if>
+                                        href="<%=path%>/order/orderList?status=4">已取消</a>
                             </li>
                             <li class="order_search">
                                 <form action="<%=path%>/order/orderList">
