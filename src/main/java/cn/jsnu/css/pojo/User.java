@@ -18,12 +18,13 @@ public class User {
 
     public User(){};
 
-    public User(String phoneNum,String password,String nickname,String userId,Date createTime){
+    public User(String phoneNum,String password,String nickname,String userId,Date createTime,String email){
         this.userId = userId;
         this.nickname = nickname;
         this.password = password;
         this.phoneNum=phoneNum;
         this.createTime=createTime;
+        this.email=email;
     }
 
     public String getAvatar() {

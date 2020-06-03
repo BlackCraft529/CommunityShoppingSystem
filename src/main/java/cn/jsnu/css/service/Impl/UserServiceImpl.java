@@ -24,10 +24,11 @@ public class UserServiceImpl implements UserService {
      *
      * @param phoneNum 用户手机号
      * @param password 用户密码
+     * @param email 邮箱
      * @return 成功条数 1/0
      */
     @Override
-    public int addUser(String phoneNum, String password) {
+    public int addUser(String phoneNum, String password,String email) {
         if(checkPhoneNumExist(phoneNum)){
             return 0;
         }
@@ -40,7 +41,7 @@ public class UserServiceImpl implements UserService {
         String MD5password= MD5Util.getSaltMD5(password);
         //生成昵称
         String nickname=RandomId.getFirstNickName(phoneNum);
-        return userMapper.addUser(new User(phoneNum,MD5password,nickname,UUID,new Date()));
+        return userMapper.addUser(new User(phoneNum,MD5password,nickname,UUID,new Date(),email));
     }
 
     /**

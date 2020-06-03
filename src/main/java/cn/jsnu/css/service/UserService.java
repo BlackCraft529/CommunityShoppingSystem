@@ -13,9 +13,10 @@ public interface UserService {
      *
      * @param phoneNum 用户手机号
      * @param password 用户密码
+     * @param email 邮箱
      * @return 受影响条数
      */
-    int addUser(String phoneNum, String password);
+    int addUser(String phoneNum, String password,String email);
 
     /**
      * 根据用户ID查找用户
