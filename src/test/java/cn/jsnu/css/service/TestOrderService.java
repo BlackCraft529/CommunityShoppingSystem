@@ -64,7 +64,7 @@ public class TestOrderService {
     @Test
     public void testFindByVagueString(){
         //臻品 520玫瑰花束 DIY花材包 39.9元起 小束花礼 云南礼物 【相遇】粉玫瑰混搭花材（玫瑰+康乃馨+叶上黄金）
-        System.out.println(orderService.findOrderByVagueString("【相遇】粉玫瑰混搭花材（","762e98daddcd4aa080e8348a5139be82"));
+        System.out.println(orderService.findOrderByVagueString("3h9D29HJPj46","990921391fef49669d4b6235b730a840"));
     }
 
     @Test

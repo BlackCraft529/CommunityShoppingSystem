@@ -23,7 +23,7 @@
         <id column="user_id" property="userId"/>
         <id column="quantity" property="quantity"/>
         <id column="settlement_amount" property="settlementAmount"/>
-        <id column="settlement_amount" property="paymentAmount"/>
+        <id column="payment_amount" property="paymentAmount"/>
         <id column="create_time" property="createTime"/>
         <id column="status" property="status"/>
         <id column="mark_id" property="markId"/>

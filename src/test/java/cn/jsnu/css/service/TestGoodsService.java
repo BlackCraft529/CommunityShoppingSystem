@@ -24,7 +24,7 @@ public class TestGoodsService {
 
     @Test
     public void testFindGoodsById() {
-        System.out.println(goodService.findGoodsById("f08d9059e95849f6b685e974c75f53eb"));
+        System.out.println(goodService.findGoodsById("13c84b9842ec4d7a8f000eef0901fa63"));
     }
 
     @Test
