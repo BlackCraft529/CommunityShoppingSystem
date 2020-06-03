@@ -242,14 +242,20 @@ public class OrderServiceImpl implements OrderService {
         List<cn.jsnu.css.pojo.Order> orders=orderMapper.findOrdersByMarkId(markId);
         Order orderVo=new Order();
         List<Goods> goodsList=new ArrayList<>();
+        double settlementAmount=0;
+        double paymentAmount=0;
         for(cn.jsnu.css.pojo.Order order:orders){
             orderVo=new Order(order);
+            settlementAmount+=order.getSettlementAmount();
+            paymentAmount+=order.getPaymentAmount();
             Goods goods=goodMapper.findGoodsById(order.getGoodsId());
             goods.setQuantity(orderMapper.findOrderById(order.getOrderId()).getQuantity());
             goodsList.add(goods);
             orderVo.setAddress(addressMapper.findAddressByAddressId(order.getAddressId()));
         }
         orderVo.setGoodsList(goodsList);
+        orderVo.setSettlementAmount(settlementAmount);
+        orderVo.setPaymentAmount(paymentAmount);
         return orderVo;
     }
 }

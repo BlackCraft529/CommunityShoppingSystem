@@ -28,7 +28,7 @@
     <!--新增用户-->
     <insert id="addUser" parameterMap="UserParameterMap">
         insert into eps_users (id,nickname,phoneNum,password,create_time)
-        values (#{userId},#{nickname},#{phoneNum},#{password},#{createTime});
+            values (#{userId},#{nickname},#{phoneNum},#{password},#{createTime});
     </insert>
     <!--查询用户-->
     <select id="findUserById" parameterType="string" resultMap="UserResultMap">
