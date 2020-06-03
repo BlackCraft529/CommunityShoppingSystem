@@ -22,13 +22,13 @@
         <!--        <property name="user" value="${username}"/>-->
         <!--        <property name="password" value="${password}"/>-->
         <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql://cdb-2tt4kxl0.bj.tencentcdb.com:10151/epsDB?useSSL=true&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
+        <property name="jdbcUrl" value="jdbc:mysql://cdb-2tt4kxl0.bj.tencentcdb.com:10151/epsDB?useSSL=true&amp;autoReconnect=true&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8"/>
         <property name="user" value="admin"/>
         <property name="password" value="epsmysqladmin"/>
 
-        <property name="initialPoolSize" value="10"/>
+        <property name="initialPoolSize" value="20"/>
         <!--池中最大最小连接数量-->
-        <property name="maxPoolSize" value="25"/>
+        <property name="maxPoolSize" value="50"/>
         <property name="minPoolSize" value="5"/>
         <!--关闭连接后不自动提交-->
         <property name="autoCommitOnClose" value="false"/>
@@ -36,6 +36,12 @@
         <property name="checkoutTimeout" value="10000"/>
         <!--重试次数-->
         <property name="acquireRetryAttempts" value="3"/>
+
+        <property name="testConnectionOnCheckin" value="true"/>
+
+        <property name="testConnectionOnCheckout" value="true"/>
+
+
     </bean>
 
     <!--sqlSessionFactory-->

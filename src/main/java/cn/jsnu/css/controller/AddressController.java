@@ -45,6 +45,7 @@ public class AddressController {
     public String delete(String addressId) {
         JSONObject jsonObject = new JSONObject();
         try {
+            addressService.deleteAddressByAddressId(addressId);
             jsonObject.put("success", true);
         } catch (Exception e) {
             jsonObject.put("success", false);

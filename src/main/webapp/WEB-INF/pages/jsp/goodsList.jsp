@@ -44,14 +44,7 @@
 <!--Main End-->
 
 <!--Footer Start-->
-<footer class="footer">
-    <p class="links">
-        <a href="#">关于我们</a><a href="#">常见问题</a><a href="">安全交易</a><a href="">购买流程</a><a href="">如何付款</a><a
-            href="">联系我们</a><a
-            href="">商务合作</a>
-    </p>
-    <p class="copyright">Copyright © 2020-2022 应急采购系统 <a class="beian" href="" target="_blank">京ICP备1234567890号</a></p>
-</footer>
+<jsp:include page="footer.jsp"></jsp:include>
 <!--Footer End-->
 
 <script src="<%=path%>/js/jquery-3.5.0.min.js"></script>

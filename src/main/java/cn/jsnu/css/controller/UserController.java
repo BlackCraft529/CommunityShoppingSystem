@@ -2,12 +2,13 @@ package cn.jsnu.css.controller;
 
 import cn.jsnu.css.pojo.User;
 import cn.jsnu.css.service.UserService;
-import cn.jsnu.css.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,8 +50,9 @@ public class UserController {
      * @param session session对象
      * @return 跳转界面
      */
-    @RequestMapping("/register")
-    public String register(String phoneNum, String password, HttpSession session) {
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(@RequestParam("phoneNum") String phoneNum, @RequestParam("password") String password, @RequestParam("email") String email, HttpSession session) {
+        System.out.println("phoneNum:" + phoneNum + "password:" + password);
         userService.addUser(phoneNum, password);
         return "login";
     }
