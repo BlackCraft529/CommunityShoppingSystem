@@ -53,7 +53,7 @@ public class UserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String register(@RequestParam("phoneNum") String phoneNum, @RequestParam("password") String password, @RequestParam("email") String email, HttpSession session) {
         System.out.println("phoneNum:" + phoneNum + "password:" + password);
-        userService.addUser(phoneNum, password);
+        userService.addUser(phoneNum, password, email);
         return "login";
     }
 
