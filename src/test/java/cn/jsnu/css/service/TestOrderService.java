@@ -55,8 +55,9 @@ public class TestOrderService {
     public void testFindOrdersByUserId(){
         String userId="762e98daddcd4aa080e8348a5139be82";
         for(Order order:orderService.findOrdersByUserId(userId)){
-            for(Goods goods:order.getGoodsList())
+            for(Goods goods:order.getGoodsList()) {
                 System.out.println(goods.getQuantity());
+            }
         }
     }
 
@@ -70,4 +71,5 @@ public class TestOrderService {
     public void getMD5Password(){
         System.out.println(MD5Util.getSaltMD5("15152063727"));
     }
+
 }

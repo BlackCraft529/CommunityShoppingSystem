@@ -27,8 +27,6 @@ public class Order {
         this.setMarkId(order.getMarkId());
         this.setUserId(order.getUserId());
         this.setOrderId(order.getOrderId());
-        this.setPaymentAmount(order.getPaymentAmount());
-        this.setSettlementAmount(order.getSettlementAmount());
         this.setStatus(order.getStatus());
     }
 
