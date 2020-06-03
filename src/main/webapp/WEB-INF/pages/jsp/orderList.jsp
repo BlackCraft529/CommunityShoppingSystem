@@ -33,16 +33,30 @@
                     <div class="hd">
                         <ul class="clearfix">
                             <li class="order_type">
-                                <a <c:if test="${type eq 0}">class="current"</c:if> href="<%=path%>/order/orderList">全部订单</a>
-                                <a <c:if test="${type eq 1}">class="current"</c:if> href="<%=path%>/order/orderList?status=1">代付款</a>
-                                <a <c:if test="${type eq 2}">class="current"</c:if> href="<%=path%>/order/orderList?status=2">待收货</a>
-                                <a <c:if test="${type eq 3}">class="current"</c:if> href="<%=path%>/order/orderList?status=3">待评价</a>
+                                <a
+                                        <c:if test="${type eq 0}">class="current"</c:if>
+                                        href="<%=path%>/order/orderList">全部订单</a>
+                                <a
+                                        <c:if test="${type eq 1}">class="current"</c:if>
+                                        href="<%=path%>/order/orderList?status=1">待付款</a>
+                                <a
+                                        <c:if test="${type eq 2}">class="current"</c:if>
+                                        href="<%=path%>/order/orderList?status=2">待收货</a>
+                                <a
+                                        <c:if test="${type eq 4}">class="current"</c:if>
+                                        href="<%=path%>/order/orderList?status=3">待评价</a>
+                                <a
+                                        <c:if test="${type eq 5}">class="current"</c:if>
+                                        href="<%=path%>/order/orderList?status=4">已完成</a>
+                                <a
+                                        <c:if test="${type eq 6}">class="current"</c:if>
+                                        href="<%=path%>/order/orderList?status=4">已取消</a>
                             </li>
                             <li class="order_search">
                                 <form action="<%=path%>/order/orderList">
                                     <input id="search_text" name="search_text" placeholder="请输入订单号、商品名、商品编号"
                                            type="text">
-                                    <button type="submit"></button>
+                                    <button type="submit" style="font-family: iconfont">&#xe613;</button>
                                 </form>
                             </li>
                         </ul>
@@ -94,7 +108,24 @@
                                         <p class="pay_type">在线支付</p>
                                     </div>
                                     <div class="item order_status">
-                                        <p class="status">${order.status}</p>
+                                        <c:if test="${order.status eq 1}">
+                                            <p class="status">未付款</p>
+                                        </c:if>
+                                        <c:if test="${order.status eq 2}">
+                                            <p class="status">未发货</p>
+                                        </c:if>
+                                        <c:if test="${order.status eq 3}">
+                                            <p class="status">已发货</p>
+                                        </c:if>
+                                        <c:if test="${order.status eq 4}">
+                                            <p class="status">未评价</p>
+                                        </c:if>
+                                        <c:if test="${order.status eq 5}">
+                                            <p class="status">订单完成</p>
+                                        </c:if>
+                                        <c:if test="${order.status eq 6}">
+                                            <p class="status">订单取消</p>
+                                        </c:if>
                                         <a href="#" class="order_detail_link">订单详情</a>
                                     </div>
                                     <div class="item order_operation">
@@ -113,67 +144,8 @@
 </div>
 <footer class="footer">
     <div class="w">
-        <div class="service">
-            <div class="mod-service-item">
-                <h5>购物指南</h5>
-                <ul>
-                    <li><a href="">订单状态</a></li>
-                    <li><a href="">交易条款</a></li>
-                    <li><a href="">积分说明</a></li>
-                    <li><a href="">会员制度</a></li>
-                    <li><a href="">购物流程</a></li>
-                </ul>
-            </div>
-            <div class="mod-service-item">
-                <h5>购物指南</h5>
-                <ul>
-                    <li><a href="">支付帮助</a></li>
-                    <li><a href="">余额支付</a></li>
-                    <li><a href="">银行电汇</a></li>
-                    <li><a href="">在线支付</a></li>
-                    <li><a href="">货到付款</a></li>
-                </ul>
-            </div>
-            <div class="mod-service-item">
-                <h5>购物指南</h5>
-                <ul>
-                    <li><a href="">EMS/邮政普包</a></li>
-                    <li><a href="">商品验货与签收</a></li>
-                    <li><a href="">加急快递</a></li>
-                    <li><a href="">上门自提</a></li>
-                    <li><a href="">配送范围及运费</a></li>
-                </ul>
-            </div>
-            <div class="mod-service-item">
-                <h5>购物指南</h5>
-                <ul>
-                    <li><a href="">售后服务</a></li>
-                    <li><a href="">发票制度</a></li>
-                    <li><a href="">余额的使用与提现</a></li>
-                    <li><a href="">退/换货注意事项</a></li>
-                    <li><a href="">退货说明</a></li>
-                    <li><a href="">换货说明</a></li>
-                </ul>
-            </div>
-            <div class="mod-service-item">
-                <h5>购物指南</h5>
-                <ul>
-                    <li><a href="">友情链接</a></li>
-                    <li><a href="">诚聘英才</a></li>
-                    <li><a href="">联系客服</a></li>
-                    <li><a href="">退订邮件/短信</a></li>
-                    <li><a href="">找回密码</a></li>
-                    <li><a href="">常见问题</a></li>
-                    <li><a href="">关于我们</a></li>
-                </ul>
-            </div>
-        </div>
-        <p class="links">
-            <a href="#">关于我们</a><a href="#">常见问题</a><a href="">安全交易</a><a href="">购买流程</a><a href="">如何付款</a><a
-                href="">联系我们</a><a
-                href="">商务合作</a>
+        <p class="copyright">Copyright © 2020-2022 应急采购系统 <a class="beian" href="" target="_blank">京ICP备1234567890号</a>
         </p>
-        <p class="copyright">Copyright © 2020-2022 应急采购系统 <a class="beian" href="" target="_blank">京ICP备1234567890号</a></p>
     </div>
 </footer>
 </body>
